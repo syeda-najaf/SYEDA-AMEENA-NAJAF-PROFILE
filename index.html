@@ -1,245 +1,1065 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Syeda Ameena Najaf — Security & AI Engineer</title>
-<meta name="description" content="Portfolio of Syeda Ameena Najaf — Cybersecurity, AI/ML and full-stack development.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Syeda Ameena Najaf | Portfolio</title>
+
+    <meta
+        name="description"
+        content="Syeda Ameena Najaf - Frontend Developer, Cybersecurity and AI/ML professional portfolio."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- LOADER -->
-<div id="loader" class="loader">
-  <div class="loader-inner">
-    <span class="loader-bracket">[</span>
-    <span id="loaderText" class="loader-text">DECRYPTING</span>
-    <span class="loader-bracket">]</span>
-  </div>
-</div>
+<!-- ================= NAVIGATION ================= -->
 
-<!-- SCANLINE OVERLAY -->
-<div class="scan-overlay" aria-hidden="true"></div>
+<header class="navbar">
 
-<!-- HEADER / NAV -->
-<header class="site-header">
-  <div class="nav-wrap">
-    <a href="#home" class="brand">
-      <span class="brand-mark">SAN</span>
-      <span class="brand-status"><i class="dot"></i>online</span>
+    <a href="#home" class="logo">
+        <span>SN</span>
+        <strong>Syeda Ameena Najaf</strong>
     </a>
 
-    <nav class="desktop-nav" aria-label="Primary">
-      <a href="#home" class="nav-link">Home</a>
-      <a href="#about" class="nav-link">About</a>
-      <a href="#skills" class="nav-link">Skills</a>
-      <a href="#projects" class="nav-link">Projects</a>
-      <a href="#experience" class="nav-link">Experience</a>
-      <a href="#education" class="nav-link">Education</a>
-      <a href="#contact" class="nav-link nav-cta">Contact</a>
+    <nav class="desktop-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
     </nav>
 
-    <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle menu">☰</button>
-  </div>
+    <div class="nav-actions">
 
-  <div id="mobileMenu" class="mobile-menu">
+        <button
+            class="nav-cv"
+            id="openCvTop"
+        >
+            View CV ↗
+        </button>
+
+        <button
+            class="mobile-menu-button"
+            id="menuButton"
+            aria-label="Open menu"
+        >
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MOBILE MENU ================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <button
+        class="mobile-close"
+        id="closeMenu"
+    >
+        ×
+    </button>
+
     <a href="#home">Home</a>
     <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
+    <a href="#work">Work</a>
     <a href="#experience">Experience</a>
     <a href="#education">Education</a>
     <a href="#contact">Contact</a>
-  </div>
-</header>
+
+    <button
+        class="mobile-cv"
+        id="mobileCv"
+    >
+        View CV ↗
+    </button>
+
+</div>
+
 
 <main>
 
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <div class="hero-grid" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <p class="eyebrow"><span class="eyebrow-code">SEC//00</span> ACCESS GRANTED</p>
-      <h1 class="hero-name">
-        <span id="decryptName" class="decrypt-text" data-value="Syeda Ameena Najaf">Syeda Ameena Najaf</span>
-      </h1>
-      <p class="hero-role">Web Developer <span class="hero-role-sep">/</span> Published Researcher <span class="hero-role-sep">/</span> Cybersecurity</p>
-      <p class="hero-desc">Detail-oriented developer experienced in building dynamic, accessible web applications — with hands-on cybersecurity internships, an AI-based intrusion detection system, and published research in computer vision.</p>
+<!-- ================= HERO ================= -->
 
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">View Projects <span aria-hidden="true">→</span></a>
-        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
-      </div>
+<section class="hero" id="home">
 
-      <div class="hero-meta">
-        <div class="hero-meta-item"><span class="hero-meta-num" data-count="6">0</span><span class="hero-meta-label">Projects Built</span></div>
-        <div class="hero-meta-item"><span class="hero-meta-num" data-count="4">0</span><span class="hero-meta-label">Internships</span></div>
-        <div class="hero-meta-item"><span class="hero-meta-num" data-count="1">0</span><span class="hero-meta-label">Published Paper</span></div>
-      </div>
+    <div class="hero-content">
+
+        <p class="small-label">
+            PROFESSIONAL PORTFOLIO · 2026
+        </p>
+
+        <h1>
+            Syeda Ameena
+            <span>Najaf</span>
+        </h1>
+
+        <div class="hero-line"></div>
+
+        <p class="hero-role">
+            Frontend Developer
+            <span>·</span>
+            Cybersecurity
+            <span>·</span>
+            AI / ML
+        </p>
+
+        <p class="hero-description">
+
+            I build secure, accessible and practical digital experiences
+            across web development, cybersecurity and artificial intelligence.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#work"
+                class="button button-dark"
+            >
+                View My Work
+                <span>→</span>
+            </a>
+
+            <button
+                class="button button-light"
+                id="heroCv"
+            >
+                View CV
+                <span>↗</span>
+            </button>
+
+        </div>
+
     </div>
-    <div class="scroll-cue" aria-hidden="true"><span></span></div>
-  </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <p class="section-label"><span class="section-code">SEC//01</span> ABOUT</p>
+
+    <div class="hero-side">
+
+        <div class="side-number">
+            01
+        </div>
+
+        <p>
+            COMPUTER SCIENCE<br>
+            ENGINEERING
+        </p>
+
+        <div class="vertical-line"></div>
+
+        <span>
+            SCROLL TO EXPLORE
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- ================= INTRO ================= -->
+
+<section class="intro-section">
+
+    <div class="intro-number">
+        01
+    </div>
+
+    <div class="intro-content">
+
+        <p class="section-label">
+            PROFILE
+        </p>
+
+        <h2>
+            Building digital work
+            that is <em>useful.</em>
+        </h2>
+
+        <p class="intro-text">
+
+            Computer Science Engineering professional focused on
+            frontend development, cybersecurity, artificial intelligence
+            and practical software solutions.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section
+    class="section about-section"
+    id="about"
+>
+
+    <div class="section-top">
+
+        <div>
+            <p class="section-label">
+                02 / ABOUT
+            </p>
+
+            <h2 class="section-title">
+                About <em>me.</em>
+            </h2>
+        </div>
+
+        <span class="section-index">
+            02
+        </span>
+
+    </div>
+
+
     <div class="about-grid">
-      <div class="about-copy">
-        <h2 class="section-title">Detail-oriented developer, built for dynamic, accessible web applications.</h2>
-        <p>I'm Syeda Ameena Najaf, a frontend-leaning web developer and published researcher based in Hyderabad. I'm currently building secure web applications with React and Flask at Excellence College of Health &amp; Safety Engineering, alongside a run of cybersecurity internships with ADVI Group, CodTech, Tata Group and Deloitte.</p>
-        <p>Alongside web development, I've built an AI-based network attack detection system with real-time Telegram alerting, and published research on OpenCV-based license plate recognition in the Journal of Scientific Research and Technology. I like software that's both usable and genuinely secure — and I look for problems that need both.</p>
-      </div>
-      <div class="about-badges">
-        <div class="badge-card">
-          <span class="badge-icon">🖥️</span>
-          <h3>Web Development</h3>
-          <p>React, Flask, REST APIs, dynamic and accessible UI.</p>
+
+        <div class="about-main">
+
+            <p class="large-text">
+
+                I am a Computer Science Engineering professional
+                with a strong interest in creating clean, functional
+                and secure digital experiences.
+
+            </p>
+
+            <p>
+
+                My work combines frontend development with
+                cybersecurity, artificial intelligence, machine
+                learning and computer vision.
+
+            </p>
+
+            <p>
+
+                I enjoy solving practical problems and building
+                applications that are easy to understand, useful
+                to people and technically reliable.
+
+            </p>
+
         </div>
-        <div class="badge-card">
-          <span class="badge-icon">🔐</span>
-          <h3>Cybersecurity</h3>
-          <p>Vulnerability assessment, penetration testing, cryptography.</p>
+
+
+        <div class="about-details">
+
+            <div class="detail-item">
+
+                <span>01</span>
+
+                <div>
+                    <h3>Frontend Development</h3>
+
+                    <p>
+                        Responsive interfaces, modern layouts,
+                        JavaScript and React-based applications.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>02</span>
+
+                <div>
+                    <h3>Cybersecurity</h3>
+
+                    <p>
+                        Vulnerability assessment, security tools,
+                        penetration testing and encryption.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>03</span>
+
+                <div>
+                    <h3>AI / Machine Learning</h3>
+
+                    <p>
+                        Applied AI, network attack detection,
+                        computer vision and OCR.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>04</span>
+
+                <div>
+                    <h3>Research</h3>
+
+                    <p>
+                        Practical technical research and
+                        computer vision applications.
+                    </p>
+                </div>
+
+            </div>
+
         </div>
-        <div class="badge-card">
-          <span class="badge-icon">🧠</span>
-          <h3>AI / ML</h3>
-          <p>Intrusion detection, computer vision, OCR pipelines.</p>
-        </div>
-        <div class="badge-card">
-          <span class="badge-icon">📄</span>
-          <h3>Research</h3>
-          <p>Published in the Journal of Scientific Research and Technology.</p>
-        </div>
-      </div>
+
     </div>
-  </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="section section-alt">
-    <p class="section-label"><span class="section-code">SEC//02</span> SKILLS</p>
-    <h2 class="section-title">Toolset</h2>
-    <div class="skills-grid" id="skillsGrid"></div>
-  </section>
+</section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
-    <p class="section-label"><span class="section-code">SEC//03</span> PROJECTS</p>
-    <div class="projects-head">
-      <h2 class="section-title">Selected Work</h2>
-      <div class="filters" id="filters">
-        <button class="filter active" data-filter="all">All</button>
-        <button class="filter" data-filter="security">Security</button>
-        <button class="filter" data-filter="ai">AI / ML</button>
-        <button class="filter" data-filter="web">Web &amp; Apps</button>
-      </div>
+
+<!-- ================= SKILLS ================= -->
+
+<section
+    class="skills-section"
+    id="skills"
+>
+
+    <div class="skills-inner">
+
+        <div class="section-top">
+
+            <div>
+
+                <p class="section-label">
+                    03 / SKILLS
+                </p>
+
+                <h2 class="section-title">
+                    My <em>toolset.</em>
+                </h2>
+
+            </div>
+
+            <span class="section-index">
+                03
+            </span>
+
+        </div>
+
+
+        <div class="skills-list">
+
+            <div class="skill-row">
+                <span>01</span>
+                <h3>JavaScript</h3>
+                <p>Frontend development & interactive interfaces</p>
+            </div>
+
+            <div class="skill-row">
+                <span>02</span>
+                <h3>React.js</h3>
+                <p>Responsive component-based applications</p>
+            </div>
+
+            <div class="skill-row">
+                <span>03</span>
+                <h3>Python</h3>
+                <p>Security, automation, AI and backend development</p>
+            </div>
+
+            <div class="skill-row">
+                <span>04</span>
+                <h3>Flask</h3>
+                <p>Backend APIs and Python web applications</p>
+            </div>
+
+            <div class="skill-row">
+                <span>05</span>
+                <h3>Cybersecurity</h3>
+                <p>Security testing, vulnerability analysis and encryption</p>
+            </div>
+
+            <div class="skill-row">
+                <span>06</span>
+                <h3>AI / ML</h3>
+                <p>Machine learning, computer vision and OCR</p>
+            </div>
+
+        </div>
+
     </div>
-    <div class="projects-grid" id="projectsGrid"></div>
-  </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience" class="section section-alt">
-    <p class="section-label"><span class="section-code">SEC//04</span> EXPERIENCE</p>
-    <h2 class="section-title">Timeline</h2>
-    <div class="timeline" id="experienceList"></div>
-  </section>
+</section>
 
-  <!-- EDUCATION -->
-  <section id="education" class="section">
-    <p class="section-label"><span class="section-code">SEC//05</span> EDUCATION</p>
-    <h2 class="section-title">Foundation</h2>
-    <div class="education-grid" id="educationGrid"></div>
-  </section>
 
-  <!-- CERTIFICATES -->
-  <section id="certificates" class="section section-alt">
-    <p class="section-label"><span class="section-code">SEC//06</span> CERTIFICATIONS</p>
-    <h2 class="section-title">Credentials</h2>
-    <div class="cert-grid" id="certificateGrid"></div>
-  </section>
+<!-- ================= WORK ================= -->
 
-  <!-- CONTACT -->
-  <section id="contact" class="section contact-section">
-    <p class="section-label"><span class="section-code">SEC//07</span> CONTACT</p>
-    <div class="contact-grid">
-      <div class="contact-copy">
-        <h2 class="section-title">Let's build something worth defending.</h2>
-        <p>Open to security-focused roles, AI/ML projects and full-stack work. The fastest way to reach me is email — the form below opens your mail client with everything pre-filled.</p>
-        <div class="contact-links">
-          <a id="displayEmail" href="mailto:syedanajaf832@gmail.com" class="contact-link">syedanajaf832@gmail.com</a>
-          <a id="displayPhone" href="tel:09538090817" class="contact-link">09538090817</a>
-          <span id="displayLocation" class="contact-link contact-link-static">Santosh Nagar, Mehdipatnam, Hyderabad, Telangana 500006</span>
-          <a href="http://linkedin.com/in/syedanajaf" target="_blank" rel="noopener" class="contact-link">linkedin.com/in/syedanajaf</a>
-        </div>
-      </div>
+<section
+    class="section work-section"
+    id="work"
+>
 
-      <form id="contactForm" class="contact-form">
-        <div class="form-row">
-          <label for="contactName">Name</label>
-          <input id="contactName" name="name" type="text" required placeholder="Your name">
+    <div class="section-top">
+
+        <div>
+
+            <p class="section-label">
+                04 / SELECTED WORK
+            </p>
+
+            <h2 class="section-title">
+                Things I have <em>built.</em>
+            </h2>
+
         </div>
-        <div class="form-row">
-          <label for="contactEmail">Email</label>
-          <input id="contactEmail" name="email" type="email" required placeholder="you@example.com">
-        </div>
-        <div class="form-row">
-          <label for="contactSubject">Subject</label>
-          <input id="contactSubject" name="subject" type="text" required placeholder="Let's talk about...">
-        </div>
-        <div class="form-row">
-          <label for="contactMessage">Message</label>
-          <textarea id="contactMessage" name="message" required rows="5" placeholder="Write your message"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-        <p id="formNote" class="form-note"></p>
-      </form>
+
+        <span class="section-index">
+            04
+        </span>
+
     </div>
-  </section>
+
+
+    <div class="projects">
+
+
+        <!-- PROJECT 1 -->
+
+        <article
+            class="project-card"
+            data-project="0"
+        >
+
+            <div class="project-number">
+                01
+            </div>
+
+            <div class="project-info">
+
+                <p class="project-category">
+                    CYBERSECURITY / AI
+                </p>
+
+                <h3>
+                    Autonomous Network
+                    Attack Detection
+                </h3>
+
+                <p>
+                    AI-based network monitoring system designed
+                    to identify suspicious activity and generate
+                    practical alerts.
+                </p>
+
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>Machine Learning</span>
+                    <span>Telegram</span>
+                </div>
+
+            </div>
+
+            <span class="project-arrow">
+                ↗
+            </span>
+
+        </article>
+
+
+        <!-- PROJECT 2 -->
+
+        <article
+            class="project-card"
+            data-project="1"
+        >
+
+            <div class="project-number">
+                02
+            </div>
+
+            <div class="project-info">
+
+                <p class="project-category">
+                    COMPUTER VISION
+                </p>
+
+                <h3>
+                    License Plate
+                    Detection
+                </h3>
+
+                <p>
+                    OpenCV and OCR based automatic number
+                    plate recognition workflow.
+                </p>
+
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>OpenCV</span>
+                    <span>OCR</span>
+                </div>
+
+            </div>
+
+            <span class="project-arrow">
+                ↗
+            </span>
+
+        </article>
+
+
+        <!-- PROJECT 3 -->
+
+        <article
+            class="project-card"
+            data-project="2"
+        >
+
+            <div class="project-number">
+                03
+            </div>
+
+            <div class="project-info">
+
+                <p class="project-category">
+                    WEB DEVELOPMENT
+                </p>
+
+                <h3>
+                    Student Enrolment
+                    System
+                </h3>
+
+                <p>
+                    Web portal concept with authentication,
+                    course management and administration.
+                </p>
+
+                <div class="project-tags">
+                    <span>JavaScript</span>
+                    <span>PHP</span>
+                    <span>Laravel</span>
+                    <span>MySQL</span>
+                </div>
+
+            </div>
+
+            <span class="project-arrow">
+                ↗
+            </span>
+
+        </article>
+
+
+        <!-- PROJECT 4 -->
+
+        <article
+            class="project-card"
+            data-project="3"
+        >
+
+            <div class="project-number">
+                04
+            </div>
+
+            <div class="project-info">
+
+                <p class="project-category">
+                    CYBERSECURITY
+                </p>
+
+                <h3>
+                    Web Vulnerability
+                    Scanner
+                </h3>
+
+                <p>
+                    Python-based security scanner focused on
+                    common web vulnerabilities including XSS
+                    and SQL injection.
+                </p>
+
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>Requests</span>
+                    <span>BeautifulSoup</span>
+                </div>
+
+            </div>
+
+            <span class="project-arrow">
+                ↗
+            </span>
+
+        </article>
+
+
+        <!-- PROJECT 5 -->
+
+        <article
+            class="project-card"
+            data-project="4"
+        >
+
+            <div class="project-number">
+                05
+            </div>
+
+            <div class="project-info">
+
+                <p class="project-category">
+                    CRYPTOGRAPHY
+                </p>
+
+                <h3>
+                    Advanced Encryption
+                    Tool
+                </h3>
+
+                <p>
+                    AES-256 encryption and decryption
+                    application with a simple interface.
+                </p>
+
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>Flask</span>
+                    <span>AES-256</span>
+                </div>
+
+            </div>
+
+            <span class="project-arrow">
+                ↗
+            </span>
+
+        </article>
+
+
+        <!-- PROJECT 6 -->
+
+        <article
+            class="project-card"
+            data-project="5"
+        >
+
+            <div class="project-number">
+                06
+            </div>
+
+            <div class="project-info">
+
+                <p class="project-category">
+                    REACT / UI
+                </p>
+
+                <h3>
+                    Interactive Learning
+                    Website
+                </h3>
+
+                <p>
+                    Responsive learning interface built
+                    around modern web UI principles.
+                </p>
+
+                <div class="project-tags">
+                    <span>React</span>
+                    <span>JavaScript</span>
+                    <span>Vercel</span>
+                </div>
+
+            </div>
+
+            <span class="project-arrow">
+                ↗
+            </span>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= EXPERIENCE ================= -->
+
+<section
+    class="experience-section"
+    id="experience"
+>
+
+    <div class="experience-inner">
+
+        <div class="section-top">
+
+            <div>
+
+                <p class="section-label">
+                    05 / EXPERIENCE
+                </p>
+
+                <h2 class="section-title">
+                    Professional <em>journey.</em>
+                </h2>
+
+            </div>
+
+            <span class="section-index">
+                05
+            </span>
+
+        </div>
+
+
+        <div class="experience-list">
+
+
+            <div class="experience-row">
+
+                <div class="experience-date">
+                    CURRENT
+                </div>
+
+                <div class="experience-content">
+
+                    <h3>
+                        Frontend / Web Development
+                    </h3>
+
+                    <p class="company">
+                        Excellence College of Health & Safety Engineering
+                    </p>
+
+                    <p>
+                        Web development responsibilities including
+                        frontend work and practical digital applications.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="experience-row">
+
+                <div class="experience-date">
+                    2025
+                </div>
+
+                <div class="experience-content">
+
+                    <h3>
+                        Cybersecurity Internship
+                    </h3>
+
+                    <p class="company">
+                        ADVI Group
+                    </p>
+
+                    <p>
+                        Practical exposure to cybersecurity,
+                        software development and technical projects.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="experience-row">
+
+                <div class="experience-date">
+                    2025
+                </div>
+
+                <div class="experience-content">
+
+                    <h3>
+                        Technology Internship Experience
+                    </h3>
+
+                    <p class="company">
+                        CodTech · Tata · Deloitte
+                    </p>
+
+                    <p>
+                        Project-based exposure across software,
+                        cybersecurity, AI and professional technology
+                        environments.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= EDUCATION ================= -->
+
+<section
+    class="section education-section"
+    id="education"
+>
+
+    <div class="section-top">
+
+        <div>
+
+            <p class="section-label">
+                06 / EDUCATION
+            </p>
+
+            <h2 class="section-title">
+                Academic <em>foundation.</em>
+            </h2>
+
+        </div>
+
+        <span class="section-index">
+            06
+        </span>
+
+    </div>
+
+
+    <div class="education-card">
+
+        <div class="education-year">
+            2021 — 2025
+        </div>
+
+        <div>
+
+            <h3>
+                Bachelor of Engineering
+                in Computer Science
+            </h3>
+
+            <p>
+                Computer Science Engineering
+            </p>
+
+            <span>
+                KBN University / VTU
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CV ================= -->
+
+<section
+    class="cv-section"
+    id="cv"
+>
+
+    <div class="cv-header">
+
+        <div>
+
+            <p class="section-label">
+                07 / RESUME
+            </p>
+
+            <h2>
+                My <em>CV.</em>
+            </h2>
+
+            <p>
+                View my complete professional resume directly
+                from the portfolio.
+            </p>
+
+        </div>
+
+
+        <div class="cv-buttons">
+
+            <button
+                class="button button-dark"
+                id="openCv"
+            >
+                Open CV ↗
+            </button>
+
+            <a
+                class="button button-light"
+                href="assets/Syeda-Ameena-Najaf-CV.pdf"
+                download
+            >
+                Download PDF ↓
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="cv-viewer">
+
+        <iframe
+            src="assets/Syeda-Ameena-Najaf-CV.pdf"
+            title="Syeda Ameena Najaf CV"
+        ></iframe>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section
+    class="contact-section"
+    id="contact"
+>
+
+    <div class="contact-inner">
+
+        <p class="section-label">
+            08 / CONTACT
+        </p>
+
+        <h2>
+            Let's build something
+            <em>useful.</em>
+        </h2>
+
+        <p class="contact-description">
+
+            Open to opportunities in frontend development,
+            cybersecurity, AI/ML and software engineering.
+
+        </p>
+
+
+        <div class="contact-details">
+
+            <a href="mailto:syedanajaf832@gmail.com">
+                syedanajaf832@gmail.com
+                <span>↗</span>
+            </a>
+
+            <a
+                href="https://linkedin.com/in/syedanajaf"
+                target="_blank"
+                rel="noopener"
+            >
+                LinkedIn
+                <span>↗</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
 </main>
 
-<footer class="site-footer">
-  <p>© <span id="year"></span> Syeda Ameena Najaf. Built with intent, not templates.</p>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div>
+        © <span id="year"></span>
+        Syeda Ameena Najaf
+    </div>
+
+    <div>
+        Frontend · Cybersecurity · AI / ML
+    </div>
+
+    <a href="#home">
+        Back to top ↑
+    </a>
+
 </footer>
 
-<!-- BOTTOM NAV (mobile) -->
-<nav class="bottom-nav" aria-label="Quick navigation">
-  <a href="#home" class="bottom-link">Home</a>
-  <a href="#projects" class="bottom-link">Work</a>
-  <a href="#skills" class="bottom-link">Skills</a>
-  <a href="#contact" class="bottom-link">Contact</a>
-</nav>
 
-<!-- PROJECT MODAL -->
-<div id="projectModal" class="modal" aria-hidden="true">
-  <div class="modal-backdrop" data-close-modal></div>
-  <div class="modal-panel">
-    <button class="modal-close" id="modalClose" aria-label="Close">×</button>
-    <p class="modal-eyebrow">PROJECT FILE</p>
-    <h3 id="modalTitle"></h3>
-    <p id="modalFocus" class="modal-focus"></p>
-    <p id="modalDescription"></p>
-    <div id="modalTags" class="tag-list"></div>
-    <p id="modalLive" class="modal-live"></p>
-  </div>
+<!-- ================= PROJECT MODAL ================= -->
+
+<div
+    class="modal"
+    id="projectModal"
+>
+
+    <div
+        class="modal-overlay"
+        id="modalOverlay"
+    ></div>
+
+    <div class="modal-box">
+
+        <button
+            class="modal-close"
+            id="modalClose"
+        >
+            ×
+        </button>
+
+        <p
+            class="section-label"
+            id="modalCategory"
+        ></p>
+
+        <h2 id="modalTitle"></h2>
+
+        <p id="modalDescription"></p>
+
+        <div
+            class="modal-tags"
+            id="modalTags"
+        ></div>
+
+        <div class="modal-footer">
+
+            <button id="previousProject">
+                ← Previous
+            </button>
+
+            <span id="projectCounter">
+                01 / 06
+            </span>
+
+            <button id="nextProject">
+                Next →
+            </button>
+
+        </div>
+
+    </div>
+
 </div>
 
-<!-- CERTIFICATE MODAL -->
-<div id="certificateModal" class="modal" aria-hidden="true">
-  <div class="modal-backdrop" data-close-certificate></div>
-  <div class="modal-panel">
-    <button class="modal-close" id="certificateClose" aria-label="Close">×</button>
-    <p class="modal-eyebrow">CREDENTIAL</p>
-    <h3 id="certificateTitle"></h3>
-    <p id="certificateDescription"></p>
-    <div id="certificatePreview" class="cert-preview"></div>
-  </div>
-</div>
-
-<div id="toast" class="toast"></div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
