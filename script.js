@@ -1,17 +1,15 @@
 /* =========================================================
-   PAGE LOADER
+   LOADER
 ========================================================= */
 
-const loader = document.getElementById("pageLoader");
+const loader = document.getElementById("loader");
 const loaderProgress = document.getElementById("loaderProgress");
 
 let progress = 0;
 
 const loaderTimer = setInterval(() => {
 
-    progress += Math.floor(
-        Math.random() * 12
-    ) + 5;
+    progress += Math.random() * 15;
 
     if (progress >= 100) {
 
@@ -20,101 +18,73 @@ const loaderTimer = setInterval(() => {
         clearInterval(loaderTimer);
 
         setTimeout(() => {
-
-            loader.classList.add("hidden");
-
-        }, 300);
-
+            loader.classList.add("hide");
+        }, 400);
     }
 
-    loaderProgress.style.width =
-        progress + "%";
+    loaderProgress.style.width = progress + "%";
 
 }, 100);
-
-
-/* =========================================================
-   YEAR
-========================================================= */
-
-document.getElementById("year").textContent =
-    new Date().getFullYear();
-
-
-/* =========================================================
-   HEADER SCROLL
-========================================================= */
-
-const header =
-    document.getElementById("header");
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        if (window.scrollY > 30) {
-
-            header.classList.add("scrolled");
-
-        } else {
-
-            header.classList.remove("scrolled");
-
-        }
-
-    },
-    { passive: true }
-);
 
 
 /* =========================================================
    MOBILE MENU
 ========================================================= */
 
-const menuButton =
-    document.getElementById("menuButton");
+const menuButton = document.getElementById("menuButton");
+const mobileMenu = document.getElementById("mobileMenu");
 
-const mobileMenu =
-    document.getElementById("mobileMenu");
+menuButton.addEventListener("click", () => {
 
-const mobileLinks =
-    mobileMenu.querySelectorAll("a");
+    mobileMenu.classList.toggle("open");
+    document.body.classList.toggle("menu-open");
 
-menuButton.addEventListener(
-    "click",
-    () => {
-
-        mobileMenu.classList.toggle("open");
-
-        const isOpen =
-            mobileMenu.classList.contains("open");
-
-        menuButton.setAttribute(
-            "aria-expanded",
-            isOpen
-        );
-
-    }
-);
+});
 
 
-mobileLinks.forEach(link => {
+document.querySelectorAll(".mobile-inner a").forEach(link => {
 
-    link.addEventListener(
-        "click",
-        () => {
+    link.addEventListener("click", () => {
 
-            mobileMenu.classList.remove(
-                "open"
-            );
+        mobileMenu.classList.remove("open");
+        document.body.classList.remove("menu-open");
 
-            menuButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
+    });
 
+});
+
+
+/* =========================================================
+   SMOOTH SCROLL
+========================================================= */
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+    link.addEventListener("click", function(event) {
+
+        const targetId = this.getAttribute("href");
+
+        if (
+            !targetId ||
+            targetId === "#"
+        ) {
+            return;
         }
-    );
+
+        const target = document.querySelector(targetId);
+
+        if (!target) {
+            return;
+        }
+
+        event.preventDefault();
+
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    });
 
 });
 
@@ -123,576 +93,174 @@ mobileLinks.forEach(link => {
    ACTIVE NAVIGATION
 ========================================================= */
 
-const sections =
-    document.querySelectorAll(
-        "main section[id]"
-    );
+const sections = document.querySelectorAll("section[id]");
+const navigationLinks = document.querySelectorAll(".desktop-nav a");
 
-const navLinks =
-    document.querySelectorAll(
-        ".nav-link"
-    );
+const sectionObserver = new IntersectionObserver(
+    entries => {
 
-const updateActiveNav = () => {
+        entries.forEach(entry => {
 
-    let current = "home";
+            if (!entry.isIntersecting) {
+                return;
+            }
 
-    sections.forEach(section => {
+            navigationLinks.forEach(link => {
+                link.classList.remove("active");
+            });
 
-        const top =
-            section.getBoundingClientRect().top;
+            const activeLink = document.querySelector(
+                `.desktop-nav a[href="#${entry.target.id}"]`
+            );
 
-        if (
-            top <= 160 &&
-            top > -section.offsetHeight
-        ) {
-
-            current =
-                section.getAttribute("id");
-
-        }
-
-    });
-
-    navLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-        if (
-            link.getAttribute("href") ===
-            "#" + current
-        ) {
-
-            link.classList.add("active");
-
-        }
-
-    });
-
-};
-
-window.addEventListener(
-    "scroll",
-    updateActiveNav,
-    { passive: true }
-);
-
-
-/* =========================================================
-   COUNTERS
-========================================================= */
-
-const counters =
-    document.querySelectorAll(
-        ".counter"
-    );
-
-let counterStarted = false;
-
-const runCounters = () => {
-
-    if (counterStarted) return;
-
-    const statsSection =
-        document.querySelector(
-            ".stats-section"
-        );
-
-    if (!statsSection) return;
-
-    const rect =
-        statsSection.getBoundingClientRect();
-
-    if (
-        rect.top <
-        window.innerHeight * 0.8
-    ) {
-
-        counterStarted = true;
-
-        counters.forEach(counter => {
-
-            const target =
-                Number(
-                    counter.dataset.target
-                );
-
-            let current = 0;
-
-            const step =
-                Math.max(
-                    1,
-                    Math.ceil(
-                        target / 20
-                    )
-                );
-
-            const timer =
-                setInterval(() => {
-
-                    current += step;
-
-                    if (
-                        current >= target
-                    ) {
-
-                        current = target;
-
-                        clearInterval(
-                            timer
-                        );
-
-                    }
-
-                    counter.textContent =
-                        current;
-
-                }, 55);
+            if (activeLink) {
+                activeLink.classList.add("active");
+            }
 
         });
 
+    },
+    {
+        threshold: 0.35
     }
-
-};
-
-window.addEventListener(
-    "scroll",
-    runCounters,
-    { passive: true }
 );
 
-runCounters();
+sections.forEach(section => {
+    sectionObserver.observe(section);
+});
 
 
 /* =========================================================
    PROJECT FILTER
 ========================================================= */
 
-const filterButtons =
-    document.querySelectorAll(
-        ".filter-button"
-    );
-
-const projectCards =
-    document.querySelectorAll(
-        ".project-card"
-    );
+const filterButtons = document.querySelectorAll(".filter");
+const projectCards = document.querySelectorAll(".project-card");
 
 filterButtons.forEach(button => {
 
-    button.addEventListener(
-        "click",
-        () => {
+    button.addEventListener("click", () => {
 
-            filterButtons.forEach(btn => {
+        filterButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
 
-                btn.classList.remove(
-                    "active"
-                );
+        button.classList.add("active");
 
-            });
+        const filter = button.dataset.filter;
 
-            button.classList.add(
-                "active"
-            );
+        projectCards.forEach(card => {
 
-            const filter =
-                button.dataset.filter;
+            const category = card.dataset.category;
 
-            projectCards.forEach(card => {
+            if (
+                filter === "all" ||
+                category === filter
+            ) {
 
-                const category =
-                    card.dataset.category;
+                card.style.display = "block";
 
-                if (
-                    filter === "all" ||
-                    category === filter
-                ) {
+                setTimeout(() => {
+                    card.style.opacity = "1";
+                    card.style.transform = "translateY(0)";
+                }, 30);
 
-                    card.classList.remove(
-                        "hidden"
-                    );
+            } else {
 
-                } else {
+                card.style.opacity = "0";
+                card.style.transform = "translateY(10px)";
 
-                    card.classList.add(
-                        "hidden"
-                    );
+                setTimeout(() => {
+                    card.style.display = "none";
+                }, 250);
 
-                }
+            }
 
-            });
+        });
 
-        }
-    );
+    });
 
 });
 
 
 /* =========================================================
-   PROJECT MODAL
+   SCROLL REVEAL
 ========================================================= */
 
-const projectModal =
-    document.getElementById(
-        "projectModal"
-    );
-
-const modalClose =
-    document.getElementById(
-        "modalClose"
-    );
-
-const modalBackground =
-    document.getElementById(
-        "modalBackground"
-    );
-
-const modalCategory =
-    document.getElementById(
-        "modalCategory"
-    );
-
-const modalTitle =
-    document.getElementById(
-        "modalTitle"
-    );
-
-const modalDescription =
-    document.getElementById(
-        "modalDescription"
-    );
-
-const modalTech =
-    document.getElementById(
-        "modalTech"
-    );
-
-
-const projectData = {
-
-    anpr: {
-
-        category:
-            "COMPUTER VISION",
-
-        title:
-            "Automatic Number Plate Recognition",
-
-        description:
-            "A computer vision project designed to detect vehicle number plates and extract plate information using image processing, OpenCV and OCR techniques.",
-
-        technologies: [
-            "Python",
-            "OpenCV",
-            "OCR",
-            "Computer Vision"
-        ]
-
-    },
-
-
-    anad: {
-
-        category:
-            "CYBERSECURITY / AI",
-
-        title:
-            "ANAD PRO",
-
-        description:
-            "An autonomous network attack detection and monitoring project combining machine learning with cybersecurity monitoring and real-time alert notifications.",
-
-        technologies: [
-            "Python",
-            "Machine Learning",
-            "Cybersecurity",
-            "Telegram"
-        ]
-
-    },
-
-
-    scanner: {
-
-        category:
-            "WEB SECURITY",
-
-        title:
-            "Web Vulnerability Scanner",
-
-        description:
-            "A Python-based security testing project designed to automate website analysis and identify common web security vulnerabilities.",
-
-        technologies: [
-            "Python",
-            "Requests",
-            "BeautifulSoup",
-            "Web Security"
-        ]
-
-    },
-
-
-    inventory: {
-
-        category:
-            "FULL STACK",
-
-        title:
-            "Inventory Management System",
-
-        description:
-            "A full-stack inventory management application using React and Flask, including API-based data handling and stock monitoring.",
-
-        technologies: [
-            "React",
-            "Flask",
-            "REST API",
-            "JavaScript"
-        ]
-
-    },
-
-
-    integrity: {
-
-        category:
-            "SECURITY",
-
-        title:
-            "File Integrity Monitoring System",
-
-        description:
-            "A security monitoring application that uses cryptographic file hashes to detect changes and maintain file integrity records.",
-
-        technologies: [
-            "Python",
-            "Flask",
-            "Hashlib",
-            "Security"
-        ]
-
-    },
-
-
-    encryption: {
-
-        category:
-            "CYBERSECURITY",
-
-        title:
-            "Advanced Encryption Tool",
-
-        description:
-            "A Flask-based security application providing a web interface for encryption and decryption workflows.",
-
-        technologies: [
-            "Python",
-            "Flask",
-            "Cryptography",
-            "Web Development"
-        ]
-
-    }
-
-};
-
-
-projectCards.forEach(card => {
-
-    card.addEventListener(
-        "click",
-        () => {
-
-            const key =
-                card.dataset.project;
-
-            const project =
-                projectData[key];
-
-            if (!project) return;
-
-            modalCategory.textContent =
-                project.category;
-
-            modalTitle.textContent =
-                project.title;
-
-            modalDescription.textContent =
-                project.description;
-
-            modalTech.innerHTML = "";
-
-            project.technologies.forEach(
-                tech => {
-
-                    const tag =
-                        document.createElement(
-                            "span"
-                        );
-
-                    tag.textContent =
-                        tech;
-
-                    modalTech.appendChild(
-                        tag
-                    );
-
-                }
-            );
-
-            projectModal.classList.add(
-                "open"
-            );
-
-            document.body.style.overflow =
-                "hidden";
-
-        }
-    );
+const revealItems = document.querySelectorAll(
+    ".about-content, .about-image, .service-card, .project-card, .experience-item, .contact-box"
+);
+
+revealItems.forEach(item => {
+
+    item.style.opacity = "0";
+    item.style.transform = "translateY(30px)";
+    item.style.transition =
+        "opacity .7s ease, transform .7s ease";
 
 });
 
 
-function closeModal() {
+const revealObserver = new IntersectionObserver(
+    entries => {
 
-    projectModal.classList.remove(
-        "open"
-    );
+        entries.forEach(entry => {
 
-    document.body.style.overflow =
-        "";
+            if (!entry.isIntersecting) {
+                return;
+            }
 
-}
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
 
+            revealObserver.unobserve(entry.target);
 
-modalClose.addEventListener(
-    "click",
-    closeModal
-);
+        });
 
-modalBackground.addEventListener(
-    "click",
-    closeModal
-);
-
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key === "Escape" &&
-            projectModal.classList.contains(
-                "open"
-            )
-        ) {
-
-            closeModal();
-
-        }
-
+    },
+    {
+        threshold: 0.12
     }
 );
 
 
-/* =========================================================
-   REVEAL ANIMATIONS
-========================================================= */
-
-const revealElements =
-    document.querySelectorAll(
-        ".project-card, .experience-item, .skill-group, .education-card, .research-card"
-    );
-
-const revealObserver =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(entry => {
-
-                if (
-                    entry.isIntersecting
-                ) {
-
-                    entry.target.style.opacity =
-                        "1";
-
-                    entry.target.style.transform =
-                        "translateY(0)";
-
-                    revealObserver.unobserve(
-                        entry.target
-                    );
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.12
-        }
-    );
-
-
-revealElements.forEach(element => {
-
-    element.style.opacity = "0";
-
-    element.style.transform =
-        "translateY(25px)";
-
-    element.style.transition =
-        "opacity 0.7s ease, transform 0.7s ease";
-
-    revealObserver.observe(
-        element
-    );
-
+revealItems.forEach(item => {
+    revealObserver.observe(item);
 });
 
 
 /* =========================================================
-   SMOOTH ANCHOR BEHAVIOUR
+   FOOTER YEAR
 ========================================================= */
 
-document.querySelectorAll(
-    'a[href^="#"]'
-).forEach(link => {
+document.getElementById("year").textContent =
+    new Date().getFullYear();
 
-    link.addEventListener(
-        "click",
-        event => {
 
-            const targetId =
-                link.getAttribute(
-                    "href"
-                );
+/* =========================================================
+   HEADER ON SCROLL
+========================================================= */
 
-            const target =
-                document.querySelector(
-                    targetId
-                );
+const header = document.getElementById("header");
 
-            if (!target) return;
+window.addEventListener("scroll", () => {
 
-            event.preventDefault();
+    if (window.scrollY > 60) {
 
-            const headerHeight =
-                header.offsetHeight;
+        header.style.background =
+            "rgba(10,13,19,.95)";
 
-            const position =
-                target.offsetTop -
-                headerHeight;
+        header.style.backdropFilter =
+            "blur(15px)";
 
-            window.scrollTo({
-                top: position,
-                behavior: "smooth"
-            });
+    } else {
 
-        }
-    );
+        header.style.background =
+            "linear-gradient(to bottom, rgba(0,0,0,.65), transparent)";
+
+        header.style.backdropFilter =
+            "none";
+
+    }
 
 });
