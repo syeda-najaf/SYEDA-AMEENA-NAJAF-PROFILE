@@ -1,87 +1,146 @@
-
-const data=[
-{c:"security",i:"⌁",t:"Autonomous Network Attack Detection System",tools:["Python","Machine Learning","Telegram API"],d:"Real-time AI-based intrusion detection using cybersecurity datasets with Telegram alerts for malicious traffic patterns.",m:"30% faster incident response"},
-{c:"ai",i:"◎",t:"OpenCV-Based License Plate Detection",tools:["Python","OpenCV","OCR","Selenium"],d:"Intelligent license plate recognition using OCR and template matching, with Selenium vehicle-detail fetching.",m:"Published research · 5.2 impact factor"},
-{c:"web",i:"▣",t:"Student Enrolment System",tools:["HTML","CSS","JavaScript","Laravel","MySQL"],d:"Secure enrolment portal with login, course management, Stripe payments and an admin dashboard.",m:"30% faster enrollment"},
-{c:"security",i:"⌕",t:"Web Application Vulnerability Scanner",tools:["Python","Requests","BeautifulSoup"],d:"Modular scanner for SQL Injection, XSS and OWASP-focused vulnerability testing.",m:"Security automation"},
-{c:"security",i:"◆",t:"Advanced Encryption Tool (AES-256)",tools:["Python","PyCryptodome","JavaScript"],d:"Interactive AES-256 file encryption and decryption tool with a clean browser interface.",m:"Secure file workflows"},
-{c:"web",i:"◫",t:"Learning Website using React.js",tools:["React.js","Vercel"],d:"Interactive animated e-learning platform built around reusable React components.",m:"Responsive web platform"}
+const projects = [
+  {type:'security', num:'01', tag:'SECURITY / AI', title:'Autonomous Network Attack Detection System with Telegram Bot', tools:['Python','Machine Learning','Telegram API'], desc:'Real-time AI-based intrusion detection using cybersecurity datasets from Kaggle. Integrated a custom Telegram bot to alert on malicious traffic patterns.', impact:'30% faster response time compared to manual monitoring.'},
+  {type:'ai', num:'02', tag:'AI / COMPUTER VISION', title:'OpenCV-Based License Plate Detection: Algorithms & Implementation', tools:['Python','OpenCV','OCR','Selenium'], desc:'Intelligent license plate recognition using OCR and template matching, with Selenium used to auto-fetch vehicle details.', impact:'Published in JSRT with a 5.2 impact factor.'},
+  {type:'web', num:'03', tag:'WEB APPLICATION', title:'Student Enrolment System', tools:['HTML','CSS','JavaScript','Bootstrap','PHP','Laravel','MySQL','Stripe API'], desc:'Secure, full-featured enrolment portal with user login, course management, payment integration and an admin dashboard.', impact:'Improved enrollment speed by 30%.'},
+  {type:'security', num:'04', tag:'APPLICATION SECURITY', title:'Web Application Vulnerability Scanner', tools:['Python','Requests','BeautifulSoup'], desc:'Modular scanner designed to identify SQL Injection, XSS and other OWASP vulnerabilities, with an architecture built for extensibility and automation.', impact:'Security automation project.'},
+  {type:'security', num:'05', tag:'CRYPTOGRAPHY', title:'Advanced Encryption Tool (AES-256)', tools:['Python','PyCryptodome','JavaScript'], desc:'Visually interactive AES-256 secured file encryption and decryption tool with an animated frontend and GitHub-ready design.', impact:'Secure file encryption workflow.'},
+  {type:'web', num:'06', tag:'REACT / VERCEL', title:'Learning Website using React.js', tools:['React.js','Vercel'], desc:'Interactive, animated e-learning platform with clean UI and modular architecture.', impact:'Live at syeda-educ-center.vercel.app'}
 ];
 
-const grid=document.querySelector("#grid"), modal=document.querySelector("#modal"), body=document.querySelector("#modalBody");
-function render(filter="all"){
-  grid.innerHTML=data.filter(x=>filter==="all"||x.c===filter).map(x=>`
-    <article class="project reveal" data-id="${data.indexOf(x)}">
-      <div class="icon">${x.i}</div><h3>${x.t}</h3><p>${x.d}</p><small>${x.m} ↗</small>
-    </article>`).join("");
-  requestAnimationFrame(()=>document.querySelectorAll(".reveal").forEach((el,i)=>setTimeout(()=>el.classList.add("show"),i*45)));
+// Project List Rendering & Filtering
+const projectList = document.querySelector('#projectList');
+
+function renderProjects(filter = 'all') {
+  if (!projectList) return;
+  const items = projects.filter(p => filter === 'all' || p.type === filter);
+  projectList.innerHTML = items.map((p) => `
+    <article class="project-row" data-project="${projects.indexOf(p)}">
+      <div class="project-number">${p.num}</div>
+      <div class="project-main">
+        <small>${p.tag}</small>
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+        <div class="chips">${p.tools.map(t => `<span>${t}</span>`).join('')}</div>
+      </div>
+      <div class="project-impact">
+        <span>RESULT</span>
+        <b>${p.impact}</b>
+        <button type="button">Open case ↗</button>
+      </div>
+    </article>
+  `).join('');
 }
-render();
 
-grid.addEventListener("click",e=>{
-  const card=e.target.closest(".project"); if(!card)return;
-  const x=data[card.dataset.id];
-  body.innerHTML=`<div class="modalbody"><div class="icon">${x.i}</div><h2>${x.t}</h2><p>${x.d}</p><div class="tools">${x.tools.map(t=>`<span>${t}</span>`).join("")}</div><p><b>${x.m}</b></p></div>`;
-  modal.showModal();
-});
-document.querySelector("#x").onclick=()=>modal.close();
-modal.addEventListener("click",e=>{if(e.target===modal)modal.close()});
+renderProjects();
 
-document.querySelectorAll("#filters button").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    document.querySelector("#filters .on")?.classList.remove("on");
-    btn.classList.add("on");
-    render(btn.dataset.f);
+document.querySelectorAll('.filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelector('.filter.active')?.classList.remove('active');
+    btn.classList.add('active');
+    renderProjects(btn.dataset.filter);
   });
 });
 
-const pdf=document.querySelector("#pdf");
-document.querySelector("#preview").onclick=()=>pdf.showModal();
-const previewCard=document.querySelector("#preview-card"); if(previewCard) previewCard.onclick=()=>pdf.showModal();
-document.querySelector("#px").onclick=()=>pdf.close();
-pdf.addEventListener("click",e=>{if(e.target===pdf)pdf.close()});
+// Generic Detail Modal logic
+const detailModal = document.querySelector('#detailModal');
+const modalContent = document.querySelector('#modalContent');
 
-const drawer=document.querySelector("#drawer");
-document.querySelector("#menu").onclick=()=>drawer.classList.add("open");
-document.querySelector("#close").onclick=()=>drawer.classList.remove("open");
-document.querySelectorAll("#drawer a").forEach(a=>a.onclick=()=>drawer.classList.remove("open"));
+function openModal(html) {
+  if (!detailModal || !modalContent) return;
+  modalContent.innerHTML = html;
+  detailModal.showModal();
+}
 
-const revealObserver=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("show");revealObserver.unobserve(entry.target)}});
-},{threshold:.12});
-document.querySelectorAll("section:not(.hero),.cards article,.timeline article,.research,.education,.contact").forEach(el=>{
- el.classList.add("reveal");revealObserver.observe(el);
+const modalCloseBtn = document.querySelector('#modalClose');
+if (modalCloseBtn) modalCloseBtn.onclick = () => detailModal.close();
+
+if (detailModal) {
+  detailModal.addEventListener('click', e => {
+    if (e.target === detailModal) detailModal.close();
+  });
+}
+
+const modalData = {
+  about: { title: 'Profile', html: `<small>ABOUT SYEDA AMEENA NAJAF</small><h2>Technology with a purpose.</h2><p>Detail-oriented frontend developer experienced in developing dynamic and accessible web applications, looking to leverage strong technical and problem-solving skills to create impactful digital products.</p><div class="modal-tools"><span>Frontend</span><span>Cybersecurity</span><span>AI / ML</span></div>` },
+  development: { title: 'Frontend & Web Toolkit', html: `<small>DEVELOPMENT</small><h2>Building the interface layer.</h2><p>JavaScript, HTML, CSS, React, Flask, Bootstrap, PHP, Laravel, MySQL, Stripe API and Vercel.</p>` },
+  security: { title: 'Cybersecurity Toolkit', html: `<small>SECURITY</small><h2>Finding and responding to weaknesses.</h2><p>Web vulnerability scanning, SQL Injection, XSS, OWASP-focused testing, ethical hacking, penetration testing, log analysis, anomaly detection, threat modeling and risk assessment.</p>` },
+  ai: { title: 'AI & Computer Vision', html: `<small>AI / VISION</small><h2>Turning signals into useful systems.</h2><p>Python, Machine Learning, OpenCV, OCR, Selenium and Telegram API integration, including real-time intrusion detection and license plate recognition.</p>` },
+  research: { title: 'Published Research', html: `<small>JOURNAL OF SCIENTIFIC RESEARCH AND TECHNOLOGY · 2025</small><h2>License Plate Recognition using OpenCV</h2><p>Published research detailing a smart surveillance system for real-time number plate recognition using Python and OpenCV.</p><div class="case-result"><small>IMPACT FACTOR</small><strong>5.2</strong></div>` },
+  certs: { title: 'Certifications', html: `<small>CREDENTIALS · 2025</small><h2>Professional learning record.</h2><ul class="modal-list"><li>Software Engineering (CS302) — Saylor Academy — Certificate ID 250671527SN</li><li>AWS Cloud Computing – Solutions Architecture — AWS via Forage</li><li>Cybersecurity Virtual Internship — Deloitte (Forage)</li><li>Cybersecurity Analyst Program — Tata Group (Forage)</li><li>Internship Project — Autonomous Network Attack Detection System — ADVI Group of Companies</li></ul>` }
+};
+
+document.querySelectorAll('[data-modal]').forEach(el => {
+  el.addEventListener('click', () => {
+    const d = modalData[el.dataset.modal];
+    if (d) openModal(`<div class="case-modal"><small>${d.title.toUpperCase()}</small>${d.html}</div>`);
+  });
 });
 
-const navLinks=[...document.querySelectorAll("header nav a")];
-const sections=[...document.querySelectorAll("main section[id]")];
-const navObserver=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){
-   navLinks.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+entry.target.id));
+// Project row click handler -> opens project modal
+if (projectList) {
+  projectList.addEventListener('click', e => {
+    const row = e.target.closest('.project-row');
+    if (row) {
+      const p = projects[+row.dataset.project];
+      if (p) {
+        openModal(`
+          <div class="case-modal">
+            <small>${p.tag}</small>
+            <h2>${p.title}</h2>
+            <p>${p.desc}</p>
+            <div class="modal-tools">${p.tools.map(t => `<span>${t}</span>`).join('')}</div>
+            <div class="case-result" style="margin-top:1.5rem;">
+              <small>OUTCOME</small>
+              <strong>${p.impact}</strong>
+            </div>
+          </div>
+        `);
+      }
+    }
+  });
+}
+
+// CV Modal logic
+const cvModal = document.querySelector('#cvModal');
+document.querySelectorAll('#openCv, #openCv2').forEach(b => {
+  b.addEventListener('click', () => cvModal?.showModal());
+});
+
+const cvCloseBtn = document.querySelector('#cvClose');
+if (cvCloseBtn) cvCloseBtn.onclick = () => cvModal.close();
+
+if (cvModal) {
+  cvModal.addEventListener('click', e => {
+    if (e.target === cvModal) cvModal.close();
+  });
+}
+
+// Mobile Menu Navigation
+const menu = document.querySelector('#mobileMenu');
+const menuBtn = document.querySelector('#menuBtn');
+const menuCloseBtn = document.querySelector('#menuClose');
+
+if (menuBtn) menuBtn.onclick = () => menu?.classList.add('open');
+if (menuCloseBtn) menuCloseBtn.onclick = () => menu?.classList.remove('open');
+
+menu?.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => menu.classList.remove('open'));
+});
+
+// Top Progress Bar
+window.addEventListener('scroll', () => {
+  const progressBar = document.querySelector('#progress');
+  if (progressBar) {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = `${max ? (window.scrollY / max) * 100 : 0}%`;
   }
- });
-},{rootMargin:"-40% 0px -50% 0px"});
-sections.forEach(s=>navObserver.observe(s));
+}, { passive: true });
 
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"){modal.close();pdf.close();drawer.classList.remove("open")}
+// Keyboard Shortcuts
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    detailModal?.close();
+    cvModal?.close();
+    menu?.classList.remove('open');
+  }
 });
-if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-  document.documentElement.style.scrollBehavior="auto";
-}
-document.querySelectorAll(".primary,.cv").forEach(el=>{
-  el.addEventListener("pointermove",e=>{
-    const r=el.getBoundingClientRect(), x=(e.clientX-r.left-r.width/2)*.06, y=(e.clientY-r.top-r.height/2)*.06;
-    el.style.transform=`translate(${x}px,${y}px)`;
-  });
-  el.addEventListener("pointerleave",()=>el.style.transform="");
-});
-
-// Keep the original CV URL centralized so preview and download always use the same file.
-window.CV_PDF = "public/Syeda-Ameena-Najaf-CV.pdf";
-document.querySelectorAll('a[href*="Syeda-Ameena-Najaf"]').forEach(a => a.href = window.CV_PDF);
-
-\nif (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  document.documentElement.style.scrollBehavior = "auto";
-}
