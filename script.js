@@ -1,14 +1,75 @@
-/* =========================================
+/* =========================================================
+   PAGE LOADER
+========================================================= */
+
+const loader = document.getElementById("pageLoader");
+const loaderProgress = document.getElementById("loaderProgress");
+
+let progress = 0;
+
+const loaderTimer = setInterval(() => {
+
+    progress += Math.floor(
+        Math.random() * 12
+    ) + 5;
+
+    if (progress >= 100) {
+
+        progress = 100;
+
+        clearInterval(loaderTimer);
+
+        setTimeout(() => {
+
+            loader.classList.add("hidden");
+
+        }, 300);
+
+    }
+
+    loaderProgress.style.width =
+        progress + "%";
+
+}, 100);
+
+
+/* =========================================================
    YEAR
-========================================= */
+========================================================= */
 
 document.getElementById("year").textContent =
     new Date().getFullYear();
 
 
-/* =========================================
+/* =========================================================
+   HEADER SCROLL
+========================================================= */
+
+const header =
+    document.getElementById("header");
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if (window.scrollY > 30) {
+
+            header.classList.add("scrolled");
+
+        } else {
+
+            header.classList.remove("scrolled");
+
+        }
+
+    },
+    { passive: true }
+);
+
+
+/* =========================================================
    MOBILE MENU
-========================================= */
+========================================================= */
 
 const menuButton =
     document.getElementById("menuButton");
@@ -16,387 +77,519 @@ const menuButton =
 const mobileMenu =
     document.getElementById("mobileMenu");
 
-const closeMenu =
-    document.getElementById("closeMenu");
+const mobileLinks =
+    mobileMenu.querySelectorAll("a");
+
+menuButton.addEventListener(
+    "click",
+    () => {
+
+        mobileMenu.classList.toggle("open");
+
+        const isOpen =
+            mobileMenu.classList.contains("open");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            isOpen
+        );
+
+    }
+);
 
 
-menuButton.addEventListener("click", () => {
+mobileLinks.forEach(link => {
 
-    mobileMenu.classList.add("active");
+    link.addEventListener(
+        "click",
+        () => {
 
-});
+            mobileMenu.classList.remove(
+                "open"
+            );
 
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
 
-closeMenu.addEventListener("click", () => {
-
-    mobileMenu.classList.remove("active");
-
-});
-
-
-document.querySelectorAll(".mobile-menu a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        mobileMenu.classList.remove("active");
-
-    });
-
-});
-
-
-/* =========================================
-   CV
-========================================= */
-
-const cvPath =
-    "assets/Syeda-Ameena-Najaf-CV.pdf";
-
-
-function openCV() {
-
-    window.open(
-        cvPath,
-        "_blank",
-        "noopener,noreferrer"
+        }
     );
 
-}
+});
 
 
-document
-    .getElementById("openCvTop")
-    .addEventListener("click", openCV);
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
 
+const sections =
+    document.querySelectorAll(
+        "main section[id]"
+    );
 
-document
-    .getElementById("heroCv")
-    .addEventListener("click", openCV);
+const navLinks =
+    document.querySelectorAll(
+        ".nav-link"
+    );
 
+const updateActiveNav = () => {
 
-document
-    .getElementById("openCv")
-    .addEventListener("click", openCV);
+    let current = "home";
 
+    sections.forEach(section => {
 
-document
-    .getElementById("mobileCv")
-    .addEventListener("click", () => {
+        const top =
+            section.getBoundingClientRect().top;
 
-        mobileMenu.classList.remove("active");
+        if (
+            top <= 160 &&
+            top > -section.offsetHeight
+        ) {
 
-        openCV();
+            current =
+                section.getAttribute("id");
+
+        }
 
     });
 
+    navLinks.forEach(link => {
 
-/* =========================================
-   PROJECT DATA
-========================================= */
+        link.classList.remove("active");
 
-const projects = [
+        if (
+            link.getAttribute("href") ===
+            "#" + current
+        ) {
 
-    {
-        category: "CYBERSECURITY / AI",
+            link.classList.add("active");
+
+        }
+
+    });
+
+};
+
+window.addEventListener(
+    "scroll",
+    updateActiveNav,
+    { passive: true }
+);
+
+
+/* =========================================================
+   COUNTERS
+========================================================= */
+
+const counters =
+    document.querySelectorAll(
+        ".counter"
+    );
+
+let counterStarted = false;
+
+const runCounters = () => {
+
+    if (counterStarted) return;
+
+    const statsSection =
+        document.querySelector(
+            ".stats-section"
+        );
+
+    if (!statsSection) return;
+
+    const rect =
+        statsSection.getBoundingClientRect();
+
+    if (
+        rect.top <
+        window.innerHeight * 0.8
+    ) {
+
+        counterStarted = true;
+
+        counters.forEach(counter => {
+
+            const target =
+                Number(
+                    counter.dataset.target
+                );
+
+            let current = 0;
+
+            const step =
+                Math.max(
+                    1,
+                    Math.ceil(
+                        target / 20
+                    )
+                );
+
+            const timer =
+                setInterval(() => {
+
+                    current += step;
+
+                    if (
+                        current >= target
+                    ) {
+
+                        current = target;
+
+                        clearInterval(
+                            timer
+                        );
+
+                    }
+
+                    counter.textContent =
+                        current;
+
+                }, 55);
+
+        });
+
+    }
+
+};
+
+window.addEventListener(
+    "scroll",
+    runCounters,
+    { passive: true }
+);
+
+runCounters();
+
+
+/* =========================================================
+   PROJECT FILTER
+========================================================= */
+
+const filterButtons =
+    document.querySelectorAll(
+        ".filter-button"
+    );
+
+const projectCards =
+    document.querySelectorAll(
+        ".project-card"
+    );
+
+filterButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            filterButtons.forEach(btn => {
+
+                btn.classList.remove(
+                    "active"
+                );
+
+            });
+
+            button.classList.add(
+                "active"
+            );
+
+            const filter =
+                button.dataset.filter;
+
+            projectCards.forEach(card => {
+
+                const category =
+                    card.dataset.category;
+
+                if (
+                    filter === "all" ||
+                    category === filter
+                ) {
+
+                    card.classList.remove(
+                        "hidden"
+                    );
+
+                } else {
+
+                    card.classList.add(
+                        "hidden"
+                    );
+
+                }
+
+            });
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   PROJECT MODAL
+========================================================= */
+
+const projectModal =
+    document.getElementById(
+        "projectModal"
+    );
+
+const modalClose =
+    document.getElementById(
+        "modalClose"
+    );
+
+const modalBackground =
+    document.getElementById(
+        "modalBackground"
+    );
+
+const modalCategory =
+    document.getElementById(
+        "modalCategory"
+    );
+
+const modalTitle =
+    document.getElementById(
+        "modalTitle"
+    );
+
+const modalDescription =
+    document.getElementById(
+        "modalDescription"
+    );
+
+const modalTech =
+    document.getElementById(
+        "modalTech"
+    );
+
+
+const projectData = {
+
+    anpr: {
+
+        category:
+            "COMPUTER VISION",
 
         title:
-            "Autonomous Network Attack Detection",
+            "Automatic Number Plate Recognition",
 
         description:
-            "AI-based network monitoring project focused on detecting suspicious activity and producing practical security alerts.",
+            "A computer vision project designed to detect vehicle number plates and extract plate information using image processing, OpenCV and OCR techniques.",
 
-        tags: [
-            "Python",
-            "Machine Learning",
-            "Telegram"
-        ]
-    },
-
-
-    {
-        category: "COMPUTER VISION",
-
-        title:
-            "License Plate Detection",
-
-        description:
-            "Computer vision project using OpenCV and OCR techniques for automatic vehicle number plate recognition.",
-
-        tags: [
+        technologies: [
             "Python",
             "OpenCV",
-            "OCR"
+            "OCR",
+            "Computer Vision"
         ]
+
     },
 
 
-    {
-        category: "WEB DEVELOPMENT",
+    anad: {
+
+        category:
+            "CYBERSECURITY / AI",
 
         title:
-            "Student Enrolment System",
+            "ANAD PRO",
 
         description:
-            "Web application concept focused on authentication, course management, administration and digital workflows.",
+            "An autonomous network attack detection and monitoring project combining machine learning with cybersecurity monitoring and real-time alert notifications.",
 
-        tags: [
-            "JavaScript",
-            "PHP",
-            "Laravel",
-            "MySQL"
+        technologies: [
+            "Python",
+            "Machine Learning",
+            "Cybersecurity",
+            "Telegram"
         ]
+
     },
 
 
-    {
-        category: "CYBERSECURITY",
+    scanner: {
+
+        category:
+            "WEB SECURITY",
 
         title:
             "Web Vulnerability Scanner",
 
         description:
-            "Python-based security scanner focused on common web vulnerabilities including XSS and SQL injection.",
+            "A Python-based security testing project designed to automate website analysis and identify common web security vulnerabilities.",
 
-        tags: [
+        technologies: [
             "Python",
             "Requests",
-            "BeautifulSoup"
+            "BeautifulSoup",
+            "Web Security"
         ]
+
     },
 
 
-    {
-        category: "CRYPTOGRAPHY",
+    inventory: {
+
+        category:
+            "FULL STACK",
+
+        title:
+            "Inventory Management System",
+
+        description:
+            "A full-stack inventory management application using React and Flask, including API-based data handling and stock monitoring.",
+
+        technologies: [
+            "React",
+            "Flask",
+            "REST API",
+            "JavaScript"
+        ]
+
+    },
+
+
+    integrity: {
+
+        category:
+            "SECURITY",
+
+        title:
+            "File Integrity Monitoring System",
+
+        description:
+            "A security monitoring application that uses cryptographic file hashes to detect changes and maintain file integrity records.",
+
+        technologies: [
+            "Python",
+            "Flask",
+            "Hashlib",
+            "Security"
+        ]
+
+    },
+
+
+    encryption: {
+
+        category:
+            "CYBERSECURITY",
 
         title:
             "Advanced Encryption Tool",
 
         description:
-            "Application designed around AES-256 encryption and decryption with a simple web interface.",
+            "A Flask-based security application providing a web interface for encryption and decryption workflows.",
 
-        tags: [
+        technologies: [
             "Python",
             "Flask",
-            "AES-256"
+            "Cryptography",
+            "Web Development"
         ]
-    },
 
-
-    {
-        category: "REACT / UI",
-
-        title:
-            "Interactive Learning Website",
-
-        description:
-            "Responsive React-based learning experience designed around modern interface and interaction principles.",
-
-        tags: [
-            "React",
-            "JavaScript",
-            "Vercel"
-        ]
     }
 
-];
+};
 
 
-/* =========================================
-   PROJECT MODAL
-========================================= */
+projectCards.forEach(card => {
 
-const projectModal =
-    document.getElementById("projectModal");
+    card.addEventListener(
+        "click",
+        () => {
 
-const modalClose =
-    document.getElementById("modalClose");
+            const key =
+                card.dataset.project;
 
-const modalOverlay =
-    document.getElementById("modalOverlay");
+            const project =
+                projectData[key];
 
-const modalCategory =
-    document.getElementById("modalCategory");
+            if (!project) return;
 
-const modalTitle =
-    document.getElementById("modalTitle");
+            modalCategory.textContent =
+                project.category;
 
-const modalDescription =
-    document.getElementById("modalDescription");
+            modalTitle.textContent =
+                project.title;
 
-const modalTags =
-    document.getElementById("modalTags");
+            modalDescription.textContent =
+                project.description;
 
-const projectCounter =
-    document.getElementById("projectCounter");
+            modalTech.innerHTML = "";
 
-const previousProject =
-    document.getElementById("previousProject");
+            project.technologies.forEach(
+                tech => {
 
-const nextProject =
-    document.getElementById("nextProject");
+                    const tag =
+                        document.createElement(
+                            "span"
+                        );
 
+                    tag.textContent =
+                        tech;
 
-let currentProject = 0;
+                    modalTech.appendChild(
+                        tag
+                    );
 
+                }
+            );
 
-function renderProject(index) {
+            projectModal.classList.add(
+                "open"
+            );
 
-    const project =
-        projects[index];
+            document.body.style.overflow =
+                "hidden";
 
-    modalCategory.textContent =
-        project.category;
+        }
+    );
 
-    modalTitle.textContent =
-        project.title;
-
-    modalDescription.textContent =
-        project.description;
-
-    modalTags.innerHTML = "";
-
-    project.tags.forEach(tag => {
-
-        const element =
-            document.createElement("span");
-
-        element.textContent =
-            tag;
-
-        modalTags.appendChild(element);
-
-    });
+});
 
 
-    projectCounter.textContent =
-        `${String(index + 1).padStart(2, "0")} / ${String(projects.length).padStart(2, "0")}`;
+function closeModal() {
+
+    projectModal.classList.remove(
+        "open"
+    );
+
+    document.body.style.overflow =
+        "";
 
 }
-
-
-function openProject(index) {
-
-    currentProject = index;
-
-    renderProject(currentProject);
-
-    projectModal.classList.add("active");
-
-    document.body.classList.add("modal-open");
-
-}
-
-
-function closeProject() {
-
-    projectModal.classList.remove("active");
-
-    document.body.classList.remove("modal-open");
-
-}
-
-
-document
-    .querySelectorAll(".project-card")
-    .forEach((card, index) => {
-
-        card.addEventListener("click", () => {
-
-            openProject(index);
-
-        });
-
-    });
 
 
 modalClose.addEventListener(
     "click",
-    closeProject
+    closeModal
 );
 
-
-modalOverlay.addEventListener(
+modalBackground.addEventListener(
     "click",
-    closeProject
+    closeModal
 );
 
-
-previousProject.addEventListener(
-    "click",
-    () => {
-
-        currentProject--;
-
-        if (currentProject < 0) {
-
-            currentProject =
-                projects.length - 1;
-
-        }
-
-        renderProject(currentProject);
-
-    }
-);
-
-
-nextProject.addEventListener(
-    "click",
-    () => {
-
-        currentProject++;
-
-        if (
-            currentProject >=
-            projects.length
-        ) {
-
-            currentProject = 0;
-
-        }
-
-        renderProject(currentProject);
-
-    }
-);
-
-
-/* =========================================
-   KEYBOARD CONTROLS
-========================================= */
 
 document.addEventListener(
     "keydown",
     event => {
 
         if (
-            !projectModal.classList.contains(
-                "active"
+            event.key === "Escape" &&
+            projectModal.classList.contains(
+                "open"
             )
         ) {
 
-            return;
-
-        }
-
-
-        if (event.key === "Escape") {
-
-            closeProject();
-
-        }
-
-
-        if (event.key === "ArrowLeft") {
-
-            previousProject.click();
-
-        }
-
-
-        if (event.key === "ArrowRight") {
-
-            nextProject.click();
+            closeModal();
 
         }
 
@@ -404,26 +597,33 @@ document.addEventListener(
 );
 
 
-/* =========================================
-   SCROLL REVEAL
-========================================= */
+/* =========================================================
+   REVEAL ANIMATIONS
+========================================================= */
 
 const revealElements =
     document.querySelectorAll(
-        ".section, .intro-section, .skills-section, .experience-section, .cv-section, .contact-section"
+        ".project-card, .experience-item, .skill-group, .education-card, .research-card"
     );
 
-
-const observer =
+const revealObserver =
     new IntersectionObserver(
         entries => {
 
             entries.forEach(entry => {
 
-                if (entry.isIntersecting) {
+                if (
+                    entry.isIntersecting
+                ) {
 
-                    entry.target.classList.add(
-                        "visible"
+                    entry.target.style.opacity =
+                        "1";
+
+                    entry.target.style.transform =
+                        "translateY(0)";
+
+                    revealObserver.unobserve(
+                        entry.target
                     );
 
                 }
@@ -431,16 +631,68 @@ const observer =
             });
 
         },
-
         {
-            threshold: 0.08
+            threshold: 0.12
         }
-
     );
 
 
 revealElements.forEach(element => {
 
-    observer.observe(element);
+    element.style.opacity = "0";
+
+    element.style.transform =
+        "translateY(25px)";
+
+    element.style.transition =
+        "opacity 0.7s ease, transform 0.7s ease";
+
+    revealObserver.observe(
+        element
+    );
+
+});
+
+
+/* =========================================================
+   SMOOTH ANCHOR BEHAVIOUR
+========================================================= */
+
+document.querySelectorAll(
+    'a[href^="#"]'
+).forEach(link => {
+
+    link.addEventListener(
+        "click",
+        event => {
+
+            const targetId =
+                link.getAttribute(
+                    "href"
+                );
+
+            const target =
+                document.querySelector(
+                    targetId
+                );
+
+            if (!target) return;
+
+            event.preventDefault();
+
+            const headerHeight =
+                header.offsetHeight;
+
+            const position =
+                target.offsetTop -
+                headerHeight;
+
+            window.scrollTo({
+                top: position,
+                behavior: "smooth"
+            });
+
+        }
+    );
 
 });
