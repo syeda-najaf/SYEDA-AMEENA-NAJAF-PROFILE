@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syeda Ameena Najaf — Security & AI Engineer</title>
+<meta name="description" content="Portfolio of Syeda Ameena Najaf — Cybersecurity, AI/ML and full-stack development.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader" class="loader">
+  <div class="loader-inner">
+    <span class="loader-bracket">[</span>
+    <span id="loaderText" class="loader-text">DECRYPTING</span>
+    <span class="loader-bracket">]</span>
+  </div>
+</div>
+
+<!-- SCANLINE OVERLAY -->
+<div class="scan-overlay" aria-hidden="true"></div>
+
+<!-- HEADER / NAV -->
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="#home" class="brand">
+      <span class="brand-mark">SAN</span>
+      <span class="brand-status"><i class="dot"></i>online</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#education" class="nav-link">Education</a>
+      <a href="#contact" class="nav-link nav-cta">Contact</a>
+    </nav>
+
+    <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle menu">☰</button>
+  </div>
+
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="eyebrow"><span class="eyebrow-code">SEC//00</span> ACCESS GRANTED</p>
+      <h1 class="hero-name">
+        <span id="decryptName" class="decrypt-text" data-value="Syeda Ameena Najaf">Syeda Ameena Najaf</span>
+      </h1>
+      <p class="hero-role">Web Developer <span class="hero-role-sep">/</span> Published Researcher <span class="hero-role-sep">/</span> Cybersecurity</p>
+      <p class="hero-desc">Detail-oriented developer experienced in building dynamic, accessible web applications — with hands-on cybersecurity internships, an AI-based intrusion detection system, and published research in computer vision.</p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Projects <span aria-hidden="true">→</span></a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+
+      <div class="hero-meta">
+        <div class="hero-meta-item"><span class="hero-meta-num" data-count="6">0</span><span class="hero-meta-label">Projects Built</span></div>
+        <div class="hero-meta-item"><span class="hero-meta-num" data-count="4">0</span><span class="hero-meta-label">Internships</span></div>
+        <div class="hero-meta-item"><span class="hero-meta-num" data-count="1">0</span><span class="hero-meta-label">Published Paper</span></div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <p class="section-label"><span class="section-code">SEC//01</span> ABOUT</p>
+    <div class="about-grid">
+      <div class="about-copy">
+        <h2 class="section-title">Detail-oriented developer, built for dynamic, accessible web applications.</h2>
+        <p>I'm Syeda Ameena Najaf, a frontend-leaning web developer and published researcher based in Hyderabad. I'm currently building secure web applications with React and Flask at Excellence College of Health &amp; Safety Engineering, alongside a run of cybersecurity internships with ADVI Group, CodTech, Tata Group and Deloitte.</p>
+        <p>Alongside web development, I've built an AI-based network attack detection system with real-time Telegram alerting, and published research on OpenCV-based license plate recognition in the Journal of Scientific Research and Technology. I like software that's both usable and genuinely secure — and I look for problems that need both.</p>
+      </div>
+      <div class="about-badges">
+        <div class="badge-card">
+          <span class="badge-icon">🖥️</span>
+          <h3>Web Development</h3>
+          <p>React, Flask, REST APIs, dynamic and accessible UI.</p>
+        </div>
+        <div class="badge-card">
+          <span class="badge-icon">🔐</span>
+          <h3>Cybersecurity</h3>
+          <p>Vulnerability assessment, penetration testing, cryptography.</p>
+        </div>
+        <div class="badge-card">
+          <span class="badge-icon">🧠</span>
+          <h3>AI / ML</h3>
+          <p>Intrusion detection, computer vision, OCR pipelines.</p>
+        </div>
+        <div class="badge-card">
+          <span class="badge-icon">📄</span>
+          <h3>Research</h3>
+          <p>Published in the Journal of Scientific Research and Technology.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section section-alt">
+    <p class="section-label"><span class="section-code">SEC//02</span> SKILLS</p>
+    <h2 class="section-title">Toolset</h2>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <p class="section-label"><span class="section-code">SEC//03</span> PROJECTS</p>
+    <div class="projects-head">
+      <h2 class="section-title">Selected Work</h2>
+      <div class="filters" id="filters">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="security">Security</button>
+        <button class="filter" data-filter="ai">AI / ML</button>
+        <button class="filter" data-filter="web">Web &amp; Apps</button>
+      </div>
+    </div>
+    <div class="projects-grid" id="projectsGrid"></div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section section-alt">
+    <p class="section-label"><span class="section-code">SEC//04</span> EXPERIENCE</p>
+    <h2 class="section-title">Timeline</h2>
+    <div class="timeline" id="experienceList"></div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section">
+    <p class="section-label"><span class="section-code">SEC//05</span> EDUCATION</p>
+    <h2 class="section-title">Foundation</h2>
+    <div class="education-grid" id="educationGrid"></div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="certificates" class="section section-alt">
+    <p class="section-label"><span class="section-code">SEC//06</span> CERTIFICATIONS</p>
+    <h2 class="section-title">Credentials</h2>
+    <div class="cert-grid" id="certificateGrid"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-section">
+    <p class="section-label"><span class="section-code">SEC//07</span> CONTACT</p>
+    <div class="contact-grid">
+      <div class="contact-copy">
+        <h2 class="section-title">Let's build something worth defending.</h2>
+        <p>Open to security-focused roles, AI/ML projects and full-stack work. The fastest way to reach me is email — the form below opens your mail client with everything pre-filled.</p>
+        <div class="contact-links">
+          <a id="displayEmail" href="mailto:syedanajaf832@gmail.com" class="contact-link">syedanajaf832@gmail.com</a>
+          <a id="displayPhone" href="tel:09538090817" class="contact-link">09538090817</a>
+          <span id="displayLocation" class="contact-link contact-link-static">Santosh Nagar, Mehdipatnam, Hyderabad, Telangana 500006</span>
+          <a href="http://linkedin.com/in/syedanajaf" target="_blank" rel="noopener" class="contact-link">linkedin.com/in/syedanajaf</a>
+        </div>
+      </div>
+
+      <form id="contactForm" class="contact-form">
+        <div class="form-row">
+          <label for="contactName">Name</label>
+          <input id="contactName" name="name" type="text" required placeholder="Your name">
+        </div>
+        <div class="form-row">
+          <label for="contactEmail">Email</label>
+          <input id="contactEmail" name="email" type="email" required placeholder="you@example.com">
+        </div>
+        <div class="form-row">
+          <label for="contactSubject">Subject</label>
+          <input id="contactSubject" name="subject" type="text" required placeholder="Let's talk about...">
+        </div>
+        <div class="form-row">
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="message" required rows="5" placeholder="Write your message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+        <p id="formNote" class="form-note"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> Syeda Ameena Najaf. Built with intent, not templates.</p>
+</footer>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="bottom-nav" aria-label="Quick navigation">
+  <a href="#home" class="bottom-link">Home</a>
+  <a href="#projects" class="bottom-link">Work</a>
+  <a href="#skills" class="bottom-link">Skills</a>
+  <a href="#contact" class="bottom-link">Contact</a>
+</nav>
+
+<!-- PROJECT MODAL -->
+<div id="projectModal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-panel">
+    <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+    <p class="modal-eyebrow">PROJECT FILE</p>
+    <h3 id="modalTitle"></h3>
+    <p id="modalFocus" class="modal-focus"></p>
+    <p id="modalDescription"></p>
+    <div id="modalTags" class="tag-list"></div>
+    <p id="modalLive" class="modal-live"></p>
+  </div>
+</div>
+
+<!-- CERTIFICATE MODAL -->
+<div id="certificateModal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-certificate></div>
+  <div class="modal-panel">
+    <button class="modal-close" id="certificateClose" aria-label="Close">×</button>
+    <p class="modal-eyebrow">CREDENTIAL</p>
+    <h3 id="certificateTitle"></h3>
+    <p id="certificateDescription"></p>
+    <div id="certificatePreview" class="cert-preview"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

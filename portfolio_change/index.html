@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Syeda Ameena Najaf | Web Developer & Published Researcher">
+<title>Syeda Ameena Najaf — Web Developer</title>
+<link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+<div class="progress"><span id="progress"></span></div>
+<header class="topbar">
+  <a class="wordmark" href="#top"><span>SN</span><div><strong>Syeda Ameena Najaf</strong><small>WEB DEVELOPER · PUBLISHED RESEARCHER</small></div></a>
+  <nav class="desktop-nav"><a href="#top">Overview</a><a href="#journey">Journey</a><a href="#work">Work</a><a href="#stack">Stack</a><a href="#credentials">Credentials</a></nav>
+  <div class="top-actions"><button class="text-btn" id="openCv">View CV</button><a class="solid-btn" href="public/Syeda-Ameena-Najaf-CV.pdf" download>Download PDF</a><button class="menu-btn" id="menuBtn">☰</button></div>
+</header>
+<div class="mobile-menu" id="mobileMenu"><button id="menuClose">×</button><small>NAVIGATION</small><a href="#top">Overview</a><a href="#journey">Journey</a><a href="#work">Work</a><a href="#stack">Stack</a><a href="#credentials">Credentials</a><a href="#contact">Contact</a><a class="solid-btn" href="public/Syeda-Ameena-Najaf-CV.pdf" download>Download CV PDF</a></div>
+
+<main id="top">
+<section class="hero-shell">
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="dot"></span> OPEN TO PROFESSIONAL OPPORTUNITIES</div>
+    <p class="hero-kicker">Computer Science Engineering · Hyderabad, India</p>
+    <h1>Digital products<br><i>built with intent.</i></h1>
+    <p class="hero-summary">Detail-oriented Web Developer and Published Researcher working across frontend engineering, cybersecurity, AI-powered systems and accessible digital experiences.</p>
+    <div class="hero-actions"><a class="solid-btn large" href="#work">Explore selected work <span>↗</span></a><button class="outline-btn large" id="openCv2">Read my CV <span>⌕</span></button></div>
+    <div class="hero-meta"><span>Based in Hyderabad</span><span>·</span><a href="mailto:syedanajaf832@gmail.com">syedanajaf832@gmail.com</a><span>·</span><a href="https://linkedin.com/in/syedanajaf" target="_blank" rel="noreferrer">LinkedIn ↗</a></div>
+  </div>
+  <aside class="identity-card">
+    <div class="identity-top"><span>PROFILE / 01</span><span class="live"><b></b> AVAILABLE</span></div>
+    <div class="monogram">SN</div>
+    <h2>Syeda<br>Ameena Najaf</h2>
+    <p>Web Developer<br>Published Researcher</p>
+    <div class="identity-line"></div>
+    <dl><div><dt>Focus</dt><dd>Frontend · Security · AI/ML</dd></div><div><dt>Education</dt><dd>B.E. Computer Science</dd></div><div><dt>Research</dt><dd>JSRT · Impact Factor 5.2</dd></div></dl>
+    <div class="identity-foot"><span>Hyderabad, Telangana</span><span>2025</span></div>
+  </aside>
+</section>
+
+<section class="numbers">
+  <div><strong>30%</strong><span>faster incident response<br>in the detection project</span></div>
+  <div><strong>5.2</strong><span>JSRT research<br>impact factor</span></div>
+  <div><strong>6</strong><span>featured technical<br>projects</span></div>
+  <div><strong>75.81%</strong><span>CS302 certificate<br>achievement score</span></div>
+</section>
+
+<section class="intro-section" id="journey">
+  <div class="section-head"><span>01</span><p>JOURNEY</p><h2>A profile shaped by<br><em>building and learning.</em></h2></div>
+  <div class="journey-grid">
+    <article class="story-card"><small>ABOUT</small><h3>From interfaces to intelligent systems.</h3><p>My CV describes a detail-oriented frontend developer focused on dynamic and accessible web applications, with additional work across cybersecurity and AI systems.</p><button class="link-btn" data-modal="about">Read profile <span>→</span></button></article>
+    <div class="experience-list">
+      <div class="experience-item"><time>07/2025 — 06/2026</time><div><small>WEB DEVELOPMENT</small><h3>Web Developer</h3><b>Excellence College of Health & Safety Engineering</b><p>Developing secure web applications using React and Flask.</p></div></div>
+      <div class="experience-item"><time>01/2025 — 03/2025</time><div><small>CYBERSECURITY</small><h3>Cyber Security Intern</h3><b>ADVI Group of Companies</b><p>Developed an Autonomous Network Attack Detection System, integrated Telegram Bot alerts and performed log analysis and anomaly detection.</p></div></div>
+      <div class="experience-item"><time>03/2025 — 04/2025</time><div><small>CYBERSECURITY</small><h3>Cybersecurity Trainee</h3><b>CodTech IT Solutions</b><p>Worked on real-time project modules including web vulnerability scanners, ethical hacking and penetration testing.</p></div></div>
+      <div class="experience-item"><time>06/2025</time><div><small>VIRTUAL EXPERIENCE</small><h3>Cybersecurity Analyst Intern</h3><b>Tata Group · Forage</b><p>Completed a structured simulation involving cybersecurity investigations, vulnerability assessment and secure architecture practices.</p></div></div>
+      <div class="experience-item"><time>07/2025</time><div><small>VIRTUAL EXPERIENCE</small><h3>Cybersecurity Consultant Intern</h3><b>Deloitte · Forage</b><p>Conducted risk assessments, developed client-facing cyber reports and simulated threat modeling and third-party risk management.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="work-section" id="work">
+  <div class="section-head compact"><span>02</span><p>SELECTED WORK</p><h2>Projects that show<br><em>how I think.</em></h2></div>
+  <div class="filter-row"><p>FILTER PROJECTS</p><div><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="security">Security</button><button class="filter" data-filter="ai">AI / Vision</button><button class="filter" data-filter="web">Web</button></div></div>
+  <div class="project-list" id="projectList"></div>
+</section>
+
+<section class="stack-section" id="stack">
+  <div class="section-head compact"><span>03</span><p>TECHNICAL STACK</p><h2>A practical<br><em>toolkit.</em></h2></div>
+  <div class="stack-layout">
+    <div class="stack-feature"><span>CORE</span><h3>Frontend & Web</h3><p>JavaScript, HTML, CSS, React, Flask and modern responsive interfaces.</p><button class="link-btn" data-modal="development">See toolkit →</button></div>
+    <div class="stack-feature"><span>SECURITY</span><h3>Cybersecurity</h3><p>Vulnerability scanning, SQL Injection, XSS, ethical hacking, threat detection and risk assessment.</p><button class="link-btn" data-modal="security">See toolkit →</button></div>
+    <div class="stack-feature"><span>AI / VISION</span><h3>Intelligent systems</h3><p>Python, Machine Learning, OpenCV, OCR, anomaly detection and Telegram API integration.</p><button class="link-btn" data-modal="ai">See toolkit →</button></div>
+  </div>
+  <div class="tech-wall"><span>Python</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>React</span><span>Flask</span><span>SQL</span><span>OpenCV</span><span>Bootstrap</span><span>PHP</span><span>Laravel</span><span>MySQL</span><span>Stripe API</span><span>Telegram API</span><span>Vercel</span><span>Requests</span><span>BeautifulSoup</span><span>PyCryptodome</span></div>
+</section>
+
+<section class="credentials" id="credentials">
+  <div class="section-head compact"><span>04</span><p>PROOF OF WORK</p><h2>Research, certificates<br>& <em>education.</em></h2></div>
+  <div class="credential-grid">
+    <article class="research-card"><div class="research-mark">↗</div><small>PUBLISHED RESEARCH · 2025</small><h3>License Plate Recognition using OpenCV</h3><p>Published in the Journal of Scientific Research and Technology (JSRT), detailing a smart surveillance system for real-time number plate recognition using Python and OpenCV.</p><div class="research-score"><strong>5.2</strong><span>impact factor</span></div><button class="link-btn" data-modal="research">View research details →</button></article>
+    <article class="education-card"><small>EDUCATION · 2021 — 2025</small><h3>Bachelor of Engineering<br>Computer Science Engineering</h3><p>Khaja Bandanawaz College Of Engineering, Khaja Bandanawaz University</p><div class="place">Kalaburagi, Karnataka</div></article>
+  </div>
+  <div class="cert-list">
+    <div class="cert-title"><span>CREDENTIALS</span><span>YEAR</span></div>
+    <button class="cert-row" data-modal="certs"><span><b>CS302</b> Software Engineering · Saylor Academy</span><small>2025</small></button>
+    <button class="cert-row" data-modal="certs"><span><b>AWS</b> Cloud Computing – Solutions Architecture · AWS via Forage</span><small>2025</small></button>
+    <button class="cert-row" data-modal="certs"><span><b>DELOITTE</b> Cybersecurity Virtual Internship</span><small>2025</small></button>
+    <button class="cert-row" data-modal="certs"><span><b>TATA GROUP</b> Cybersecurity Analyst Program · Forage</span><small>2025</small></button>
+    <button class="cert-row" data-modal="certs"><span><b>ADVI</b> Internship Project – Autonomous Network Attack Detection System</span><small>2025</small></button>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-card"><div><span>05 / CONTACT</span><h2>Have a role or project<br>worth discussing?</h2><p>Let's connect and talk about what I can build.</p></div><div class="contact-actions"><a class="solid-btn light" href="mailto:syedanajaf832@gmail.com">Send an email ↗</a><a class="outline-btn light-outline" href="https://linkedin.com/in/syedanajaf" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></div>
+  <div class="contact-details"><a href="mailto:syedanajaf832@gmail.com">syedanajaf832@gmail.com</a><span>09538090817</span><span>Hyderabad, Telangana 500006</span><a href="https://linkedin.com/in/syedanajaf" target="_blank" rel="noreferrer">linkedin.com/in/syedanajaf</a></div>
+</section>
+</main>
+<footer><span>© 2026 Syeda Ameena Najaf</span><span>Web Developer · Published Researcher</span></footer>
+
+<dialog id="detailModal"><button class="modal-close" id="modalClose">×</button><div id="modalContent"></div></dialog>
+<dialog id="cvModal"><button class="modal-close" id="cvClose">×</button><div class="cv-modal"><small>CURRICULUM VITAE</small><h2>Syeda Ameena Najaf</h2><iframe src="public/Syeda-Ameena-Najaf-CV.pdf#view=FitH" title="CV preview"></iframe><a class="solid-btn" href="public/Syeda-Ameena-Najaf-CV.pdf" download="Syeda-Ameena-Najaf-CV.pdf">Download original CV PDF</a></div></dialog>
+<script type="module" src="/src/main.js"></script>
+</body></html>
+
+<!-- Progressive Google-style result viewer -->
+<div class="step-viewer" id="stepViewer" aria-hidden="true">
+  <div class="step-top">
+    <button class="step-back" id="stepBack" aria-label="Back">←</button>
+    <div class="step-search"><span>PORTFOLIO /</span><b id="stepQuery">Overview</b></div>
+    <span class="step-count" id="stepCount">1 / 6</span>
+    <button class="step-close" id="stepClose" aria-label="Close">×</button>
+  </div>
+  <div class="step-content"><div class="step-inner" id="stepContent"></div></div>
+  <div class="step-footer">
+    <span class="step-progress" id="stepProgress">STEP 1 OF 6</span>
+    <div class="step-nav"><button id="stepPrev">Previous</button><button class="primary-step" id="stepNext">Next →</button></div>
+  </div>
+</div>

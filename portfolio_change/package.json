@@ -1,0 +1,1 @@
+{"name":"syeda-ameena-najaf-portfolio","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"vite","start":"vite","build":"vite","preview":"vite preview"},"devDependencies":{"vite":"^7.0.0"}}
