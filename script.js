@@ -1,6 +1,7 @@
 /* =====================================================
    SYEDA AMEENA NAJAF — PORTFOLIO
-   Complete Portfolio JavaScript
+   COMPLETE PORTFOLIO JAVASCRIPT
+   Certificate system fixed for Vercel deployment
 ===================================================== */
 
 
@@ -12,7 +13,7 @@ const PORTFOLIO = {
   email: "syedanajaf832@gmail.com",
   phone: "09538090817",
   location: "Santosh Nagar, Mehdipatnam, Hyderabad, Telangana 500006",
-  linkedin: "http://linkedin.com/in/syedanajaf"
+  linkedin: "https://linkedin.com/in/syedanajaf"
 };
 
 
@@ -26,37 +27,47 @@ const projects = [
     title: "Autonomous Network Attack Detection System",
     category: "ai",
     icon: "🤖",
+
     description:
       "A real-time, AI-based intrusion detection system trained on cybersecurity datasets from Kaggle, integrated with a custom Telegram bot that alerts on malicious traffic patterns — cutting response time by 30% versus manual monitoring.",
+
     technologies: [
       "Python",
       "Machine Learning",
       "Telegram API"
     ],
+
     focus: "AI-driven network attack detection"
   },
+
 
   {
     title: "OpenCV-Based License Plate Detection",
     category: "ai",
     icon: "📷",
+
     description:
       "An intelligent license-plate recognition system combining OCR and template matching, with Selenium automating vehicle-detail lookups. Published in the Journal of Scientific Research and Technology.",
+
     technologies: [
       "Python",
       "OpenCV",
       "OCR",
       "Selenium"
     ],
+
     focus: "Computer vision & published research"
   },
+
 
   {
     title: "Student Enrolment System",
     category: "web",
     icon: "🎓",
+
     description:
       "A secure, full-featured enrolment portal with user login, course management, Stripe payment integration and an admin dashboard — improving enrollment speed by 30%.",
+
     technologies: [
       "HTML",
       "CSS",
@@ -67,48 +78,62 @@ const projects = [
       "MySQL",
       "Stripe API"
     ],
+
     focus: "Full-stack web application"
   },
+
 
   {
     title: "Web Application Vulnerability Scanner",
     category: "security",
     icon: "🧪",
+
     description:
       "A scanner for identifying SQL injection, XSS and other OWASP vulnerabilities in web applications, built with a modular architecture for extensibility and automation.",
+
     technologies: [
       "Python",
       "Requests",
       "BeautifulSoup"
     ],
+
     focus: "Web vulnerability assessment"
   },
+
 
   {
     title: "Advanced Encryption Tool (AES-256)",
     category: "security",
     icon: "🔐",
+
     description:
       "A visually interactive tool for AES-256 file encryption and decryption, with an animated frontend and a GitHub-ready build.",
+
     technologies: [
       "Python",
       "PyCryptodome",
       "JavaScript"
     ],
+
     focus: "Applied cryptography"
   },
+
 
   {
     title: "E-Learning Website",
     category: "web",
     icon: "💻",
+
     description:
       "An interactive, animated e-learning platform with a clean UI and modular architecture, deployed live on Vercel.",
+
     technologies: [
       "React.js",
       "Vercel"
     ],
+
     focus: "Frontend engineering",
+
     url: "https://syeda-educ-center.vercel.app"
   }
 
@@ -123,19 +148,26 @@ const experience = [
 
   {
     date: "07/2025 — 06/2026",
+
     role: "Web Developer",
+
     company:
       "Excellence College of Health & Safety Engineering · Hyderabad, Telangana",
+
     bullets: [
       "Developing secure web applications using React and Flask"
     ]
   },
 
+
   {
     date: "01/2025 — 03/2025",
+
     role: "Cyber Security Intern",
+
     company:
       "ADVI Group of Companies · Hyderabad, Telangana",
+
     bullets: [
       "Developed an Autonomous Network Attack Detection System using Python",
       "Integrated Telegram Bot alerts, reducing incident response time by 30%",
@@ -143,11 +175,15 @@ const experience = [
     ]
   },
 
+
   {
     date: "03/2025 — 04/2025",
+
     role: "Cybersecurity Trainee",
+
     company:
       "CodTech IT Solutions · Virtual, Remote",
+
     bullets: [
       "Participated in 3+ national-level hackathons and security challenges",
       "Worked on real-time project modules including web vulnerability scanners",
@@ -155,11 +191,15 @@ const experience = [
     ]
   },
 
+
   {
     date: "05/2024 — 06/2024",
+
     role: "Cybersecurity Analyst Intern",
+
     company:
       "Tata Group (Forage Virtual Internship) · Virtual, Remote",
+
     bullets: [
       "Completed a structured simulation involving cybersecurity investigations",
       "Assessed vulnerabilities and recommended secure architecture practices",
@@ -167,11 +207,15 @@ const experience = [
     ]
   },
 
+
   {
     date: "06/2025",
+
     role: "Cybersecurity Consultant Intern",
+
     company:
       "Deloitte (Forage Virtual Internship) · Virtual, Remote",
+
     bullets: [
       "Conducted risk assessments and developed client-facing cyber reports",
       "Simulated threat modeling and third-party risk management",
@@ -179,11 +223,15 @@ const experience = [
     ]
   },
 
+
   {
     date: "07/2025",
+
     role: "Software Engineering Certificate Trainee",
+
     company:
       "Saylor Academy · Virtual, Remote",
+
     bullets: [
       "Completed a 36-hour self-paced Software Engineering (CS302) course",
       "Gained knowledge in SDLC, system architecture, debugging and testing",
@@ -202,10 +250,13 @@ const education = [
 
   {
     date: "2021 — 2025",
+
     degree:
       "Bachelor of Engineering (B.E) — Computer Science Engineering",
+
     institution:
       "Khaja Bandanawaz College of Engineering, Khaja Bandanawaz University",
+
     description:
       "Kalaburagi, Karnataka"
   }
@@ -227,20 +278,24 @@ const skillGroups = [
         name: "Python",
         value: 88
       },
+
       {
         name: "JavaScript",
         value: 80
       },
+
       {
         name: "SQL",
         value: 75
       },
+
       {
         name: "HTML / CSS",
         value: 82
       }
     ]
   },
+
 
   {
     group: "Frameworks & Libraries",
@@ -250,16 +305,19 @@ const skillGroups = [
         name: "React",
         value: 80
       },
+
       {
         name: "Flask",
         value: 78
       },
+
       {
         name: "Bootstrap / Laravel",
         value: 70
       }
     ]
   },
+
 
   {
     group: "Security",
@@ -269,16 +327,19 @@ const skillGroups = [
         name: "Vulnerability Assessment",
         value: 80
       },
+
       {
         name: "Penetration Testing",
         value: 76
       },
+
       {
         name: "Cryptography (AES-256)",
         value: 78
       }
     ]
   },
+
 
   {
     group: "AI / ML & Cloud",
@@ -288,10 +349,12 @@ const skillGroups = [
         name: "Machine Learning",
         value: 78
       },
+
       {
         name: "Computer Vision (OpenCV)",
         value: 76
       },
+
       {
         name: "AWS Solutions Architecture",
         value: 65
@@ -305,13 +368,18 @@ const skillGroups = [
 /* =====================================================
    6) CERTIFICATES
    IMPORTANT:
-   Put your actual certificate images inside:
+   These filenames match the files visible in your
+   VS Code assets/certificates folder.
 
+   Folder:
    assets/certificates/
-
 ===================================================== */
 
 const certificates = [
+
+  /* -------------------------------------------------
+     1. PUBLISHED RESEARCH
+  ------------------------------------------------- */
 
   {
     title:
@@ -321,19 +389,24 @@ const certificates = [
       "Published in the Journal of Scientific Research and Technology (JSRT), 2025 · Impact Factor 5.2",
 
     image:
-      "assets/certificates/publish researchpaper.png",
+      "assets/certificates/publish-researchpaper.png.png",
 
     alternatives: [
-      "assets/certificates/publish researchpaper.png",
+      "assets/certificates/publish-researchpaper.png.png",
       "assets/certificates/publish-researchpaper.png",
       "assets/certificates/publish_researchpaper.png",
+      "assets/certificates/publish researchpaper.png.png",
+      "assets/certificates/publish researchpaper.png",
       "assets/certificates/researchpaper.png",
       "assets/certificates/research paper.png",
-      "assets/certificates/Research Paper.png",
-      "assets/certificates/Published Research.png"
+      "assets/certificates/Research Paper.png"
     ]
   },
 
+
+  /* -------------------------------------------------
+     2. SOFTWARE ENGINEERING
+  ------------------------------------------------- */
 
   {
     title:
@@ -343,19 +416,24 @@ const certificates = [
       "Issued by Saylor Academy, 2025 · Certificate ID: 250671527SN",
 
     image:
-      "assets/certificates/Software Engineering (CS302).png",
+      "assets/certificates/software-engineering.png.png",
 
     alternatives: [
+      "assets/certificates/software-engineering.png.png",
+      "assets/certificates/software-engineering.png",
+      "assets/certificates/software engineering.png.png",
+      "assets/certificates/Software Engineering.png.png",
       "assets/certificates/Software Engineering (CS302).png",
       "assets/certificates/Software Engineering CS302.png",
-      "assets/certificates/software engineering (CS302).png",
       "assets/certificates/software-engineering-cs302.png",
-      "assets/certificates/software-engineering.png",
-      "assets/certificates/Software Engineering.png",
       "assets/certificates/CS302.png"
     ]
   },
 
+
+  /* -------------------------------------------------
+     3. AWS
+  ------------------------------------------------- */
 
   {
     title:
@@ -365,18 +443,24 @@ const certificates = [
       "Issued by AWS via Forage, 2025",
 
     image:
-      "assets/certificates/aws-solutions-architecture.png",
+      "assets/certificates/aws-solutions-architecture.png.png",
 
     alternatives: [
+      "assets/certificates/aws-solutions-architecture.png.png",
       "assets/certificates/aws-solutions-architecture.png",
+      "assets/certificates/AWS Solutions Architecture.png.png",
       "assets/certificates/AWS Solutions Architecture.png",
       "assets/certificates/aws solutions architecture.png",
+      "assets/certificates/AWS.png.png",
       "assets/certificates/AWS.png",
-      "assets/certificates/aws.png",
-      "assets/certificates/AWS Solutions Architecture Certificate.png"
+      "assets/certificates/aws.png"
     ]
   },
 
+
+  /* -------------------------------------------------
+     4. DELOITTE
+  ------------------------------------------------- */
 
   {
     title:
@@ -386,19 +470,25 @@ const certificates = [
       "Issued by Deloitte (Forage), 2025",
 
     image:
-      "assets/certificates/deloitte-cyber.png",
+      "assets/certificates/deloitte-cyber.png.png",
 
     alternatives: [
+      "assets/certificates/deloitte-cyber.png.png",
       "assets/certificates/deloitte-cyber.png",
+      "assets/certificates/Cybersecurity Virtual Internship.png.png",
+      "assets/certificates/Cybersecurity Virtual Internship.png",
       "assets/certificates/Deloitte Cyber.png",
       "assets/certificates/deloitte cyber.png",
       "assets/certificates/Deloitte.png",
       "assets/certificates/deloitte.png",
-      "assets/certificates/Deloitte Cybersecurity.png",
-      "assets/certificates/Deloitte Cybersecurity Certificate.png"
+      "assets/certificates/Deloitte Cybersecurity.png"
     ]
   },
 
+
+  /* -------------------------------------------------
+     5. TATA
+  ------------------------------------------------- */
 
   {
     title:
@@ -407,19 +497,27 @@ const certificates = [
     description:
       "Issued by Tata Group (Forage), 2025",
 
-    image: "",
+    image:
+      "",
 
     alternatives: [
       "assets/certificates/tata-cyber.png",
+      "assets/certificates/tata-cyber.png.png",
       "assets/certificates/Tata Cyber.png",
+      "assets/certificates/Tata Cyber.png.png",
       "assets/certificates/tata cyber.png",
       "assets/certificates/Tata.png",
+      "assets/certificates/Tata.png.png",
       "assets/certificates/tata.png",
       "assets/certificates/Tata Cybersecurity.png",
       "assets/certificates/Tata Group.png"
     ]
   },
 
+
+  /* -------------------------------------------------
+     6. ADVI
+  ------------------------------------------------- */
 
   {
     title:
@@ -429,13 +527,13 @@ const certificates = [
       "Internship project issued by ADVI Group of Companies, 2025",
 
     image:
-      "assets/certificates/Autonomous Network Attack Detection System.png",
+      "assets/certificates/autonomous-network-attack-detection.png.png",
 
     alternatives: [
+      "assets/certificates/autonomous-network-attack-detection.png.png",
+      "assets/certificates/autonomous-network-attack-detection.png",
       "assets/certificates/Autonomous Network Attack Detection System.png",
-      "assets/certificates/Autonomous Network Attack Detection System.jpg",
-      "assets/certificates/Autonomous Network Attack Detection System.jpeg",
-      "assets/certificates/autonomous network attack detection system.png",
+      "assets/certificates/Autonomous Network Attack Detection System.png.png",
       "assets/certificates/Autonomous Network Attack Detection.png",
       "assets/certificates/Network Attack Detection.png",
       "assets/certificates/ADVI.png",
@@ -447,7 +545,7 @@ const certificates = [
 
 
 /* =====================================================
-   DOM HELPERS
+   7) DOM HELPERS
 ===================================================== */
 
 const $ = (selector, parent = document) =>
@@ -458,7 +556,7 @@ const $$ = (selector, parent = document) =>
 
 
 /* =====================================================
-   LOADER
+   8) LOADER
 ===================================================== */
 
 window.addEventListener("load", () => {
@@ -477,7 +575,7 @@ window.addEventListener("load", () => {
 
 
 /* =====================================================
-   MOBILE MENU
+   9) MOBILE MENU
 ===================================================== */
 
 const menuToggle = $("#menuToggle");
@@ -522,7 +620,7 @@ $$(
 
 
 /* =====================================================
-   DECRYPT STYLE HERO NAME ANIMATION
+   10) DECRYPT STYLE HERO NAME ANIMATION
 ===================================================== */
 
 function decryptReveal(el) {
@@ -626,7 +724,7 @@ if (decryptEl) {
 
 
 /* =====================================================
-   HERO COUNTERS
+   11) HERO COUNTERS
 ===================================================== */
 
 function animateCounters() {
@@ -683,7 +781,7 @@ setTimeout(
 
 
 /* =====================================================
-   RENDER SKILLS
+   12) RENDER SKILLS
 ===================================================== */
 
 const skillsGrid =
@@ -714,6 +812,7 @@ if (skillsGrid) {
 
             </div>
 
+
             <div class="track">
 
               <i
@@ -734,7 +833,7 @@ if (skillsGrid) {
 
 
 /* =====================================================
-   RENDER PROJECTS
+   13) RENDER PROJECTS
 ===================================================== */
 
 const projectsGrid =
@@ -827,7 +926,7 @@ function renderProjects(filter = "all") {
                   class="project-live"
                   href="${project.url}"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                 >
                   Live ↗
                 </a>
@@ -866,7 +965,7 @@ renderProjects();
 
 
 /* =====================================================
-   PROJECT FILTERS
+   14) PROJECT FILTERS
 ===================================================== */
 
 $$(".filter").forEach(button => {
@@ -900,7 +999,7 @@ $$(".filter").forEach(button => {
 
 
 /* =====================================================
-   PROJECT MODAL
+   15) PROJECT MODAL
 ===================================================== */
 
 const projectModal =
@@ -951,7 +1050,7 @@ function openProject(title) {
       <a
         href="${project.url}"
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
       >
         View live project ↗
       </a>
@@ -1029,7 +1128,7 @@ $$("[data-close-modal]")
 
 
 /* =====================================================
-   EXPERIENCE
+   16) EXPERIENCE
 ===================================================== */
 
 const experienceList =
@@ -1047,19 +1146,23 @@ if (experienceList) {
 
         <span class="timeline-dot"></span>
 
+
         <div class="timeline-card">
 
           <span class="date-pill">
             ${item.date}
           </span>
 
+
           <h3>
             ${item.role}
           </h3>
 
+
           <h4>
             ${item.company}
           </h4>
+
 
           <ul class="timeline-bullets">
 
@@ -1082,7 +1185,7 @@ if (experienceList) {
 
 
 /* =====================================================
-   EDUCATION
+   17) EDUCATION
 ===================================================== */
 
 const educationGrid =
@@ -1102,13 +1205,16 @@ if (educationGrid) {
           ${item.date}
         </span>
 
+
         <h3>
           ${item.degree}
         </h3>
 
+
         <h4>
           ${item.institution}
         </h4>
+
 
         <p>
           ${item.description}
@@ -1122,7 +1228,7 @@ if (educationGrid) {
 
 
 /* =====================================================
-   CERTIFICATIONS
+   18) CERTIFICATION CARDS
 ===================================================== */
 
 const certificateGrid =
@@ -1160,6 +1266,7 @@ if (certificateGrid) {
         <button
           class="certificate-open"
           data-cert="${index}"
+          type="button"
         >
           View certificate →
         </button>
@@ -1173,8 +1280,8 @@ if (certificateGrid) {
 
 
 /* =====================================================
-   CERTIFICATE IMAGE LOADER
-   Automatically tries alternative filenames
+   19) CERTIFICATE IMAGE LOADER
+   FIXED VERSION
 ===================================================== */
 
 function loadCertificateImage(cert, preview) {
@@ -1185,17 +1292,34 @@ function loadCertificateImage(cert, preview) {
   const candidates = [];
 
 
+  /*
+    Add primary image first.
+  */
+
   if (cert.image) {
-    candidates.push(cert.image);
+
+    candidates.push(
+      cert.image
+    );
+
   }
 
+
+  /*
+    Add all alternative filenames.
+  */
 
   if (Array.isArray(cert.alternatives)) {
 
     cert.alternatives.forEach(path => {
 
-      if (!candidates.includes(path)) {
+      if (
+        path &&
+        !candidates.includes(path)
+      ) {
+
         candidates.push(path);
+
       }
 
     });
@@ -1203,7 +1327,17 @@ function loadCertificateImage(cert, preview) {
   }
 
 
-  if (candidates.length === 0) {
+  /*
+    Remove duplicate paths.
+  */
+
+  const uniqueCandidates =
+    [...new Set(candidates)];
+
+
+  if (
+    uniqueCandidates.length === 0
+  ) {
 
     showCertificateMissing(
       preview,
@@ -1220,7 +1354,10 @@ function loadCertificateImage(cert, preview) {
 
   function tryNextImage() {
 
-    if (currentIndex >= candidates.length) {
+    if (
+      currentIndex >=
+      uniqueCandidates.length
+    ) {
 
       showCertificateMissing(
         preview,
@@ -1233,7 +1370,7 @@ function loadCertificateImage(cert, preview) {
 
 
     const path =
-      candidates[currentIndex];
+      uniqueCandidates[currentIndex];
 
     currentIndex++;
 
@@ -1250,16 +1387,35 @@ function loadCertificateImage(cert, preview) {
       cert.title;
 
 
+    img.loading =
+      "eager";
+
+
+    img.decoding =
+      "async";
+
+
     img.onload = () => {
 
       preview.innerHTML = "";
 
       preview.appendChild(img);
 
+
+      console.log(
+        "Certificate loaded successfully:",
+        path
+      );
+
     };
 
 
     img.onerror = () => {
+
+      console.warn(
+        "Certificate path failed:",
+        path
+      );
 
       tryNextImage();
 
@@ -1267,8 +1423,8 @@ function loadCertificateImage(cert, preview) {
 
 
     /*
-      encodeURI keeps the folder structure
-      while safely handling spaces.
+      encodeURI handles spaces and special
+      characters while preserving /.
     */
 
     img.src =
@@ -1283,7 +1439,7 @@ function loadCertificateImage(cert, preview) {
 
 
 /* =====================================================
-   CERTIFICATE MISSING MESSAGE
+   20) CERTIFICATE MISSING MESSAGE
 ===================================================== */
 
 function showCertificateMissing(
@@ -1302,9 +1458,11 @@ function showCertificateMissing(
         🖼️
       </div>
 
+
       <strong>
         Certificate image could not be found.
       </strong>
+
 
       <p style="
         margin-top:12px;
@@ -1313,6 +1471,7 @@ function showCertificateMissing(
         Make sure the certificate image
         is inside:
       </p>
+
 
       <code style="
         display:inline-block;
@@ -1323,6 +1482,7 @@ function showCertificateMissing(
       ">
         assets/certificates/
       </code>
+
 
       <p style="
         margin-top:15px;
@@ -1340,7 +1500,7 @@ function showCertificateMissing(
 
 
 /* =====================================================
-   OPEN CERTIFICATE
+   21) OPEN CERTIFICATE
 ===================================================== */
 
 function openCertificate(index) {
@@ -1381,7 +1541,7 @@ function openCertificate(index) {
   if (preview) {
 
     /*
-      Show loading state first.
+      Show loading state.
     */
 
     preview.innerHTML = `
@@ -1403,8 +1563,7 @@ function openCertificate(index) {
 
 
     /*
-      Give modal time to appear,
-      then load image.
+      Load after modal opens.
     */
 
     setTimeout(() => {
@@ -1414,7 +1573,7 @@ function openCertificate(index) {
         preview
       );
 
-    }, 50);
+    }, 100);
 
   }
 
@@ -1438,7 +1597,7 @@ function openCertificate(index) {
 
 
 /* =====================================================
-   CLOSE CERTIFICATE
+   22) CLOSE CERTIFICATE
 ===================================================== */
 
 function closeCertificate() {
@@ -1462,7 +1621,7 @@ function closeCertificate() {
 
 
 /* =====================================================
-   CERTIFICATE BUTTON EVENTS
+   23) CERTIFICATE BUTTON EVENTS
 ===================================================== */
 
 function attachCertificateEvents() {
@@ -1510,7 +1669,7 @@ $$("[data-close-certificate]")
 
 
 /* =====================================================
-   ESCAPE CLOSES MODALS
+   24) ESCAPE CLOSES MODALS
 ===================================================== */
 
 document.addEventListener(
@@ -1530,7 +1689,7 @@ document.addEventListener(
 
 
 /* =====================================================
-   SKILL BAR ANIMATION ON SCROLL
+   25) SKILL BAR ANIMATION
 ===================================================== */
 
 const skillBars =
@@ -1551,6 +1710,7 @@ if ("IntersectionObserver" in window) {
 
             entry.target.style.width =
               entry.target.dataset.width;
+
 
             skillObserver.unobserve(
               entry.target
@@ -1575,7 +1735,7 @@ if ("IntersectionObserver" in window) {
 
 
 /* =====================================================
-   SCROLL REVEAL
+   26) SCROLL REVEAL
 ===================================================== */
 
 if ("IntersectionObserver" in window) {
@@ -1593,6 +1753,7 @@ if ("IntersectionObserver" in window) {
             entry.target.classList.add(
               "visible"
             );
+
 
             revealObserver.unobserve(
               entry.target
@@ -1617,7 +1778,7 @@ if ("IntersectionObserver" in window) {
 
 
 /* =====================================================
-   ACTIVE NAVIGATION
+   27) ACTIVE NAVIGATION
 ===================================================== */
 
 const sectionIds = [
@@ -1635,6 +1796,7 @@ function updateActiveNav() {
 
   const scrollPoint =
     window.scrollY + 170;
+
 
   let current =
     "home";
@@ -1685,7 +1847,7 @@ updateActiveNav();
 
 
 /* =====================================================
-   CONTACT
+   28) CONTACT EMAIL
 ===================================================== */
 
 const displayEmail =
@@ -1704,6 +1866,7 @@ if (
     displayEmail.textContent =
       PORTFOLIO.email;
 
+
     displayEmail.setAttribute(
       "href",
       `mailto:${PORTFOLIO.email}`
@@ -1713,6 +1876,10 @@ if (
 
 }
 
+
+/* =====================================================
+   29) CONTACT PHONE
+===================================================== */
 
 const displayPhone =
   $("#displayPhone");
@@ -1726,6 +1893,7 @@ if (
   displayPhone.textContent =
     PORTFOLIO.phone;
 
+
   displayPhone.setAttribute(
     "href",
     `tel:${PORTFOLIO.phone}`
@@ -1733,6 +1901,10 @@ if (
 
 }
 
+
+/* =====================================================
+   30) CONTACT LOCATION
+===================================================== */
 
 const displayLocation =
   $("#displayLocation");
@@ -1750,7 +1922,7 @@ if (
 
 
 /* =====================================================
-   LINKEDIN
+   31) LINKEDIN
 ===================================================== */
 
 const linkedinLinks =
@@ -1762,11 +1934,17 @@ linkedinLinks.forEach(link => {
   link.href =
     PORTFOLIO.linkedin;
 
+  link.target =
+    "_blank";
+
+  link.rel =
+    "noopener noreferrer";
+
 });
 
 
 /* =====================================================
-   CONTACT FORM
+   32) CONTACT FORM
 ===================================================== */
 
 $("#contactForm")
@@ -1866,7 +2044,7 @@ $("#contactForm")
 
 
 /* =====================================================
-   YEAR
+   33) CURRENT YEAR
 ===================================================== */
 
 const yearElement =
@@ -1882,7 +2060,7 @@ if (yearElement) {
 
 
 /* =====================================================
-   TOAST
+   34) TOAST
 ===================================================== */
 
 let toastTimer;
@@ -1927,7 +2105,7 @@ function showToast(message) {
 
 
 /* =====================================================
-   SAFETY NET FOR INTERNAL LINKS
+   35) INTERNAL LINK SAFETY
 ===================================================== */
 
 $$('a[href^="#"]')
@@ -1947,7 +2125,9 @@ $$('a[href^="#"]')
           !href ||
           href === "#"
         ) {
+
           return;
+
         }
 
 
@@ -1975,9 +2155,12 @@ $$('a[href^="#"]')
 
 
 /* =====================================================
-   DEBUG INFORMATION
-   Open browser console with F12
+   36) CERTIFICATE DEBUG SYSTEM
 ===================================================== */
+
+console.log(
+  "=============================================="
+);
 
 console.log(
   "Syeda Ameena Najaf Portfolio loaded successfully."
@@ -1987,4 +2170,19 @@ console.log(
   "Certificate system:",
   certificates.length,
   "certificates configured."
+);
+
+certificates.forEach((certificate, index) => {
+
+  console.log(
+    `Certificate ${index + 1}:`,
+    certificate.title,
+    "| Primary:",
+    certificate.image
+  );
+
+});
+
+console.log(
+  "=============================================="
 );
