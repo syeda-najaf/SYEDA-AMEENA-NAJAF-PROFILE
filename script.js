@@ -1,6 +1,6 @@
 /* =====================================================
    SYEDA AMEENA NAJAF — PORTFOLIO
-   All editable content lives at the top of this file.
+   Complete Portfolio JavaScript
 ===================================================== */
 
 
@@ -21,6 +21,7 @@ const PORTFOLIO = {
 ===================================================== */
 
 const projects = [
+
   {
     title: "Autonomous Network Attack Detection System",
     category: "ai",
@@ -40,7 +41,7 @@ const projects = [
     category: "ai",
     icon: "📷",
     description:
-      "An intelligent license-plate recognition system combining OCR and template matching, with Selenium automating vehicle-detail lookups. Published in the Journal of Scientific Research and Technology (impact factor 5.2).",
+      "An intelligent license-plate recognition system combining OCR and template matching, with Selenium automating vehicle-detail lookups. Published in the Journal of Scientific Research and Technology.",
     technologies: [
       "Python",
       "OpenCV",
@@ -110,6 +111,7 @@ const projects = [
     focus: "Frontend engineering",
     url: "https://syeda-educ-center.vercel.app"
   }
+
 ];
 
 
@@ -118,6 +120,7 @@ const projects = [
 ===================================================== */
 
 const experience = [
+
   {
     date: "07/2025 — 06/2026",
     role: "Web Developer",
@@ -187,6 +190,7 @@ const experience = [
       "Scored 75.81% and earned Certificate of Achievement (ID: 250671527SN)"
     ]
   }
+
 ];
 
 
@@ -195,6 +199,7 @@ const experience = [
 ===================================================== */
 
 const education = [
+
   {
     date: "2021 — 2025",
     degree:
@@ -204,6 +209,7 @@ const education = [
     description:
       "Kalaburagi, Karnataka"
   }
+
 ];
 
 
@@ -212,8 +218,10 @@ const education = [
 ===================================================== */
 
 const skillGroups = [
+
   {
     group: "Languages",
+
     skills: [
       {
         name: "Python",
@@ -236,6 +244,7 @@ const skillGroups = [
 
   {
     group: "Frameworks & Libraries",
+
     skills: [
       {
         name: "React",
@@ -254,6 +263,7 @@ const skillGroups = [
 
   {
     group: "Security",
+
     skills: [
       {
         name: "Vulnerability Assessment",
@@ -272,6 +282,7 @@ const skillGroups = [
 
   {
     group: "AI / ML & Cloud",
+
     skills: [
       {
         name: "Machine Learning",
@@ -287,13 +298,17 @@ const skillGroups = [
       }
     ]
   }
+
 ];
 
 
 /* =====================================================
    6) CERTIFICATES
-   Actual images from:
+   IMPORTANT:
+   Put your actual certificate images inside:
+
    assets/certificates/
+
 ===================================================== */
 
 const certificates = [
@@ -306,8 +321,19 @@ const certificates = [
       "Published in the Journal of Scientific Research and Technology (JSRT), 2025 · Impact Factor 5.2",
 
     image:
-      "assets/certificates/publish researchpaper.png"
+      "assets/certificates/publish researchpaper.png",
+
+    alternatives: [
+      "assets/certificates/publish researchpaper.png",
+      "assets/certificates/publish-researchpaper.png",
+      "assets/certificates/publish_researchpaper.png",
+      "assets/certificates/researchpaper.png",
+      "assets/certificates/research paper.png",
+      "assets/certificates/Research Paper.png",
+      "assets/certificates/Published Research.png"
+    ]
   },
+
 
   {
     title:
@@ -317,8 +343,19 @@ const certificates = [
       "Issued by Saylor Academy, 2025 · Certificate ID: 250671527SN",
 
     image:
-      "assets/certificates/Software Engineering (CS302).png"
+      "assets/certificates/Software Engineering (CS302).png",
+
+    alternatives: [
+      "assets/certificates/Software Engineering (CS302).png",
+      "assets/certificates/Software Engineering CS302.png",
+      "assets/certificates/software engineering (CS302).png",
+      "assets/certificates/software-engineering-cs302.png",
+      "assets/certificates/software-engineering.png",
+      "assets/certificates/Software Engineering.png",
+      "assets/certificates/CS302.png"
+    ]
   },
+
 
   {
     title:
@@ -328,8 +365,18 @@ const certificates = [
       "Issued by AWS via Forage, 2025",
 
     image:
-      "assets/certificates/aws-solutions-architecture.png"
+      "assets/certificates/aws-solutions-architecture.png",
+
+    alternatives: [
+      "assets/certificates/aws-solutions-architecture.png",
+      "assets/certificates/AWS Solutions Architecture.png",
+      "assets/certificates/aws solutions architecture.png",
+      "assets/certificates/AWS.png",
+      "assets/certificates/aws.png",
+      "assets/certificates/AWS Solutions Architecture Certificate.png"
+    ]
   },
+
 
   {
     title:
@@ -339,8 +386,19 @@ const certificates = [
       "Issued by Deloitte (Forage), 2025",
 
     image:
-      "assets/certificates/deloitte-cyber.png"
+      "assets/certificates/deloitte-cyber.png",
+
+    alternatives: [
+      "assets/certificates/deloitte-cyber.png",
+      "assets/certificates/Deloitte Cyber.png",
+      "assets/certificates/deloitte cyber.png",
+      "assets/certificates/Deloitte.png",
+      "assets/certificates/deloitte.png",
+      "assets/certificates/Deloitte Cybersecurity.png",
+      "assets/certificates/Deloitte Cybersecurity Certificate.png"
+    ]
   },
+
 
   {
     title:
@@ -349,12 +407,19 @@ const certificates = [
     description:
       "Issued by Tata Group (Forage), 2025",
 
-    /*
-      No separate Tata certificate image was visible
-      in the certificates folder screenshot.
-    */
-    image: ""
+    image: "",
+
+    alternatives: [
+      "assets/certificates/tata-cyber.png",
+      "assets/certificates/Tata Cyber.png",
+      "assets/certificates/tata cyber.png",
+      "assets/certificates/Tata.png",
+      "assets/certificates/tata.png",
+      "assets/certificates/Tata Cybersecurity.png",
+      "assets/certificates/Tata Group.png"
+    ]
   },
+
 
   {
     title:
@@ -364,8 +429,20 @@ const certificates = [
       "Internship project issued by ADVI Group of Companies, 2025",
 
     image:
-      "assets/certificates/Autonomous Network Attack Detection System.png"
+      "assets/certificates/Autonomous Network Attack Detection System.png",
+
+    alternatives: [
+      "assets/certificates/Autonomous Network Attack Detection System.png",
+      "assets/certificates/Autonomous Network Attack Detection System.jpg",
+      "assets/certificates/Autonomous Network Attack Detection System.jpeg",
+      "assets/certificates/autonomous network attack detection system.png",
+      "assets/certificates/Autonomous Network Attack Detection.png",
+      "assets/certificates/Network Attack Detection.png",
+      "assets/certificates/ADVI.png",
+      "assets/certificates/ADVI Certificate.png"
+    ]
   }
+
 ];
 
 
@@ -445,7 +522,7 @@ $$(
 
 
 /* =====================================================
-   DECRYPT-STYLE HERO NAME ANIMATION
+   DECRYPT STYLE HERO NAME ANIMATION
 ===================================================== */
 
 function decryptReveal(el) {
@@ -465,7 +542,6 @@ function decryptReveal(el) {
   function tick() {
 
     let output = "";
-
 
     for (
       let i = 0;
@@ -531,6 +607,7 @@ function decryptReveal(el) {
 
 
   requestAnimationFrame(tick);
+
 }
 
 
@@ -666,10 +743,11 @@ const projectsGrid =
 
 function escapeAttr(value) {
 
-  return value.replaceAll(
-    '"',
-    "&quot;"
-  );
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
 
 }
 
@@ -771,9 +849,11 @@ function renderProjects(filter = "all") {
       button.addEventListener(
         "click",
         () => {
+
           openProject(
             button.dataset.project
           );
+
         }
       );
 
@@ -867,6 +947,7 @@ function openProject(title) {
   if (project.url) {
 
     modalLive.innerHTML = `
+
       <a
         href="${project.url}"
         target="_blank"
@@ -874,6 +955,7 @@ function openProject(title) {
       >
         View live project ↗
       </a>
+
     `;
 
     modalLive.style.display =
@@ -1091,6 +1173,173 @@ if (certificateGrid) {
 
 
 /* =====================================================
+   CERTIFICATE IMAGE LOADER
+   Automatically tries alternative filenames
+===================================================== */
+
+function loadCertificateImage(cert, preview) {
+
+  if (!preview) return;
+
+
+  const candidates = [];
+
+
+  if (cert.image) {
+    candidates.push(cert.image);
+  }
+
+
+  if (Array.isArray(cert.alternatives)) {
+
+    cert.alternatives.forEach(path => {
+
+      if (!candidates.includes(path)) {
+        candidates.push(path);
+      }
+
+    });
+
+  }
+
+
+  if (candidates.length === 0) {
+
+    showCertificateMissing(
+      preview,
+      cert.title
+    );
+
+    return;
+
+  }
+
+
+  let currentIndex = 0;
+
+
+  function tryNextImage() {
+
+    if (currentIndex >= candidates.length) {
+
+      showCertificateMissing(
+        preview,
+        cert.title
+      );
+
+      return;
+
+    }
+
+
+    const path =
+      candidates[currentIndex];
+
+    currentIndex++;
+
+
+    const img =
+      document.createElement("img");
+
+
+    img.className =
+      "certificate-preview-image";
+
+
+    img.alt =
+      cert.title;
+
+
+    img.onload = () => {
+
+      preview.innerHTML = "";
+
+      preview.appendChild(img);
+
+    };
+
+
+    img.onerror = () => {
+
+      tryNextImage();
+
+    };
+
+
+    /*
+      encodeURI keeps the folder structure
+      while safely handling spaces.
+    */
+
+    img.src =
+      encodeURI(path);
+
+  }
+
+
+  tryNextImage();
+
+}
+
+
+/* =====================================================
+   CERTIFICATE MISSING MESSAGE
+===================================================== */
+
+function showCertificateMissing(
+  preview,
+  title
+) {
+
+  preview.innerHTML = `
+
+    <div class="preview-placeholder">
+
+      <div style="
+        font-size:42px;
+        margin-bottom:15px;
+      ">
+        🖼️
+      </div>
+
+      <strong>
+        Certificate image could not be found.
+      </strong>
+
+      <p style="
+        margin-top:12px;
+        line-height:1.7;
+      ">
+        Make sure the certificate image
+        is inside:
+      </p>
+
+      <code style="
+        display:inline-block;
+        margin-top:8px;
+        padding:10px 14px;
+        border-radius:8px;
+        background:rgba(255,255,255,.08);
+      ">
+        assets/certificates/
+      </code>
+
+      <p style="
+        margin-top:15px;
+        opacity:.7;
+      ">
+        Certificate:
+        ${title}
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
    OPEN CERTIFICATE
 ===================================================== */
 
@@ -1131,40 +1380,41 @@ function openCertificate(index) {
 
   if (preview) {
 
-    /* -----------------------------------------------
-       ACTUAL CERTIFICATE IMAGE
-    ------------------------------------------------ */
+    /*
+      Show loading state first.
+    */
 
-    if (cert.image) {
+    preview.innerHTML = `
 
-      preview.innerHTML = `
+      <div class="preview-placeholder">
 
-        <img
-          src="${cert.image}"
-          alt="${cert.title}"
-          class="certificate-preview-image"
-          onerror="certificateImageError(this)"
-        >
-
-      `;
-
-    }
-
-    else {
-
-      preview.innerHTML = `
-
-        <div class="preview-placeholder">
-
-          <span>
-            Certificate image is not available.
-          </span>
-
+        <div style="
+          font-size:32px;
+          margin-bottom:12px;
+        ">
+          ⏳
         </div>
 
-      `;
+        Loading certificate...
 
-    }
+      </div>
+
+    `;
+
+
+    /*
+      Give modal time to appear,
+      then load image.
+    */
+
+    setTimeout(() => {
+
+      loadCertificateImage(
+        cert,
+        preview
+      );
+
+    }, 50);
 
   }
 
@@ -1183,41 +1433,6 @@ function openCertificate(index) {
   document.body.classList.add(
     "no-scroll"
   );
-
-}
-
-
-/* =====================================================
-   CERTIFICATE IMAGE ERROR
-===================================================== */
-
-function certificateImageError(image) {
-
-  const preview =
-    image.parentElement;
-
-
-  preview.innerHTML = `
-
-    <div class="preview-placeholder">
-
-      <strong>
-        Certificate image could not be found.
-      </strong>
-
-      <br><br>
-
-      Check that the image is inside:
-
-      <br>
-
-      <b>
-        assets/certificates/
-      </b>
-
-    </div>
-
-  `;
 
 }
 
@@ -1246,23 +1461,34 @@ function closeCertificate() {
 }
 
 
-$$(".certificate-open")
-  .forEach(button => {
+/* =====================================================
+   CERTIFICATE BUTTON EVENTS
+===================================================== */
 
-    button.addEventListener(
-      "click",
-      () => {
+function attachCertificateEvents() {
 
-        openCertificate(
-          Number(
-            button.dataset.cert
-          )
-        );
+  $$(".certificate-open")
+    .forEach(button => {
 
-      }
-    );
+      button.addEventListener(
+        "click",
+        () => {
 
-  });
+          openCertificate(
+            Number(
+              button.dataset.cert
+            )
+          );
+
+        }
+      );
+
+    });
+
+}
+
+
+attachCertificateEvents();
 
 
 $("#certificateClose")
@@ -1524,6 +1750,22 @@ if (
 
 
 /* =====================================================
+   LINKEDIN
+===================================================== */
+
+const linkedinLinks =
+  $$('a[href*="linkedin"]');
+
+
+linkedinLinks.forEach(link => {
+
+  link.href =
+    PORTFOLIO.linkedin;
+
+});
+
+
+/* =====================================================
    CONTACT FORM
 ===================================================== */
 
@@ -1569,13 +1811,15 @@ $("#contactForm")
         if (note) {
 
           note.textContent =
-            "Add your real email in script.js first. The form is ready, but it needs your destination address.";
+            "Add your real email in script.js first.";
 
         }
+
 
         showToast(
           "Add your email in script.js"
         );
+
 
         return;
 
@@ -1699,6 +1943,14 @@ $$('a[href^="#"]')
           );
 
 
+        if (
+          !href ||
+          href === "#"
+        ) {
+          return;
+        }
+
+
         const target =
           document.querySelector(
             href
@@ -1720,3 +1972,19 @@ $$('a[href^="#"]')
     );
 
   });
+
+
+/* =====================================================
+   DEBUG INFORMATION
+   Open browser console with F12
+===================================================== */
+
+console.log(
+  "Syeda Ameena Najaf Portfolio loaded successfully."
+);
+
+console.log(
+  "Certificate system:",
+  certificates.length,
+  "certificates configured."
+);
