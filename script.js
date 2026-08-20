@@ -3,7 +3,11 @@
    All editable content lives at the top of this file.
 ===================================================== */
 
-/* 1) CONTACT DETAILS */
+
+/* =====================================================
+   1) CONTACT DETAILS
+===================================================== */
+
 const PORTFOLIO = {
   email: "syedanajaf832@gmail.com",
   phone: "09538090817",
@@ -23,7 +27,11 @@ const projects = [
     icon: "🤖",
     description:
       "A real-time, AI-based intrusion detection system trained on cybersecurity datasets from Kaggle, integrated with a custom Telegram bot that alerts on malicious traffic patterns — cutting response time by 30% versus manual monitoring.",
-    technologies: ["Python", "Machine Learning", "Telegram API"],
+    technologies: [
+      "Python",
+      "Machine Learning",
+      "Telegram API"
+    ],
     focus: "AI-driven network attack detection"
   },
 
@@ -33,7 +41,12 @@ const projects = [
     icon: "📷",
     description:
       "An intelligent license-plate recognition system combining OCR and template matching, with Selenium automating vehicle-detail lookups. Published in the Journal of Scientific Research and Technology (impact factor 5.2).",
-    technologies: ["Python", "OpenCV", "OCR", "Selenium"],
+    technologies: [
+      "Python",
+      "OpenCV",
+      "OCR",
+      "Selenium"
+    ],
     focus: "Computer vision & published research"
   },
 
@@ -62,7 +75,11 @@ const projects = [
     icon: "🧪",
     description:
       "A scanner for identifying SQL injection, XSS and other OWASP vulnerabilities in web applications, built with a modular architecture for extensibility and automation.",
-    technologies: ["Python", "Requests", "BeautifulSoup"],
+    technologies: [
+      "Python",
+      "Requests",
+      "BeautifulSoup"
+    ],
     focus: "Web vulnerability assessment"
   },
 
@@ -72,7 +89,11 @@ const projects = [
     icon: "🔐",
     description:
       "A visually interactive tool for AES-256 file encryption and decryption, with an animated frontend and a GitHub-ready build.",
-    technologies: ["Python", "PyCryptodome", "JavaScript"],
+    technologies: [
+      "Python",
+      "PyCryptodome",
+      "JavaScript"
+    ],
     focus: "Applied cryptography"
   },
 
@@ -82,7 +103,10 @@ const projects = [
     icon: "💻",
     description:
       "An interactive, animated e-learning platform with a clean UI and modular architecture, deployed live on Vercel.",
-    technologies: ["React.js", "Vercel"],
+    technologies: [
+      "React.js",
+      "Vercel"
+    ],
     focus: "Frontend engineering",
     url: "https://syeda-educ-center.vercel.app"
   }
@@ -97,7 +121,8 @@ const experience = [
   {
     date: "07/2025 — 06/2026",
     role: "Web Developer",
-    company: "Excellence College of Health & Safety Engineering · Hyderabad, Telangana",
+    company:
+      "Excellence College of Health & Safety Engineering · Hyderabad, Telangana",
     bullets: [
       "Developing secure web applications using React and Flask"
     ]
@@ -106,7 +131,8 @@ const experience = [
   {
     date: "01/2025 — 03/2025",
     role: "Cyber Security Intern",
-    company: "ADVI Group of Companies · Hyderabad, Telangana",
+    company:
+      "ADVI Group of Companies · Hyderabad, Telangana",
     bullets: [
       "Developed an Autonomous Network Attack Detection System using Python",
       "Integrated Telegram Bot alerts, reducing incident response time by 30%",
@@ -117,7 +143,8 @@ const experience = [
   {
     date: "03/2025 — 04/2025",
     role: "Cybersecurity Trainee",
-    company: "CodTech IT Solutions · Virtual, Remote",
+    company:
+      "CodTech IT Solutions · Virtual, Remote",
     bullets: [
       "Participated in 3+ national-level hackathons and security challenges",
       "Worked on real-time project modules including web vulnerability scanners",
@@ -128,7 +155,8 @@ const experience = [
   {
     date: "05/2024 — 06/2024",
     role: "Cybersecurity Analyst Intern",
-    company: "Tata Group (Forage Virtual Internship) · Virtual, Remote",
+    company:
+      "Tata Group (Forage Virtual Internship) · Virtual, Remote",
     bullets: [
       "Completed a structured simulation involving cybersecurity investigations",
       "Assessed vulnerabilities and recommended secure architecture practices",
@@ -139,7 +167,8 @@ const experience = [
   {
     date: "06/2025",
     role: "Cybersecurity Consultant Intern",
-    company: "Deloitte (Forage Virtual Internship) · Virtual, Remote",
+    company:
+      "Deloitte (Forage Virtual Internship) · Virtual, Remote",
     bullets: [
       "Conducted risk assessments and developed client-facing cyber reports",
       "Simulated threat modeling and third-party risk management",
@@ -150,7 +179,8 @@ const experience = [
   {
     date: "07/2025",
     role: "Software Engineering Certificate Trainee",
-    company: "Saylor Academy · Virtual, Remote",
+    company:
+      "Saylor Academy · Virtual, Remote",
     bullets: [
       "Completed a 36-hour self-paced Software Engineering (CS302) course",
       "Gained knowledge in SDLC, system architecture, debugging and testing",
@@ -171,7 +201,8 @@ const education = [
       "Bachelor of Engineering (B.E) — Computer Science Engineering",
     institution:
       "Khaja Bandanawaz College of Engineering, Khaja Bandanawaz University",
-    description: "Kalaburagi, Karnataka"
+    description:
+      "Kalaburagi, Karnataka"
   }
 ];
 
@@ -184,37 +215,76 @@ const skillGroups = [
   {
     group: "Languages",
     skills: [
-      { name: "Python", value: 88 },
-      { name: "JavaScript", value: 80 },
-      { name: "SQL", value: 75 },
-      { name: "HTML / CSS", value: 82 }
+      {
+        name: "Python",
+        value: 88
+      },
+      {
+        name: "JavaScript",
+        value: 80
+      },
+      {
+        name: "SQL",
+        value: 75
+      },
+      {
+        name: "HTML / CSS",
+        value: 82
+      }
     ]
   },
 
   {
     group: "Frameworks & Libraries",
     skills: [
-      { name: "React", value: 80 },
-      { name: "Flask", value: 78 },
-      { name: "Bootstrap / Laravel", value: 70 }
+      {
+        name: "React",
+        value: 80
+      },
+      {
+        name: "Flask",
+        value: 78
+      },
+      {
+        name: "Bootstrap / Laravel",
+        value: 70
+      }
     ]
   },
 
   {
     group: "Security",
     skills: [
-      { name: "Vulnerability Assessment", value: 80 },
-      { name: "Penetration Testing", value: 76 },
-      { name: "Cryptography (AES-256)", value: 78 }
+      {
+        name: "Vulnerability Assessment",
+        value: 80
+      },
+      {
+        name: "Penetration Testing",
+        value: 76
+      },
+      {
+        name: "Cryptography (AES-256)",
+        value: 78
+      }
     ]
   },
 
   {
     group: "AI / ML & Cloud",
     skills: [
-      { name: "Machine Learning", value: 78 },
-      { name: "Computer Vision (OpenCV)", value: 76 },
-      { name: "AWS Solutions Architecture", value: 65 }
+      {
+        name: "Machine Learning",
+        value: 78
+      },
+      {
+        name: "Computer Vision (OpenCV)",
+        value: 76
+      },
+      {
+        name: "AWS Solutions Architecture",
+        value: 65
+      }
     ]
   }
 ];
@@ -222,58 +292,74 @@ const skillGroups = [
 
 /* =====================================================
    6) CERTIFICATES
-   IMAGES ARE FROM:
+   Actual images from:
    assets/certificates/
 ===================================================== */
 
 const certificates = [
 
   {
-    title: "Published Research — License Plate Recognition using OpenCV",
+    title:
+      "Published Research — License Plate Recognition using OpenCV",
+
     description:
       "Published in the Journal of Scientific Research and Technology (JSRT), 2025 · Impact Factor 5.2",
 
-    image: "assets/certificates/publish researcher.png"
+    image:
+      "assets/certificates/publish researchpaper.png"
   },
 
   {
-    title: "Software Engineering (CS302)",
+    title:
+      "Software Engineering (CS302)",
+
     description:
       "Issued by Saylor Academy, 2025 · Certificate ID: 250671527SN",
 
-    image: "assets/certificates/Software Engineering (CS302).png"
+    image:
+      "assets/certificates/Software Engineering (CS302).png"
   },
 
   {
-    title: "AWS Cloud Computing — Solutions Architecture",
+    title:
+      "AWS Cloud Computing — Solutions Architecture",
+
     description:
       "Issued by AWS via Forage, 2025",
 
-    image: "assets/certificates/aws-solutions-architecture.png"
+    image:
+      "assets/certificates/aws-solutions-architecture.png"
   },
 
   {
-    title: "Cybersecurity Virtual Internship",
+    title:
+      "Cybersecurity Virtual Internship",
+
     description:
       "Issued by Deloitte (Forage), 2025",
 
-    image: "assets/certificates/deloitte-cyber.png"
+    image:
+      "assets/certificates/deloitte-cyber.png"
   },
 
   {
-    title: "Cybersecurity Analyst Program",
+    title:
+      "Cybersecurity Analyst Program",
+
     description:
       "Issued by Tata Group (Forage), 2025",
 
     /*
-      This image is not present in the folder shown
-      in your screenshot, so it is intentionally left empty.
+      No separate Tata certificate image was visible
+      in the certificates folder screenshot.
     */
     image: ""
   },
 
   {
-    title: "Autonomous Network Attack Detection System",
+    title:
+      "Autonomous Network Attack Detection System",
+
     description:
       "Internship project issued by ADVI Group of Companies, 2025",
 
@@ -299,9 +385,17 @@ const $$ = (selector, parent = document) =>
 ===================================================== */
 
 window.addEventListener("load", () => {
+
   setTimeout(() => {
-    $("#loader")?.classList.add("hidden");
+
+    const loader = $("#loader");
+
+    if (loader) {
+      loader.classList.add("hidden");
+    }
+
   }, 700);
+
 });
 
 
@@ -313,14 +407,18 @@ const menuToggle = $("#menuToggle");
 const mobileMenu = $("#mobileMenu");
 
 menuToggle?.addEventListener("click", () => {
-  const isOpen = mobileMenu.classList.toggle("open");
+
+  const isOpen =
+    mobileMenu?.classList.toggle("open");
 
   menuToggle.setAttribute(
     "aria-expanded",
     String(isOpen)
   );
 
-  menuToggle.textContent = isOpen ? "×" : "☰";
+  menuToggle.textContent =
+    isOpen ? "×" : "☰";
+
 });
 
 
@@ -353,8 +451,7 @@ $$(
 function decryptReveal(el) {
 
   const target =
-    el.dataset.value ||
-    el.textContent;
+    el.dataset.value || el.textContent;
 
   const glyphs =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*";
@@ -364,9 +461,11 @@ function decryptReveal(el) {
   const totalFrames =
     target.length * 3;
 
+
   function tick() {
 
     let output = "";
+
 
     for (
       let i = 0;
@@ -377,15 +476,20 @@ function decryptReveal(el) {
       const charProgress =
         frame - i * 2;
 
+
       if (target[i] === " ") {
 
         output += " ";
 
-      } else if (charProgress < 0) {
+      }
+
+      else if (charProgress < 0) {
 
         output += " ";
 
-      } else if (charProgress < 6) {
+      }
+
+      else if (charProgress < 6) {
 
         output +=
           glyphs[
@@ -395,7 +499,9 @@ function decryptReveal(el) {
             )
           ];
 
-      } else {
+      }
+
+      else {
 
         output += target[i];
 
@@ -403,15 +509,19 @@ function decryptReveal(el) {
 
     }
 
+
     el.textContent = output;
 
     frame++;
+
 
     if (frame < totalFrames) {
 
       requestAnimationFrame(tick);
 
-    } else {
+    }
+
+    else {
 
       el.textContent = target;
 
@@ -419,18 +529,21 @@ function decryptReveal(el) {
 
   }
 
+
   requestAnimationFrame(tick);
 }
 
 
-const decryptEl = $("#decryptName");
+const decryptEl =
+  $("#decryptName");
 
 if (decryptEl) {
 
-  setTimeout(
-    () => decryptReveal(decryptEl),
-    500
-  );
+  setTimeout(() => {
+
+    decryptReveal(decryptEl);
+
+  }, 500);
 
 }
 
@@ -456,15 +569,19 @@ function animateCounters() {
         Math.ceil(target / 30)
       );
 
+
     const run = () => {
 
       current += step;
+
 
       if (current >= target) {
 
         el.textContent = target;
 
-      } else {
+      }
+
+      else {
 
         el.textContent = current;
 
@@ -473,6 +590,7 @@ function animateCounters() {
       }
 
     };
+
 
     run();
 
@@ -491,52 +609,49 @@ setTimeout(
    RENDER SKILLS
 ===================================================== */
 
-const skillsGrid = $("#skillsGrid");
+const skillsGrid =
+  $("#skillsGrid");
 
 if (skillsGrid) {
 
   skillsGrid.innerHTML =
-    skillGroups
-      .map(group => `
+    skillGroups.map(group => `
 
-        <div class="skill-group">
+      <div class="skill-group">
 
-          <h3>${group.group}</h3>
+        <h3>${group.group}</h3>
 
-          ${group.skills
-            .map(skill => `
+        ${group.skills.map(skill => `
 
-              <div class="skill-row">
+          <div class="skill-row">
 
-                <div class="skill-row-head">
+            <div class="skill-row-head">
 
-                  <span>
-                    ${skill.name}
-                  </span>
+              <span>
+                ${skill.name}
+              </span>
 
-                  <span>
-                    ${skill.value}%
-                  </span>
+              <span>
+                ${skill.value}%
+              </span>
 
-                </div>
+            </div>
 
-                <div class="track">
+            <div class="track">
 
-                  <i
-                    data-width="${skill.value}%">
-                  </i>
+              <i
+                data-width="${skill.value}%"
+              ></i>
 
-                </div>
+            </div>
 
-              </div>
+          </div>
 
-            `)
-            .join("")}
+        `).join("")}
 
-        </div>
+      </div>
 
-      `)
-      .join("");
+    `).join("");
 
 }
 
@@ -549,9 +664,20 @@ const projectsGrid =
   $("#projectsGrid");
 
 
+function escapeAttr(value) {
+
+  return value.replaceAll(
+    '"',
+    "&quot;"
+  );
+
+}
+
+
 function renderProjects(filter = "all") {
 
   if (!projectsGrid) return;
+
 
   const visible =
     filter === "all"
@@ -563,80 +689,80 @@ function renderProjects(filter = "all") {
 
 
   projectsGrid.innerHTML =
-    visible
-      .map(
-        (project, index) => `
+    visible.map(
+      (project, index) => `
 
-          <article
-            class="project-card reveal visible">
+      <article
+        class="project-card reveal visible"
+      >
 
-            <div class="project-top">
+        <div class="project-top">
 
-              <div class="project-icon">
-                ${project.icon}
-              </div>
+          <div class="project-icon">
+            ${project.icon}
+          </div>
 
-              <span class="project-index">
-                ${String(index + 1).padStart(2, "0")}
-              </span>
+          <span class="project-index">
+            ${String(index + 1).padStart(2, "0")}
+          </span>
 
-            </div>
+        </div>
 
-            <h3>
-              ${project.title}
-            </h3>
 
-            <p>
-              ${project.description}
-            </p>
+        <h3>
+          ${project.title}
+        </h3>
 
-            <div class="tag-list">
 
-              ${project.technologies
-                .slice(0, 4)
-                .map(
-                  tag =>
-                    `<span class="tag">${tag}</span>`
-                )
-                .join("")}
+        <p>
+          ${project.description}
+        </p>
 
-            </div>
 
-            <div class="project-actions">
+        <div class="tag-list">
 
-              <button
-                class="project-open"
-                data-project="${escapeAttr(
-                  project.title
-                )}">
+          ${project.technologies
+            .slice(0, 4)
+            .map(
+              tag =>
+                `<span class="tag">${tag}</span>`
+            )
+            .join("")}
 
-                View full details →
+        </div>
 
-              </button>
 
-              ${
-                project.url
-                  ? `
-                    <a
-                      class="project-live"
-                      href="${project.url}"
-                      target="_blank"
-                      rel="noopener">
+        <div class="project-actions">
 
-                      Live ↗
+          <button
+            class="project-open"
+            data-project="${escapeAttr(project.title)}"
+          >
+            View full details →
+          </button>
 
-                    </a>
-                  `
-                  : ""
-              }
 
-            </div>
+          ${
+            project.url
+              ? `
+                <a
+                  class="project-live"
+                  href="${project.url}"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Live ↗
+                </a>
+              `
+              : ""
+          }
 
-          </article>
+        </div>
 
-        `
-      )
-      .join("");
+      </article>
+
+    `
+    ).join("");
 
 
   $$(".project-open", projectsGrid)
@@ -644,23 +770,14 @@ function renderProjects(filter = "all") {
 
       button.addEventListener(
         "click",
-        () =>
+        () => {
           openProject(
             button.dataset.project
-          )
+          );
+        }
       );
 
     });
-
-}
-
-
-function escapeAttr(value) {
-
-  return value.replaceAll(
-    '"',
-    "&quot;"
-  );
 
 }
 
@@ -678,16 +795,19 @@ $$(".filter").forEach(button => {
     "click",
     () => {
 
-      $$(".filter")
-        .forEach(btn =>
-          btn.classList.remove(
-            "active"
-          )
+      $$(".filter").forEach(btn => {
+
+        btn.classList.remove(
+          "active"
         );
+
+      });
+
 
       button.classList.add(
         "active"
       );
+
 
       renderProjects(
         button.dataset.filter
@@ -715,23 +835,27 @@ function openProject(title) {
         item.title === title
     );
 
+
   if (!project) return;
 
 
   $("#modalTitle").textContent =
     project.title;
 
+
   $("#modalDescription").textContent =
     project.description;
+
 
   $("#modalFocus").textContent =
     project.focus;
 
+
   $("#modalTags").innerHTML =
     project.technologies
       .map(
-        t =>
-          `<span class="tag">${t}</span>`
+        tag =>
+          `<span class="tag">${tag}</span>`
       )
       .join("");
 
@@ -746,17 +870,18 @@ function openProject(title) {
       <a
         href="${project.url}"
         target="_blank"
-        rel="noopener">
-
+        rel="noopener"
+      >
         View live project ↗
-
       </a>
     `;
 
     modalLive.style.display =
       "block";
 
-  } else {
+  }
+
+  else {
 
     modalLive.innerHTML = "";
 
@@ -770,10 +895,12 @@ function openProject(title) {
     "open"
   );
 
+
   projectModal?.setAttribute(
     "aria-hidden",
     "false"
   );
+
 
   document.body.classList.add(
     "no-scroll"
@@ -788,10 +915,12 @@ function closeProject() {
     "open"
   );
 
+
   projectModal?.setAttribute(
     "aria-hidden",
     "true"
   );
+
 
   document.body.classList.remove(
     "no-scroll"
@@ -807,12 +936,14 @@ $("#modalClose")?.addEventListener(
 
 
 $$("[data-close-modal]")
-  .forEach(el =>
+  .forEach(el => {
+
     el.addEventListener(
       "click",
       closeProject
-    )
-  );
+    );
+
+  });
 
 
 /* =====================================================
@@ -826,48 +957,44 @@ const experienceList =
 if (experienceList) {
 
   experienceList.innerHTML =
-    experience
-      .map(
-        item => `
+    experience.map(item => `
 
-          <article
-            class="timeline-item reveal visible">
+      <article
+        class="timeline-item reveal visible"
+      >
 
-            <span class="timeline-dot">
-            </span>
+        <span class="timeline-dot"></span>
 
-            <div class="timeline-card">
+        <div class="timeline-card">
 
-              <span class="date-pill">
-                ${item.date}
-              </span>
+          <span class="date-pill">
+            ${item.date}
+          </span>
 
-              <h3>
-                ${item.role}
-              </h3>
+          <h3>
+            ${item.role}
+          </h3>
 
-              <h4>
-                ${item.company}
-              </h4>
+          <h4>
+            ${item.company}
+          </h4>
 
-              <ul class="timeline-bullets">
+          <ul class="timeline-bullets">
 
-                ${item.bullets
-                  .map(
-                    b =>
-                      `<li>${b}</li>`
-                  )
-                  .join("")}
+            ${item.bullets
+              .map(
+                bullet =>
+                  `<li>${bullet}</li>`
+              )
+              .join("")}
 
-              </ul>
+          </ul>
 
-            </div>
+        </div>
 
-          </article>
+      </article>
 
-        `
-      )
-      .join("");
+    `).join("");
 
 }
 
@@ -883,34 +1010,31 @@ const educationGrid =
 if (educationGrid) {
 
   educationGrid.innerHTML =
-    education
-      .map(
-        item => `
+    education.map(item => `
 
-          <article
-            class="edu-card reveal visible">
+      <article
+        class="edu-card reveal visible"
+      >
 
-            <span class="date-pill">
-              ${item.date}
-            </span>
+        <span class="date-pill">
+          ${item.date}
+        </span>
 
-            <h3>
-              ${item.degree}
-            </h3>
+        <h3>
+          ${item.degree}
+        </h3>
 
-            <h4>
-              ${item.institution}
-            </h4>
+        <h4>
+          ${item.institution}
+        </h4>
 
-            <p>
-              ${item.description}
-            </p>
+        <p>
+          ${item.description}
+        </p>
 
-          </article>
+      </article>
 
-        `
-      )
-      .join("");
+    `).join("");
 
 }
 
@@ -929,38 +1053,39 @@ const certificateModal =
 if (certificateGrid) {
 
   certificateGrid.innerHTML =
-    certificates
-      .map(
-        (item, index) => `
+    certificates.map(
+      (item, index) => `
 
-          <article
-            class="certificate-card reveal visible">
+      <article
+        class="certificate-card reveal visible"
+      >
 
-            <div class="certificate-icon">
-              ✦
-            </div>
+        <div class="certificate-icon">
+          ✦
+        </div>
 
-            <h3>
-              ${item.title}
-            </h3>
 
-            <p>
-              ${item.description}
-            </p>
+        <h3>
+          ${item.title}
+        </h3>
 
-            <button
-              class="certificate-open"
-              data-cert="${index}">
 
-              View certificate →
+        <p>
+          ${item.description}
+        </p>
 
-            </button>
 
-          </article>
+        <button
+          class="certificate-open"
+          data-cert="${index}"
+        >
+          View certificate →
+        </button>
 
-        `
-      )
-      .join("");
+      </article>
+
+    `
+    ).join("");
 
 }
 
@@ -973,6 +1098,7 @@ function openCertificate(index) {
 
   const cert =
     certificates[index];
+
 
   if (!cert) return;
 
@@ -988,62 +1114,57 @@ function openCertificate(index) {
 
 
   if (title) {
+
     title.textContent =
       cert.title;
+
   }
 
 
   if (description) {
+
     description.textContent =
       cert.description;
+
   }
 
 
-  /* ================================================
-     SHOW ACTUAL CERTIFICATE IMAGE
-  ================================================ */
+  if (preview) {
 
-  if (cert.image) {
+    /* -----------------------------------------------
+       ACTUAL CERTIFICATE IMAGE
+    ------------------------------------------------ */
 
-    preview.innerHTML = `
+    if (cert.image) {
 
-      <div class="certificate-image-wrapper">
+      preview.innerHTML = `
 
         <img
           src="${cert.image}"
           alt="${cert.title}"
-          class="certificate-image"
-          loading="lazy"
-        />
+          class="certificate-preview-image"
+          onerror="certificateImageError(this)"
+        >
 
-      </div>
+      `;
 
-    `;
+    }
 
-  } else {
+    else {
 
-    preview.innerHTML = `
+      preview.innerHTML = `
 
-      <div class="preview-placeholder">
+        <div class="preview-placeholder">
 
-        <div class="preview-icon">
-          ✦
+          <span>
+            Certificate image is not available.
+          </span>
+
         </div>
 
-        <p>
-          Certificate image not added yet.
-        </p>
+      `;
 
-        <small>
-          Add the image inside
-          <b>assets/certificates</b>
-          and update the image path
-          in script.js.
-        </small>
-
-      </div>
-
-    `;
+    }
 
   }
 
@@ -1052,14 +1173,51 @@ function openCertificate(index) {
     "open"
   );
 
+
   certificateModal?.setAttribute(
     "aria-hidden",
     "false"
   );
 
+
   document.body.classList.add(
     "no-scroll"
   );
+
+}
+
+
+/* =====================================================
+   CERTIFICATE IMAGE ERROR
+===================================================== */
+
+function certificateImageError(image) {
+
+  const preview =
+    image.parentElement;
+
+
+  preview.innerHTML = `
+
+    <div class="preview-placeholder">
+
+      <strong>
+        Certificate image could not be found.
+      </strong>
+
+      <br><br>
+
+      Check that the image is inside:
+
+      <br>
+
+      <b>
+        assets/certificates/
+      </b>
+
+    </div>
+
+  `;
 
 }
 
@@ -1074,10 +1232,12 @@ function closeCertificate() {
     "open"
   );
 
+
   certificateModal?.setAttribute(
     "aria-hidden",
     "true"
   );
+
 
   document.body.classList.remove(
     "no-scroll"
@@ -1085,10 +1245,6 @@ function closeCertificate() {
 
 }
 
-
-/* =====================================================
-   CERTIFICATE BUTTONS
-===================================================== */
 
 $$(".certificate-open")
   .forEach(button => {
@@ -1148,7 +1304,7 @@ document.addEventListener(
 
 
 /* =====================================================
-   SKILL BAR ANIMATION
+   SKILL BAR ANIMATION ON SCROLL
 ===================================================== */
 
 const skillBars =
@@ -1163,7 +1319,9 @@ if ("IntersectionObserver" in window) {
 
         entries.forEach(entry => {
 
-          if (entry.isIntersecting) {
+          if (
+            entry.isIntersecting
+          ) {
 
             entry.target.style.width =
               entry.target.dataset.width;
@@ -1183,9 +1341,8 @@ if ("IntersectionObserver" in window) {
     );
 
 
-  skillBars.forEach(
-    bar =>
-      skillObserver.observe(bar)
+  skillBars.forEach(bar =>
+    skillObserver.observe(bar)
   );
 
 }
@@ -1203,7 +1360,9 @@ if ("IntersectionObserver" in window) {
 
         entries.forEach(entry => {
 
-          if (entry.isIntersecting) {
+          if (
+            entry.isIntersecting
+          ) {
 
             entry.target.classList.add(
               "visible"
@@ -1224,9 +1383,8 @@ if ("IntersectionObserver" in window) {
     );
 
 
-  $$(".reveal").forEach(
-    el =>
-      revealObserver.observe(el)
+  $$(".reveal").forEach(el =>
+    revealObserver.observe(el)
   );
 
 }
@@ -1260,6 +1418,7 @@ function updateActiveNav() {
 
     const section =
       document.getElementById(id);
+
 
     if (
       section &&
@@ -1314,13 +1473,17 @@ if (
   )
 ) {
 
-  displayEmail.textContent =
-    PORTFOLIO.email;
+  if (displayEmail) {
 
-  displayEmail.setAttribute(
-    "href",
-    `mailto:${PORTFOLIO.email}`
-  );
+    displayEmail.textContent =
+      PORTFOLIO.email;
+
+    displayEmail.setAttribute(
+      "href",
+      `mailto:${PORTFOLIO.email}`
+    );
+
+  }
 
 }
 
@@ -1374,23 +1537,23 @@ $("#contactForm")
 
       const name =
         $("#contactName")
-          .value
-          .trim();
+          ?.value.trim() || "";
+
 
       const email =
         $("#contactEmail")
-          .value
-          .trim();
+          ?.value.trim() || "";
+
 
       const subject =
         $("#contactSubject")
-          .value
-          .trim();
+          ?.value.trim() || "";
+
 
       const message =
         $("#contactMessage")
-          .value
-          .trim();
+          ?.value.trim() || "";
+
 
       const note =
         $("#formNote");
@@ -1403,8 +1566,12 @@ $("#contactForm")
         )
       ) {
 
-        note.textContent =
-          "Add your real email in script.js first. The form is ready, but it needs your destination address.";
+        if (note) {
+
+          note.textContent =
+            "Add your real email in script.js first. The form is ready, but it needs your destination address.";
+
+        }
 
         showToast(
           "Add your email in script.js"
@@ -1416,25 +1583,35 @@ $("#contactForm")
 
 
       const body = [
+
         "Hello Syeda Ameena Najaf,",
+
         "",
+
         message,
+
         "",
+
         `Name: ${name}`,
+
         `Email: ${email}`
+
       ].join("\n");
 
 
       window.location.href =
-        `mailto:${PORTFOLIO.email}?subject=${encodeURIComponent(
-          subject
-        )}&body=${encodeURIComponent(
-          body
-        )}`;
+        `mailto:${PORTFOLIO.email}` +
+        `?subject=${encodeURIComponent(subject)}` +
+        `&body=${encodeURIComponent(body)}`;
 
 
-      note.textContent =
-        "Your email client should open with the message prepared.";
+      if (note) {
+
+        note.textContent =
+          "Your email client should open with the message prepared.";
+
+      }
+
 
       showToast(
         "Email prepared"
@@ -1450,6 +1627,7 @@ $("#contactForm")
 
 const yearElement =
   $("#year");
+
 
 if (yearElement) {
 
@@ -1471,11 +1649,13 @@ function showToast(message) {
   const toast =
     $("#toast");
 
+
   if (!toast) return;
 
 
   toast.textContent =
     message;
+
 
   toast.classList.add(
     "show"
@@ -1489,10 +1669,13 @@ function showToast(message) {
 
   toastTimer =
     setTimeout(
-      () =>
+      () => {
+
         toast.classList.remove(
           "show"
-        ),
+        );
+
+      },
       2600
     );
 
@@ -1510,9 +1693,15 @@ $$('a[href^="#"]')
       "click",
       event => {
 
+        const href =
+          link.getAttribute(
+            "href"
+          );
+
+
         const target =
           document.querySelector(
-            link.getAttribute("href")
+            href
           );
 
 
