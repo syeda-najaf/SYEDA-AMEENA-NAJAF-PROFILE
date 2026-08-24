@@ -1,411 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Syeda Ameena Najaf — Security & AI Engineer</title>
+    <title>Syeda Ameena Najaf | Web Developer & Published Researcher</title>
 
-    <meta
-        name="description"
-        content="Portfolio of Syeda Ameena Najaf — Cybersecurity, AI/ML and full-stack development."
-    >
+    <meta name="description"
+          content="Syeda Ameena Najaf - Web Developer, Cybersecurity Enthusiast, AI/ML Developer and Published Researcher.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =====================================================
-     LOADER
-===================================================== -->
+<!-- ================= PRELOADER ================= -->
 
-<div id="loader" class="loader">
-
-    <div class="loader-content">
-
-        <div class="loader-name">
-            NAJAF
-        </div>
-
-        <div class="loader-line"></div>
-
-        <div class="loader-status">
-            LOADING PROFILE
-        </div>
-
+<div id="preloader">
+    <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
-
 </div>
 
 
-<!-- =====================================================
-     SCANLINE OVERLAY
-===================================================== -->
+<!-- ================= NAVIGATION ================= -->
 
-<div class="scan-overlay" aria-hidden="true"></div>
+<header class="navbar">
 
+    <a href="#home" class="logo">
+        <span>SN</span>
+    </a>
 
-<!-- =====================================================
-     HEADER / NAV
-===================================================== -->
-
-<header class="site-header">
-
-    <div class="nav-wrap">
-
-        <a href="#home" class="brand">
-
-            <span class="brand-mark">
-                SAN
-            </span>
-
-            <span class="brand-status">
-                <i class="dot"></i>
-                online
-            </span>
-
-        </a>
-
-
-        <nav class="desktop-nav" aria-label="Primary">
-
-            <a href="#home" class="nav-link">
-                Home
-            </a>
-
-            <a href="#about" class="nav-link">
-                About
-            </a>
-
-            <a href="#skills" class="nav-link">
-                Skills
-            </a>
-
-            <a href="#projects" class="nav-link">
-                Projects
-            </a>
-
-            <a href="#experience" class="nav-link">
-                Experience
-            </a>
-
-            <a href="#education" class="nav-link">
-                Education
-            </a>
-
-            <a href="#contact" class="nav-link nav-cta">
-                Contact
-            </a>
-
-        </nav>
-
-
-        <button
-            id="menuToggle"
-            class="menu-toggle"
-            aria-expanded="false"
-            aria-controls="mobileMenu"
-            aria-label="Toggle menu"
-        >
-            ☰
-        </button>
-
-    </div>
-
-
-    <div id="mobileMenu" class="mobile-menu">
+    <nav id="navMenu">
 
         <a href="#home">Home</a>
         <a href="#about">About</a>
+        <a href="#works">Works</a>
         <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#contact">Contact me</a>
 
-    </div>
+    </nav>
+
+    <button class="menu-btn" id="menuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
 
 </header>
 
 
 <main>
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+<!-- ================= HERO ================= -->
 
-<section id="home" class="hero">
+<section class="hero section" id="home">
 
-    <div class="hero-grid" aria-hidden="true"></div>
-
-    <div class="hero-inner">
+    <div class="hero-content">
 
         <p class="eyebrow">
-
-            <span class="eyebrow-code">
-                SEC//00
-
-            </span>
-
-            ACCESS GRANTED
-
+            Hi! I'm Syeda Ameena Najaf, based in Hyderabad, India
         </p>
 
-
-        <h1 class="hero-name">
-
-            <span
-                id="decryptName"
-                class="decrypt-text"
-                data-value="Syeda Ameena Najaf"
-            >
-                Syeda Ameena Najaf
-            </span>
-
+        <h1>
+            Web Developer &
+            <span>Published Researcher</span>
         </h1>
 
-
-        <p class="hero-role">
-
-            Web Developer
-
-            <span class="hero-role-sep">
-                /
-            </span>
-
-            Published Researcher
-
-            <span class="hero-role-sep">
-                /
-            </span>
-
-            Cybersecurity
-
-        </p>
-
-
-        <p class="hero-desc">
-
+        <p class="hero-description">
             Detail-oriented developer experienced in building dynamic,
-            accessible web applications — with hands-on cybersecurity
-            internships, an AI-based intrusion detection system, and
-            published research in computer vision.
-
+            accessible web applications, with hands-on cybersecurity
+            internships, an AI-based intrusion detection system,
+            and published research in computer vision.
         </p>
 
+        <div class="hero-stats">
 
-        <div class="hero-actions">
+            <div>
+                <strong>6</strong>
+                <span>Projects Built</span>
+            </div>
 
-            <a
-                href="#projects"
-                class="btn btn-primary"
-            >
-                View Projects
-                <span aria-hidden="true">→</span>
-            </a>
+            <div>
+                <strong>4</strong>
+                <span>Internships</span>
+            </div>
 
-            <a
-                href="#contact"
-                class="btn btn-ghost"
-            >
-                Get in Touch
-            </a>
+            <div>
+                <strong>1</strong>
+                <span>Published Paper</span>
+            </div>
 
         </div>
 
+        <div class="hero-buttons">
 
-        <div class="hero-meta">
+            <a href="#contact" class="btn primary">
+                Get in Touch
+                <i class="fas fa-arrow-right"></i>
+            </a>
 
-            <div class="hero-meta-item">
-
-                <span
-                    class="hero-meta-num"
-                    data-count="6"
-                >
-                    0
-                </span>
-
-                <span class="hero-meta-label">
-                    Projects Built
-                </span>
-
-            </div>
-
-
-            <div class="hero-meta-item">
-
-                <span
-                    class="hero-meta-num"
-                    data-count="4"
-                >
-                    0
-                </span>
-
-                <span class="hero-meta-label">
-                    Internships
-                </span>
-
-            </div>
-
-
-            <div class="hero-meta-item">
-
-                <span
-                    class="hero-meta-num"
-                    data-count="1"
-                >
-                    0
-                </span>
-
-                <span class="hero-meta-label">
-                    Published Paper
-                </span>
-
-            </div>
+            <a href="#works" class="btn secondary">
+                View Work
+            </a>
 
         </div>
 
     </div>
 
+    <div class="hero-visual">
 
-    <div class="scroll-cue" aria-hidden="true">
-        <span></span>
+        <div class="portrait-card">
+
+            <div class="portrait-placeholder">
+                <span>SN</span>
+            </div>
+
+            <div class="floating-card">
+                <i class="fas fa-shield-halved"></i>
+                <div>
+                    <strong>Security-first</strong>
+                    <small>Developer</small>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     ABOUT
-===================================================== -->
+<!-- ================= ABOUT ================= -->
 
-<section id="about" class="section">
+<section class="about section" id="about">
 
-    <p class="section-label">
-
-        <span class="section-code">
-            SEC//01
-        </span>
-
+    <div class="section-label">
         ABOUT
-
-    </p>
-
+    </div>
 
     <div class="about-grid">
 
-        <div class="about-copy">
+        <div>
 
-            <h2 class="section-title">
-                Detail-oriented developer, built for dynamic,
+            <h2>
+                Detail-oriented developer,
+                built for dynamic,
                 accessible web applications.
             </h2>
 
-
-            <p>
-                I'm Syeda Ameena Najaf, a frontend-leaning web
-                developer and published researcher based.
-                I have currently build secure web applications with
-                React and Flask at Excellence College of Health &
-                Safety Engineering, alongside a run of cybersecurity
-                internships with ADVI Group, CodTech, Tata Group
-                and Deloitte.
-            </p>
-
-
-            <p>
-                Alongside web development, I've built an AI-based
-                network attack detection system with real-time
-                Telegram alerting, and published research on
-                OpenCV-based license plate recognition in the
-                Journal of Scientific Research and Technology.
-                I like software that's both usable and genuinely
-                secure — and I look for problems that need both.
-            </p>
-
         </div>
 
+        <div class="about-text">
 
-        <div class="about-badges">
+            <p>
+                I'm Syeda Ameena Najaf, a frontend-leaning web developer
+                and published researcher. I build secure web applications
+                with React and Flask, alongside cybersecurity internships
+                with ADVI Group, CodTech, Tata Group and Deloitte.
+            </p>
 
-            <div class="badge-card">
+            <p>
+                Alongside web development, I've built an AI-based network
+                attack detection system with real-time Telegram alerting,
+                and published research on OpenCV-based license plate
+                recognition in the Journal of Scientific Research and
+                Technology.
+            </p>
 
-                <span class="badge-icon">
-                    🖥️
-                </span>
-
-                <h3>
-                    Web Development
-                </h3>
-
-                <p>
-                    React, Flask, REST APIs, dynamic and accessible UI.
-                </p>
-
-            </div>
-
-
-            <div class="badge-card">
-
-                <span class="badge-icon">
-                    🔐
-                </span>
-
-                <h3>
-                    Cybersecurity
-                </h3>
-
-                <p>
-                    Vulnerability assessment, penetration testing,
-                    cryptography.
-                </p>
-
-            </div>
-
-
-            <div class="badge-card">
-
-                <span class="badge-icon">
-                    🧠
-                </span>
-
-                <h3>
-                    AI / ML
-                </h3>
-
-                <p>
-                    Intrusion detection, computer vision, OCR pipelines.
-                </p>
-
-            </div>
-
-
-            <div class="badge-card">
-
-                <span class="badge-icon">
-                    📄
-                </span>
-
-                <h3>
-                    Research
-                </h3>
-
-                <p>
-                    Published in the Journal of Scientific Research
-                    and Technology.
-                </p>
-
-            </div>
+            <p>
+                I like software that's both usable and genuinely secure,
+                and I look for problems that need both.
+            </p>
 
         </div>
 
@@ -414,366 +190,1257 @@
 </section>
 
 
-<!-- =====================================================
-     SKILLS
-===================================================== -->
+<!-- ================= CORE FOCUS ================= -->
 
-<section id="skills" class="section section-alt">
+<section class="focus section">
 
-    <p class="section-label">
+    <div class="section-heading">
 
-        <span class="section-code">
-            SEC//02
-        </span>
+        <span>CORE FOCUS</span>
 
-        SKILLS
-
-    </p>
-
-
-    <h2 class="section-title">
-        Toolset
-    </h2>
-
-
-    <div
-        class="skills-grid"
-        id="skillsGrid"
-    ></div>
-
-</section>
-
-
-<!-- =====================================================
-     PROJECTS
-===================================================== -->
-
-<section id="projects" class="section">
-
-    <p class="section-label">
-
-        <span class="section-code">
-            SEC//03
-        </span>
-
-        PROJECTS
-
-    </p>
-
-
-    <div class="projects-head">
-
-        <h2 class="section-title">
-            Selected Work
+        <h2>
+            Building software across
+            frontend, backend, full-stack
+            engineering, and cybersecurity.
         </h2>
 
+    </div>
 
-        <div
-            class="filters"
-            id="filters"
-        >
+    <div class="focus-grid">
 
-            <button
-                class="filter active"
-                data-filter="all"
-            >
-                All
-            </button>
+        <article class="focus-card">
+            <span class="number">01</span>
+            <i class="fas fa-code"></i>
 
-            <button
-                class="filter"
-                data-filter="security"
-            >
-                Security
-            </button>
+            <h3>Web Development</h3>
 
-            <button
-                class="filter"
-                data-filter="ai"
-            >
-                AI / ML
-            </button>
+            <p>
+                React, Flask, REST APIs, dynamic and accessible UI.
+            </p>
+        </article>
 
-            <button
-                class="filter"
-                data-filter="web"
-            >
-                Web & Apps
-            </button>
+
+        <article class="focus-card">
+            <span class="number">02</span>
+            <i class="fas fa-shield-halved"></i>
+
+            <h3>Cybersecurity</h3>
+
+            <p>
+                Vulnerability assessment, penetration testing,
+                cryptography.
+            </p>
+        </article>
+
+
+        <article class="focus-card">
+            <span class="number">03</span>
+            <i class="fas fa-brain"></i>
+
+            <h3>AI / ML</h3>
+
+            <p>
+                Intrusion detection, computer vision, OCR pipelines.
+            </p>
+        </article>
+
+
+        <article class="focus-card">
+            <span class="number">04</span>
+            <i class="fas fa-book-open"></i>
+
+            <h3>Research</h3>
+
+            <p>
+                Published in the Journal of Scientific Research
+                and Technology.
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WORK ================= -->
+
+<section class="works section" id="works">
+
+    <div class="section-label">
+        SELECTED WORK
+    </div>
+
+    <div class="section-title-row">
+
+        <div>
+            <h2>Projects that solve real problems.</h2>
+        </div>
+
+        <p>
+            Six selected projects spanning cybersecurity,
+            AI, web development and automation.
+        </p>
+
+    </div>
+
+
+    <div class="projects-grid">
+
+
+        <!-- PROJECT 1 -->
+
+        <article class="project-card">
+
+            <div class="project-image cyber">
+                <i class="fas fa-network-wired"></i>
+                <span>01</span>
+            </div>
+
+            <div class="project-content">
+
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>Machine Learning</span>
+                    <span>Telegram API</span>
+                </div>
+
+                <h3>
+                    Autonomous Network Attack Detection System
+                </h3>
+
+                <p>
+                    A real-time, AI-based intrusion detection system
+                    trained on cybersecurity datasets from Kaggle,
+                    integrated with a custom Telegram bot that alerts
+                    on malicious traffic patterns.
+                </p>
+
+                <button class="details-btn"
+                        data-title="Autonomous Network Attack Detection System"
+                        data-description="A real-time AI-based intrusion detection system using Python and machine learning. Integrated with Telegram Bot alerts for malicious traffic patterns and real-time anomaly detection.">
+                    View details
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- PROJECT 2 -->
+
+        <article class="project-card">
+
+            <div class="project-image vision">
+                <i class="fas fa-car"></i>
+                <span>02</span>
+            </div>
+
+            <div class="project-content">
+
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>OpenCV</span>
+                    <span>OCR</span>
+                    <span>Selenium</span>
+                </div>
+
+                <h3>
+                    OpenCV-Based License Plate Detection
+                </h3>
+
+                <p>
+                    An intelligent license-plate recognition system
+                    combining OCR and template matching, with Selenium
+                    automating vehicle-detail lookups.
+                </p>
+
+                <button class="details-btn"
+                        data-title="OpenCV-Based License Plate Detection"
+                        data-description="An intelligent license plate recognition system combining OpenCV, OCR, template matching and Selenium automation. Published in the Journal of Scientific Research and Technology.">
+                    View details
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- PROJECT 3 -->
+
+        <article class="project-card">
+
+            <div class="project-image enrollment">
+                <i class="fas fa-user-graduate"></i>
+                <span>03</span>
+            </div>
+
+            <div class="project-content">
+
+                <div class="project-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                    <span>Bootstrap</span>
+                </div>
+
+                <h3>
+                    Student Enrolment System
+                </h3>
+
+                <p>
+                    A secure full-featured enrolment portal with user
+                    login, course management, Stripe payment integration
+                    and an admin dashboard.
+                </p>
+
+                <button class="details-btn"
+                        data-title="Student Enrolment System"
+                        data-description="A secure student enrolment platform with authentication, course management, payment integration and administrative controls.">
+                    View details
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- PROJECT 4 -->
+
+        <article class="project-card">
+
+            <div class="project-image scanner">
+                <i class="fas fa-bug"></i>
+                <span>04</span>
+            </div>
+
+            <div class="project-content">
+
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>Requests</span>
+                    <span>BeautifulSoup</span>
+                </div>
+
+                <h3>
+                    Web Application Vulnerability Scanner
+                </h3>
+
+                <p>
+                    A scanner for identifying SQL injection, XSS and
+                    other OWASP vulnerabilities in web applications,
+                    built with a modular architecture.
+                </p>
+
+                <button class="details-btn"
+                        data-title="Web Application Vulnerability Scanner"
+                        data-description="A Python-based security scanner designed to identify common web application vulnerabilities including SQL injection and XSS using modular scanning components.">
+                    View details
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- PROJECT 5 -->
+
+        <article class="project-card">
+
+            <div class="project-image encryption">
+                <i class="fas fa-lock"></i>
+                <span>05</span>
+            </div>
+
+            <div class="project-content">
+
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>PyCryptodome</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <h3>
+                    Advanced Encryption Tool (AES-256)
+                </h3>
+
+                <p>
+                    A visually interactive tool for AES-256 file
+                    encryption and decryption, with an animated
+                    frontend and GitHub-ready build.
+                </p>
+
+                <button class="details-btn"
+                        data-title="Advanced Encryption Tool (AES-256)"
+                        data-description="An interactive AES-256 encryption and decryption application using Python, PyCryptodome and JavaScript.">
+                    View details
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- PROJECT 6 -->
+
+        <article class="project-card">
+
+            <div class="project-image education">
+                <i class="fas fa-graduation-cap"></i>
+                <span>06</span>
+            </div>
+
+            <div class="project-content">
+
+                <div class="project-tags">
+                    <span>React.js</span>
+                    <span>Vercel</span>
+                </div>
+
+                <h3>
+                    E-Learning Website
+                </h3>
+
+                <p>
+                    An interactive, animated e-learning platform
+                    with a clean UI and modular architecture,
+                    deployed live on Vercel.
+                </p>
+
+                <a class="details-btn"
+                   href="https://syeda-educ-center.vercel.app"
+                   target="_blank"
+                   rel="noopener">
+                    Live website
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SERVICES ================= -->
+
+<section class="services section">
+
+    <div class="section-label">
+        MY SERVICES
+    </div>
+
+    <div class="services-grid">
+
+        <article class="service-card">
+
+            <span>01</span>
+
+            <h3>Web Development</h3>
+
+            <p>
+                Frontend-leaning builds with React and Flask:
+                dynamic, accessible interfaces and secure
+                application flows.
+            </p>
+
+            <ul>
+                <li>React applications</li>
+                <li>Flask & REST APIs</li>
+                <li>Accessible UI</li>
+                <li>Responsive design</li>
+            </ul>
+
+        </article>
+
+
+        <article class="service-card">
+
+            <span>02</span>
+
+            <h3>Cybersecurity</h3>
+
+            <p>
+                Hands-on security work across internships and
+                projects, from vulnerability assessment to
+                threat reporting.
+            </p>
+
+            <ul>
+                <li>Vulnerability assessment</li>
+                <li>Penetration testing</li>
+                <li>Cryptography (AES-256)</li>
+            </ul>
+
+        </article>
+
+
+        <article class="service-card">
+
+            <span>03</span>
+
+            <h3>AI / ML</h3>
+
+            <p>
+                Applied machine learning for security and computer
+                vision, including real-time alerting pipelines.
+            </p>
+
+            <ul>
+                <li>Intrusion detection</li>
+                <li>Computer vision / OCR</li>
+                <li>Telegram alerting</li>
+            </ul>
+
+        </article>
+
+
+        <article class="service-card">
+
+            <span>04</span>
+
+            <h3>Research</h3>
+
+            <p>
+                Published research on OpenCV-based license plate
+                recognition in the Journal of Scientific Research
+                and Technology.
+            </p>
+
+            <ul>
+                <li>JSRT publication, 2025</li>
+                <li>Impact Factor 5.2</li>
+                <li>Computer vision pipelines</li>
+            </ul>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SKILLS ================= -->
+
+<section class="skills section" id="skills">
+
+    <div class="section-label">
+        MY TOOLSET
+    </div>
+
+    <div class="skills-intro">
+
+        <h2>
+            My tools & this stack.
+        </h2>
+
+        <p>
+            Languages, frameworks, security practice, and AI /
+            cloud tools I use to ship usable and secure software.
+        </p>
+
+    </div>
+
+
+    <div class="skill-category">
+
+        <div class="skill-heading">
+
+            <h3>Languages</h3>
+            <span>4 technologies</span>
+
+        </div>
+
+        <div class="skills-list">
+
+            <div class="skill">
+                <div class="skill-top">
+                    <span>Python</span>
+                    <strong>88%</strong>
+                </div>
+                <div class="progress">
+                    <span style="width:88%"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-top">
+                    <span>JavaScript</span>
+                    <strong>80%</strong>
+                </div>
+                <div class="progress">
+                    <span style="width:80%"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-top">
+                    <span>SQL</span>
+                    <strong>75%</strong>
+                </div>
+                <div class="progress">
+                    <span style="width:75%"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-top">
+                    <span>HTML / CSS</span>
+                    <strong>82%</strong>
+                </div>
+                <div class="progress">
+                    <span style="width:82%"></span>
+                </div>
+            </div>
 
         </div>
 
     </div>
 
 
-    <div
-        class="projects-grid"
-        id="projectsGrid"
-    ></div>
+    <div class="skill-category">
+
+        <div class="skill-heading">
+
+            <h3>Frameworks & Libraries</h3>
+            <span>3 stacks</span>
+
+        </div>
+
+        <div class="skills-list">
+
+            <div class="skill">
+                <div class="skill-top">
+                    <span>React</span>
+                    <strong>80%</strong>
+                </div>
+                <div class="progress">
+                    <span style="width:80%"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-top">
+                    <span>Flask</span>
+                    <strong>78%</strong>
+                </div>
+                <div class="progress">
+                    <span style="width:78%"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-top">
+                    <span>Bootstrap / Laravel</span>
+                    <strong>70%</strong>
+                </div>
+                <div class="progress">
+                    <span style="width:70%"></span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="skill-category">
+
+        <div class="skill-heading">
+
+            <h3>Security</h3>
+            <span>3 practices</span>
+
+        </div>
+
+        <div class="skills-list">
+
+            <div class="skill">
+                <div class="skill-top">
+                    <span>Vulnerability Assessment</span>
+                    <strong>80%</strong>
+                </div>
+                <div class="progress">
+                    <span style="width:80%"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-top">
+                    <span>Penetration Testing</span>
+                    <strong>76%</strong>
+                </div>
+                <div class="progress">
+                    <span style="width:76%"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-top">
+                    <span>Cryptography (AES-256)</span>
+                    <strong>78%</strong>
+                </div>
+                <div class="progress">
+                    <span style="width:78%"></span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="skill-category">
+
+        <div class="skill-heading">
+
+            <h3>AI / ML & Cloud</h3>
+            <span>3 capabilities</span>
+
+        </div>
+
+        <div class="skills-list">
+
+            <div class="skill">
+                <div class="skill-top">
+                    <span>Machine Learning</span>
+                    <strong>78%</strong>
+                </div>
+                <div class="progress">
+                    <span style="width:78%"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-top">
+                    <span>Computer Vision (OpenCV)</span>
+                    <strong>76%</strong>
+                </div>
+                <div class="progress">
+                    <span style="width:76%"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-top">
+                    <span>AWS Solutions Architecture</span>
+                    <strong>65%</strong>
+                </div>
+                <div class="progress">
+                    <span style="width:65%"></span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =====================================================
-     EXPERIENCE
-===================================================== -->
+<!-- ================= TIMELINE ================= -->
 
-<section id="experience" class="section section-alt">
+<section class="timeline section" id="timeline">
 
-    <p class="section-label">
+    <div class="section-label">
+        CAREER TIMELINE
+    </div>
 
-        <span class="section-code">
-            SEC//04
-        </span>
-
-        EXPERIENCE
-
-    </p>
+    <div class="timeline-list">
 
 
-    <h2 class="section-title">
-        Timeline
-    </h2>
+        <article class="timeline-item">
+
+            <div class="timeline-date">
+                07/2025 - 06/2026
+            </div>
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <h3>Web Developer</h3>
+
+                <h4>
+                    Excellence College of Health & Safety Engineering
+                    · Hyderabad, Telangana
+                </h4>
+
+                <p>
+                    Developing secure web applications using React
+                    and Flask.
+                </p>
+
+            </div>
+
+        </article>
 
 
-    <div
-        class="timeline"
-        id="experienceList"
-    ></div>
+        <article class="timeline-item">
+
+            <div class="timeline-date">
+                07/2025
+            </div>
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <h3>Software Engineering Certificate Trainee</h3>
+
+                <h4>
+                    Saylor Academy · Virtual, Remote
+                </h4>
+
+                <p>
+                    Completed a 36-hour self-paced Software Engineering
+                    (CS302) course. Gained knowledge in SDLC, system
+                    architecture, debugging and testing. Scored 75.81%
+                    and earned Certificate of Achievement
+                    (ID: 250671527SN).
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="timeline-item">
+
+            <div class="timeline-date">
+                06/2025
+            </div>
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <h3>Cybersecurity Consultant Intern</h3>
+
+                <h4>
+                    Deloitte (Forage Virtual Internship)
+                    · Virtual, Remote
+                </h4>
+
+                <p>
+                    Conducted risk assessments and developed
+                    client-facing cyber reports. Simulated threat
+                    modeling and third-party risk management.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="timeline-item">
+
+            <div class="timeline-date">
+                03/2025 - 04/2025
+            </div>
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <h3>Cybersecurity Trainee</h3>
+
+                <h4>
+                    CodTech IT Solutions · Virtual, Remote
+                </h4>
+
+                <p>
+                    Participated in national-level hackathons and
+                    security challenges. Worked on real-time project
+                    modules including web vulnerability scanners.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="timeline-item">
+
+            <div class="timeline-date">
+                01/2025 - 03/2025
+            </div>
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <h3>Cyber Security Intern</h3>
+
+                <h4>
+                    ADVI Group of Companies · Hyderabad, Telangana
+                </h4>
+
+                <p>
+                    Developed an Autonomous Network Attack Detection
+                    System using Python. Integrated Telegram Bot
+                    alerts and performed log analysis and anomaly
+                    detection in real-time systems.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="timeline-item">
+
+            <div class="timeline-date">
+                05/2024 - 06/2024
+            </div>
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <h3>Cybersecurity Analyst Intern</h3>
+
+                <h4>
+                    Tata Group (Forage Virtual Internship)
+                    · Virtual, Remote
+                </h4>
+
+                <p>
+                    Completed a structured simulation involving
+                    cybersecurity investigations. Assessed
+                    vulnerabilities and recommended secure
+                    architecture practices.
+                </p>
+
+            </div>
+
+        </article>
+
+    </div>
 
 </section>
 
 
-<!-- =====================================================
-     EDUCATION
-===================================================== -->
+<!-- ================= EDUCATION ================= -->
 
-<section id="education" class="section">
+<section class="education section">
 
-    <p class="section-label">
+    <div class="section-label">
+        FOUNDATION
+    </div>
 
-        <span class="section-code">
-            SEC//05
-        </span>
+    <div class="education-card">
 
-        EDUCATION
+        <div class="education-year">
+            2021 - 2025
+        </div>
 
-    </p>
+        <div>
 
+            <h2>
+                Bachelor of Engineering (B.E)
+                - Computer Science Engineering
+            </h2>
 
-    <h2 class="section-title">
-        Foundation
-    </h2>
+            <p>
+                Khaja Bandanawaz College of Engineering,
+                Khaja Bandanawaz University
+            </p>
 
+            <span>
+                Kalaburagi, Karnataka
+            </span>
 
-    <div
-        class="education-grid"
-        id="educationGrid"
-    ></div>
+        </div>
 
-</section>
-
-
-<!-- =====================================================
-     CERTIFICATIONS
-===================================================== -->
-
-<section
-    id="certificates"
-    class="section section-alt"
->
-
-    <p class="section-label">
-
-        <span class="section-code">
-            SEC//06
-        </span>
-
-        CERTIFICATIONS
-
-    </p>
-
-
-    <h2 class="section-title">
-        Credentials
-    </h2>
-
-
-    <div
-        class="cert-grid"
-        id="certificateGrid"
-    ></div>
+    </div>
 
 </section>
 
 
-<!-- =====================================================
-     CONTACT
-===================================================== -->
+<!-- ================= CREDENTIALS ================= -->
 
-<section
-    id="contact"
-    class="section contact-section"
->
+<section class="credentials section">
 
-    <p class="section-label">
+    <div class="section-label">
+        CREDENTIALS
+    </div>
 
-        <span class="section-code">
-            SEC//07
+    <div class="credential-grid">
+
+        <article class="credential-card">
+
+            <span>01</span>
+
+            <h3>Published Research</h3>
+
+            <button class="credential-btn"
+                    data-title="Published Research"
+                    data-description="License plate recognition using OpenCV, published in the Journal of Scientific Research and Technology, 2025. Impact Factor 5.2.">
+                Info
+            </button>
+
+        </article>
+
+
+        <article class="credential-card">
+
+            <span>02</span>
+
+            <h3>AWS Cloud Computing</h3>
+
+            <button class="credential-btn"
+                    data-title="AWS Cloud Computing"
+                    data-description="Solutions Architecture pathway issued by AWS via Forage, covering cloud design patterns used in production systems.">
+                Info
+            </button>
+
+        </article>
+
+
+        <article class="credential-card">
+
+            <span>03</span>
+
+            <h3>Cybersecurity Analyst</h3>
+
+            <button class="credential-btn"
+                    data-title="Cybersecurity Analyst"
+                    data-description="Tata Group Forage program covering investigations, vulnerability assessment, and secure architecture recommendations.">
+                Info
+            </button>
+
+        </article>
+
+
+        <article class="credential-card">
+
+            <span>04</span>
+
+            <h3>Software Engineering</h3>
+
+            <button class="credential-btn"
+                    data-title="Software Engineering"
+                    data-description="Saylor Academy CS302 certificate covering SDLC, system architecture, debugging, and testing. Certificate ID 250671527SN.">
+                Info
+            </button>
+
+        </article>
+
+
+        <article class="credential-card">
+
+            <span>05</span>
+
+            <h3>Deloitte Internship</h3>
+
+            <button class="credential-btn"
+                    data-title="Deloitte Internship"
+                    data-description="Virtual internship with Deloitte via Forage, focused on risk assessment, threat modeling, and client-facing reports.">
+                Info
+            </button>
+
+        </article>
+
+
+        <article class="credential-card">
+
+            <span>06</span>
+
+            <h3>Attack Detection System</h3>
+
+            <button class="credential-btn"
+                    data-title="Attack Detection System"
+                    data-description="ADVI internship project: an AI-based network attack detection system with Telegram alerting and real-time analysis.">
+                Info
+            </button>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TRUST ================= -->
+
+<section class="trust section">
+
+    <div class="trust-content">
+
+        <span class="section-label">
+            TRUSTED THROUGH 4 INTERNSHIPS
         </span>
 
-        CONTACT
+        <h2>
+            A developer you can trust.
+            <span>High standards.</span>
+        </h2>
 
-    </p>
+        <p>
+            Security-first delivery.
+        </p>
+
+    </div>
+
+    <div class="trust-stats">
+
+        <strong>6</strong>
+        <span>projects</span>
+
+        <strong>1</strong>
+        <span>published paper</span>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact section" id="contact">
+
+    <div class="contact-heading">
+
+        <span class="section-label">
+            CONTACT
+        </span>
+
+        <h2>
+            Let's build something
+            <span>worth defending.</span>
+        </h2>
+
+        <p>
+            Open to security-focused roles, AI/ML projects and
+            full-stack work. Send me a message directly using
+            the form below.
+        </p>
+
+    </div>
 
 
     <div class="contact-grid">
 
-        <div class="contact-copy">
 
-            <h2 class="section-title">
-                Let's build something worth defending.
-            </h2>
+        <!-- LIVE CONTACT FORM -->
+
+        <div class="contact-form-card">
+
+            <form id="contactForm"
+                  action="https://formsubmit.co/syedanajaf832@gmail.com"
+                  method="POST">
+
+                <!-- FormSubmit settings -->
+
+                <input type="hidden"
+                       name="_subject"
+                       value="New Portfolio Contact - Syeda Ameena Najaf">
+
+                <input type="hidden"
+                       name="_captcha"
+                       value="false">
+
+                <input type="hidden"
+                       name="_template"
+                       value="table">
+
+                <input type="hidden"
+                       name="_next"
+                       value="https://syeda-ameena-najaf-portfolio-gamma.vercel.app/#contact">
 
 
-            <p>
-                Open to security-focused roles, AI/ML projects
-                and full-stack work. The fastest way to reach me
-                is email — the form below opens your mail client
-                with everything pre-filled.
-            </p>
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Your name"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
 
 
-            <div class="contact-links">
+                    <div class="form-group">
 
-                <a
-                    id="displayEmail"
-                    href="mailto:syedanajaf832@gmail.com"
-                    class="contact-link"
+                        <label for="email">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="your@email.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        placeholder="What would you like to discuss?"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="message">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="7"
+                        placeholder="Write your message..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="send-btn"
+                    id="sendMessageBtn"
                 >
-                    syedanajaf832@gmail.com
-                </a>
+
+                    <span id="sendText">
+                        Send Message
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+
+                    <span id="sendLoading">
+                        Sending...
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </span>
+
+                </button>
 
 
-                <a
-                    id="displayPhone"
-                    href="tel:09538090817"
-                    class="contact-link"
-                >
-                    09538090817
-                </a>
+                <div id="formStatus"></div>
 
-
-                <span
-                    id="displayLocation"
-                    class="contact-link contact-link-static"
-                >
-                    Santosh Nagar, Mehdipatnam, Hyderabad,
-                    Telangana 500006
-                </span>
-
-
-                <a
-                    href="http://linkedin.com/in/syedanajaf"
-                    target="_blank"
-                    rel="noopener"
-                    class="contact-link"
-                >
-                    linkedin.com/in/syedanajaf
-                </a>
-
-            </div>
+            </form>
 
         </div>
 
 
-        <form
-            id="contactForm"
-            class="contact-form"
-        >
+        <!-- CONTACT DETAILS -->
 
-            <div class="form-row">
+        <div class="contact-details">
 
-                <label for="contactName">
-                    Name
-                </label>
+            <div class="contact-detail">
 
-                <input
-                    id="contactName"
-                    name="name"
-                    type="text"
-                    required
-                    placeholder="Your name"
-                >
+                <span>
+                    <i class="fas fa-envelope"></i>
+                </span>
 
-            </div>
+                <div>
 
+                    <small>Email</small>
 
-            <div class="form-row">
+                    <a href="mailto:syedanajaf832@gmail.com">
+                        syedanajaf832@gmail.com
+                    </a>
 
-                <label for="contactEmail">
-                    Email
-                </label>
-
-                <input
-                    id="contactEmail"
-                    name="email"
-                    type="email"
-                    required
-                    placeholder="you@example.com"
-                >
+                </div>
 
             </div>
 
 
-            <div class="form-row">
+            <div class="contact-detail">
 
-                <label for="contactSubject">
-                    Subject
-                </label>
+                <span>
+                    <i class="fas fa-phone"></i>
+                </span>
 
-                <input
-                    id="contactSubject"
-                    name="subject"
-                    type="text"
-                    required
-                    placeholder="Let's talk about..."
-                >
+                <div>
 
-            </div>
+                    <small>Phone</small>
 
+                    <a href="tel:09538090817">
+                        09538090817
+                    </a>
 
-            <div class="form-row">
-
-                <label for="contactMessage">
-                    Message
-                </label>
-
-                <textarea
-                    id="contactMessage"
-                    name="message"
-                    required
-                    rows="5"
-                    placeholder="Write your message"
-                ></textarea>
+                </div>
 
             </div>
 
 
-            <button
-                type="submit"
-                class="btn btn-primary btn-full"
-            >
-                Send Message
-            </button>
+            <div class="contact-detail">
+
+                <span>
+                    <i class="fab fa-linkedin-in"></i>
+                </span>
+
+                <div>
+
+                    <small>LinkedIn</small>
+
+                    <a
+                        href="https://linkedin.com/in/syedanajaf"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        linkedin.com/in/syedanajaf
+                    </a>
+
+                </div>
+
+            </div>
 
 
-            <p
-                id="formNote"
-                class="form-note"
-            ></p>
+            <div class="contact-detail">
 
-        </form>
+                <span>
+                    <i class="fas fa-location-dot"></i>
+                </span>
+
+                <div>
+
+                    <small>Location</small>
+
+                    <span>
+                        Santosh Nagar, Mehdipatnam,
+                        Hyderabad, Telangana 500006
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -782,178 +1449,57 @@
 </main>
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+<!-- ================= MODAL ================= -->
 
-<footer class="site-footer">
+<div class="modal" id="detailsModal">
+
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <div class="modal-box">
+
+        <button class="modal-close" id="modalClose">
+            <i class="fas fa-xmark"></i>
+        </button>
+
+        <span class="modal-label">
+            DETAILS
+        </span>
+
+        <h2 id="modalTitle">
+            Project
+        </h2>
+
+        <p id="modalDescription">
+            Project description.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-title">
+        LET'S BUILD SOMETHING
+        <span>WORTH DEFENDING.</span>
+    </div>
+
+    <div class="footer-links">
+
+        <a href="#works">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+
+    </div>
 
     <p>
-        ©
-        <span id="year"></span>
-        Syeda Ameena Najaf.
-        
+        © 2026 Syeda Ameena Najaf
     </p>
 
 </footer>
-
-
-<!-- =====================================================
-     BOTTOM NAV
-===================================================== -->
-
-<nav
-    class="bottom-nav"
-    aria-label="Quick navigation"
->
-
-    <a
-        href="#home"
-        class="bottom-link"
-    >
-        Home
-    </a>
-
-    <a
-        href="#projects"
-        class="bottom-link"
-    >
-        Work
-    </a>
-
-    <a
-        href="#skills"
-        class="bottom-link"
-    >
-        Skills
-    </a>
-
-    <a
-        href="#contact"
-        class="bottom-link"
-    >
-        Contact
-    </a>
-
-</nav>
-
-
-<!-- =====================================================
-     PROJECT MODAL
-===================================================== -->
-
-<div
-    id="projectModal"
-    class="modal"
-    aria-hidden="true"
->
-
-    <div
-        class="modal-backdrop"
-        data-close-modal
-    ></div>
-
-
-    <div class="modal-panel">
-
-        <button
-            class="modal-close"
-            id="modalClose"
-            aria-label="Close"
-        >
-            ×
-        </button>
-
-
-        <p class="modal-eyebrow">
-            PROJECT FILE
-        </p>
-
-
-        <h3 id="modalTitle"></h3>
-
-
-        <p
-            id="modalFocus"
-            class="modal-focus"
-        ></p>
-
-
-        <p id="modalDescription"></p>
-
-
-        <div
-            id="modalTags"
-            class="tag-list"
-        ></div>
-
-
-        <p
-            id="modalLive"
-            class="modal-live"
-        ></p>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     CERTIFICATE MODAL
-===================================================== -->
-
-<div
-    id="certificateModal"
-    class="modal"
-    aria-hidden="true"
->
-
-    <div
-        class="modal-backdrop"
-        data-close-certificate
-    ></div>
-
-
-    <div class="modal-panel">
-
-        <button
-            class="modal-close"
-            id="certificateClose"
-            aria-label="Close"
-        >
-            ×
-        </button>
-
-
-        <p class="modal-eyebrow">
-            CREDENTIAL
-        </p>
-
-
-        <h3 id="certificateTitle"></h3>
-
-
-        <p id="certificateDescription"></p>
-
-
-        <div
-            id="certificatePreview"
-            class="cert-preview"
-        ></div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     TOAST
-===================================================== -->
-
-<div
-    id="toast"
-    class="toast"
-></div>
 
 
 <script src="script.js"></script>
