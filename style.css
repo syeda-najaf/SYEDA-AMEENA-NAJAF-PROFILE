@@ -1,1508 +1,1437 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+:root {
+    --bg: #f4f1ea;
+    --surface: #ffffff;
+    --dark: #101010;
+    --text: #111111;
+    --muted: #6f6b64;
+    --line: #d9d4ca;
+    --accent: #c8ff00;
+    --white: #ffffff;
+
+    --radius: 22px;
+    --max-width: 1240px;
+
+    --font-main: "DM Sans", sans-serif;
+    --font-display: "Space Grotesk", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.section {
+    width: min(var(--max-width), 90%);
+    margin: auto;
+    padding: 120px 0;
+}
+
+.section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    color: var(--muted);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-display);
+    line-height: 1.05;
+}
+
+p {
+    color: var(--muted);
+}
+
+
+/* PRELOADER */
+
+#preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s ease;
+}
+
+#preloader.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader {
+    display: flex;
+    gap: 8px;
+}
+
+.loader span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 1s infinite alternate;
+}
 
-    <title>Syeda Ameena Najaf | Web Developer & Published Researcher</title>
+.loader span:nth-child(2) {
+    animation-delay: .15s;
+}
 
-    <meta name="description"
-          content="Syeda Ameena Najaf - Web Developer, Cybersecurity Enthusiast, AI/ML Developer and Published Researcher.">
+.loader span:nth-child(3) {
+    animation-delay: .3s;
+}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+@keyframes pulse {
+    from {
+        transform: translateY(0);
+        opacity: .4;
+    }
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
+    to {
+        transform: translateY(-12px);
+        opacity: 1;
+    }
+}
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <link rel="stylesheet" href="style.css">
-</head>
+/* NAVBAR */
 
-<body>
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
-<!-- ================= PRELOADER ================= -->
+    min-height: 78px;
 
-<div id="preloader">
-    <div class="loader">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</div>
+    padding: 0 5vw;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-<!-- ================= NAVIGATION ================= -->
+    background: rgba(244, 241, 234, .93);
+    backdrop-filter: blur(16px);
 
-<header class="navbar">
+    border-bottom: 1px solid rgba(0,0,0,.08);
+}
 
-    <a href="#home" class="logo">
-        <span>SN</span>
-    </a>
+.logo {
+    width: 44px;
+    height: 44px;
 
-    <nav id="navMenu">
+    display: grid;
+    place-items: center;
 
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#works">Works</a>
-        <a href="#skills">Skills</a>
-        <a href="#timeline">Timeline</a>
-        <a href="#contact">Contact me</a>
+    border-radius: 50%;
 
-    </nav>
+    background: var(--dark);
+    color: var(--accent);
 
-    <button class="menu-btn" id="menuBtn">
-        <i class="fas fa-bars"></i>
-    </button>
+    font-family: var(--font-display);
+    font-weight: 700;
+}
 
-</header>
+.navbar nav {
+    display: flex;
+    gap: 30px;
+}
 
+.navbar nav a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+}
 
-<main>
+.navbar nav a:hover,
+.navbar nav a.active {
+    color: var(--text);
+}
 
-<!-- ================= HERO ================= -->
+.menu-btn {
+    display: none;
 
-<section class="hero section" id="home">
+    width: 42px;
+    height: 42px;
 
-    <div class="hero-content">
+    border: 1px solid var(--line);
+    border-radius: 50%;
 
-        <p class="eyebrow">
-            Hi! I'm Syeda Ameena Najaf, based in Hyderabad, India
-        </p>
+    background: transparent;
+}
 
-        <h1>
-            Web Developer &
-            <span>Published Researcher</span>
-        </h1>
 
-        <p class="hero-description">
-            Detail-oriented developer experienced in building dynamic,
-            accessible web applications, with hands-on cybersecurity
-            internships, an AI-based intrusion detection system,
-            and published research in computer vision.
-        </p>
+/* HERO */
 
-        <div class="hero-stats">
+.hero {
+    min-height: calc(100vh - 78px);
 
-            <div>
-                <strong>6</strong>
-                <span>Projects Built</span>
-            </div>
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
 
-            <div>
-                <strong>4</strong>
-                <span>Internships</span>
-            </div>
+    align-items: center;
+    gap: 80px;
+}
 
-            <div>
-                <strong>1</strong>
-                <span>Published Paper</span>
-            </div>
+.eyebrow {
+    margin-bottom: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
 
-        </div>
+.hero h1 {
+    font-size: clamp(55px, 8vw, 105px);
+    letter-spacing: -.065em;
+}
 
-        <div class="hero-buttons">
+.hero h1 span {
+    display: block;
+    color: var(--muted);
+}
 
-            <a href="#contact" class="btn primary">
-                Get in Touch
-                <i class="fas fa-arrow-right"></i>
-            </a>
+.hero-description {
+    max-width: 680px;
+    margin-top: 35px;
+    font-size: 18px;
+}
 
-            <a href="#works" class="btn secondary">
-                View Work
-            </a>
+.hero-stats {
+    display: flex;
+    gap: 50px;
+    margin-top: 45px;
+}
 
-        </div>
+.hero-stats div {
+    display: flex;
+    flex-direction: column;
+}
 
-    </div>
+.hero-stats strong {
+    font-family: var(--font-display);
+    font-size: 40px;
+}
 
-    <div class="hero-visual">
+.hero-stats span {
+    color: var(--muted);
+    font-size: 13px;
+}
 
-        <div class="portrait-card">
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+}
 
-            <div class="portrait-placeholder">
-                <span>SN</span>
-            </div>
+.btn {
+    padding: 15px 24px;
+    border-radius: 999px;
 
-            <div class="floating-card">
-                <i class="fas fa-shield-halved"></i>
-                <div>
-                    <strong>Security-first</strong>
-                    <small>Developer</small>
-                </div>
-            </div>
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
 
-        </div>
+    font-weight: 700;
 
-    </div>
+    transition: .25s ease;
+}
 
-</section>
+.btn.primary {
+    background: var(--dark);
+    color: white;
+}
 
+.btn.primary:hover {
+    transform: translateY(-3px);
+}
 
-<!-- ================= ABOUT ================= -->
+.btn.secondary {
+    border: 1px solid var(--line);
+}
 
-<section class="about section" id="about">
+.btn.secondary:hover {
+    background: white;
+}
 
-    <div class="section-label">
-        ABOUT
-    </div>
 
-    <div class="about-grid">
+/* HERO VISUAL */
 
-        <div>
+.hero-visual {
+    display: flex;
+    justify-content: center;
+}
 
-            <h2>
-                Detail-oriented developer,
-                built for dynamic,
-                accessible web applications.
-            </h2>
+.portrait-card {
+    position: relative;
 
-        </div>
+    width: min(400px, 100%);
+    aspect-ratio: .82;
 
-        <div class="about-text">
+    background: var(--dark);
 
-            <p>
-                I'm Syeda Ameena Najaf, a frontend-leaning web developer
-                and published researcher. I build secure web applications
-                with React and Flask, alongside cybersecurity internships
-                with ADVI Group, CodTech, Tata Group and Deloitte.
-            </p>
+    border-radius: 220px 220px 25px 25px;
 
-            <p>
-                Alongside web development, I've built an AI-based network
-                attack detection system with real-time Telegram alerting,
-                and published research on OpenCV-based license plate
-                recognition in the Journal of Scientific Research and
-                Technology.
-            </p>
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-            <p>
-                I like software that's both usable and genuinely secure,
-                and I look for problems that need both.
-            </p>
+    overflow: hidden;
+}
 
-        </div>
+.portrait-placeholder {
+    width: 70%;
+    height: 70%;
 
-    </div>
+    display: grid;
+    place-items: center;
 
-</section>
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.2);
 
+    color: var(--accent);
 
-<!-- ================= CORE FOCUS ================= -->
+    font-family: var(--font-display);
+    font-size: 80px;
+    font-weight: 700;
+}
 
-<section class="focus section">
+.floating-card {
+    position: absolute;
 
-    <div class="section-heading">
+    right: 18px;
+    bottom: 25px;
 
-        <span>CORE FOCUS</span>
+    padding: 14px 18px;
 
-        <h2>
-            Building software across
-            frontend, backend, full-stack
-            engineering, and cybersecurity.
-        </h2>
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-    </div>
+    background: var(--accent);
+    color: var(--dark);
 
-    <div class="focus-grid">
+    border-radius: 15px;
 
-        <article class="focus-card">
-            <span class="number">01</span>
-            <i class="fas fa-code"></i>
+    box-shadow: 0 15px 40px rgba(0,0,0,.25);
+}
 
-            <h3>Web Development</h3>
+.floating-card div {
+    display: flex;
+    flex-direction: column;
+}
 
-            <p>
-                React, Flask, REST APIs, dynamic and accessible UI.
-            </p>
-        </article>
+.floating-card small {
+    opacity: .65;
+}
 
 
-        <article class="focus-card">
-            <span class="number">02</span>
-            <i class="fas fa-shield-halved"></i>
+/* ABOUT */
 
-            <h3>Cybersecurity</h3>
+.about-grid {
+    margin-top: 55px;
 
-            <p>
-                Vulnerability assessment, penetration testing,
-                cryptography.
-            </p>
-        </article>
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
 
+.about h2 {
+    font-size: clamp(40px, 5vw, 70px);
+}
 
-        <article class="focus-card">
-            <span class="number">03</span>
-            <i class="fas fa-brain"></i>
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    font-size: 18px;
+}
 
-            <h3>AI / ML</h3>
 
-            <p>
-                Intrusion detection, computer vision, OCR pipelines.
-            </p>
-        </article>
+/* FOCUS */
 
+.focus {
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
 
-        <article class="focus-card">
-            <span class="number">04</span>
-            <i class="fas fa-book-open"></i>
+    background: var(--dark);
+    color: white;
+}
 
-            <h3>Research</h3>
+.section-heading {
+    max-width: 900px;
+}
 
-            <p>
-                Published in the Journal of Scientific Research
-                and Technology.
-            </p>
-        </article>
+.section-heading > span {
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: .18em;
+    font-weight: 700;
+}
 
-    </div>
+.section-heading h2 {
+    margin-top: 20px;
+}
 
-</section>
+.focus-grid {
+    max-width: var(--max-width);
+    margin: 70px auto 0;
 
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 
-<!-- ================= WORK ================= -->
+    border-top: 1px solid rgba(255,255,255,.16);
+}
 
-<section class="works section" id="works">
+.focus-card {
+    min-height: 310px;
+    padding: 35px 25px;
 
-    <div class="section-label">
-        SELECTED WORK
-    </div>
+    border-right: 1px solid rgba(255,255,255,.16);
+}
 
-    <div class="section-title-row">
+.focus-card:last-child {
+    border-right: 0;
+}
 
-        <div>
-            <h2>Projects that solve real problems.</h2>
-        </div>
+.focus-card .number {
+    color: var(--accent);
+    font-size: 12px;
+}
 
-        <p>
-            Six selected projects spanning cybersecurity,
-            AI, web development and automation.
-        </p>
+.focus-card i {
+    display: block;
+    margin-top: 80px;
 
-    </div>
+    font-size: 30px;
+    color: var(--accent);
+}
 
+.focus-card h3 {
+    margin-top: 25px;
+    font-size: 25px;
+}
 
-    <div class="projects-grid">
+.focus-card p {
+    margin-top: 15px;
+    color: #aaa;
+}
 
 
-        <!-- PROJECT 1 -->
+/* WORK */
 
-        <article class="project-card">
+.section-title-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
 
-            <div class="project-image cyber">
-                <i class="fas fa-network-wired"></i>
-                <span>01</span>
-            </div>
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
 
-            <div class="project-content">
+.section-title-row p {
+    max-width: 420px;
+}
 
-                <div class="project-tags">
-                    <span>Python</span>
-                    <span>Machine Learning</span>
-                    <span>Telegram API</span>
-                </div>
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
 
-                <h3>
-                    Autonomous Network Attack Detection System
-                </h3>
+.project-card {
+    background: white;
 
-                <p>
-                    A real-time, AI-based intrusion detection system
-                    trained on cybersecurity datasets from Kaggle,
-                    integrated with a custom Telegram bot that alerts
-                    on malicious traffic patterns.
-                </p>
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
 
-                <button class="details-btn"
-                        data-title="Autonomous Network Attack Detection System"
-                        data-description="A real-time AI-based intrusion detection system using Python and machine learning. Integrated with Telegram Bot alerts for malicious traffic patterns and real-time anomaly detection.">
-                    View details
-                    <i class="fas fa-arrow-right"></i>
-                </button>
+    overflow: hidden;
 
-            </div>
+    transition: .3s ease;
+}
 
-        </article>
+.project-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 25px 60px rgba(0,0,0,.08);
+}
 
+.project-image {
+    height: 270px;
 
-        <!-- PROJECT 2 -->
+    position: relative;
 
-        <article class="project-card">
+    display: grid;
+    place-items: center;
 
-            <div class="project-image vision">
-                <i class="fas fa-car"></i>
-                <span>02</span>
-            </div>
+    background:
+        radial-gradient(circle at 50% 30%, #3b3b3b, #101010 65%);
+}
 
-            <div class="project-content">
+.project-image i {
+    color: var(--accent);
+    font-size: 75px;
+}
 
-                <div class="project-tags">
-                    <span>Python</span>
-                    <span>OpenCV</span>
-                    <span>OCR</span>
-                    <span>Selenium</span>
-                </div>
+.project-image span {
+    position: absolute;
+    top: 22px;
+    right: 25px;
 
-                <h3>
-                    OpenCV-Based License Plate Detection
-                </h3>
+    color: rgba(255,255,255,.45);
+}
 
-                <p>
-                    An intelligent license-plate recognition system
-                    combining OCR and template matching, with Selenium
-                    automating vehicle-detail lookups.
-                </p>
+.project-content {
+    padding: 30px;
+}
 
-                <button class="details-btn"
-                        data-title="OpenCV-Based License Plate Detection"
-                        data-description="An intelligent license plate recognition system combining OpenCV, OCR, template matching and Selenium automation. Published in the Journal of Scientific Research and Technology.">
-                    View details
-                    <i class="fas fa-arrow-right"></i>
-                </button>
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
 
-            </div>
+.project-tags span {
+    padding: 6px 10px;
 
-        </article>
+    background: #f1eee7;
+    border-radius: 999px;
 
+    font-size: 11px;
+    font-weight: 600;
+}
 
-        <!-- PROJECT 3 -->
+.project-content h3 {
+    font-size: 28px;
+}
 
-        <article class="project-card">
+.project-content p {
+    margin-top: 15px;
+}
 
-            <div class="project-image enrollment">
-                <i class="fas fa-user-graduate"></i>
-                <span>03</span>
-            </div>
+.details-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
 
-            <div class="project-content">
+    margin-top: 25px;
 
-                <div class="project-tags">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>Bootstrap</span>
-                </div>
+    border: 0;
+    background: transparent;
 
-                <h3>
-                    Student Enrolment System
-                </h3>
+    font-weight: 700;
+}
 
-                <p>
-                    A secure full-featured enrolment portal with user
-                    login, course management, Stripe payment integration
-                    and an admin dashboard.
-                </p>
+.details-btn:hover {
+    gap: 15px;
+}
 
-                <button class="details-btn"
-                        data-title="Student Enrolment System"
-                        data-description="A secure student enrolment platform with authentication, course management, payment integration and administrative controls.">
-                    View details
-                    <i class="fas fa-arrow-right"></i>
-                </button>
 
-            </div>
+/* SERVICES */
 
-        </article>
+.services {
+    border-top: 1px solid var(--line);
+}
 
+.services-grid {
+    margin-top: 55px;
 
-        <!-- PROJECT 4 -->
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
 
-        <article class="project-card">
+    background: var(--line);
+}
 
-            <div class="project-image scanner">
-                <i class="fas fa-bug"></i>
-                <span>04</span>
-            </div>
+.service-card {
+    min-height: 370px;
+    padding: 35px;
 
-            <div class="project-content">
+    background: var(--bg);
+}
 
-                <div class="project-tags">
-                    <span>Python</span>
-                    <span>Requests</span>
-                    <span>BeautifulSoup</span>
-                </div>
+.service-card > span {
+    color: var(--muted);
+    font-size: 12px;
+}
 
-                <h3>
-                    Web Application Vulnerability Scanner
-                </h3>
+.service-card h3 {
+    margin-top: 70px;
+    font-size: 27px;
+}
 
-                <p>
-                    A scanner for identifying SQL injection, XSS and
-                    other OWASP vulnerabilities in web applications,
-                    built with a modular architecture.
-                </p>
+.service-card p {
+    margin-top: 18px;
+}
 
-                <button class="details-btn"
-                        data-title="Web Application Vulnerability Scanner"
-                        data-description="A Python-based security scanner designed to identify common web application vulnerabilities including SQL injection and XSS using modular scanning components.">
-                    View details
-                    <i class="fas fa-arrow-right"></i>
-                </button>
+.service-card ul {
+    margin-top: 25px;
+    list-style: none;
+}
 
-            </div>
+.service-card li {
+    padding: 7px 0;
+    color: var(--muted);
+}
 
-        </article>
+.service-card li::before {
+    content: "→";
+    margin-right: 8px;
+}
 
 
-        <!-- PROJECT 5 -->
+/* SKILLS */
 
-        <article class="project-card">
+.skills-intro {
+    margin-top: 45px;
 
-            <div class="project-image encryption">
-                <i class="fas fa-lock"></i>
-                <span>05</span>
-            </div>
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
 
-            <div class="project-content">
+.skills-intro h2 {
+    max-width: 600px;
+}
 
-                <div class="project-tags">
-                    <span>Python</span>
-                    <span>PyCryptodome</span>
-                    <span>JavaScript</span>
-                </div>
+.skills-intro p {
+    max-width: 400px;
+}
 
-                <h3>
-                    Advanced Encryption Tool (AES-256)
-                </h3>
+.skill-category {
+    margin-top: 70px;
+}
 
-                <p>
-                    A visually interactive tool for AES-256 file
-                    encryption and decryption, with an animated
-                    frontend and GitHub-ready build.
-                </p>
+.skill-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-                <button class="details-btn"
-                        data-title="Advanced Encryption Tool (AES-256)"
-                        data-description="An interactive AES-256 encryption and decryption application using Python, PyCryptodome and JavaScript.">
-                    View details
-                    <i class="fas fa-arrow-right"></i>
-                </button>
+    padding-bottom: 18px;
 
-            </div>
+    border-bottom: 1px solid var(--line);
+}
 
-        </article>
+.skill-heading h3 {
+    font-size: 26px;
+}
 
+.skill-heading span {
+    color: var(--muted);
+    font-size: 13px;
+}
 
-        <!-- PROJECT 6 -->
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 
-        <article class="project-card">
+    gap: 30px 60px;
 
-            <div class="project-image education">
-                <i class="fas fa-graduation-cap"></i>
-                <span>06</span>
-            </div>
+    margin-top: 30px;
+}
 
-            <div class="project-content">
+.skill-top {
+    display: flex;
+    justify-content: space-between;
 
-                <div class="project-tags">
-                    <span>React.js</span>
-                    <span>Vercel</span>
-                </div>
+    margin-bottom: 10px;
 
-                <h3>
-                    E-Learning Website
-                </h3>
+    font-size: 14px;
+    font-weight: 600;
+}
 
-                <p>
-                    An interactive, animated e-learning platform
-                    with a clean UI and modular architecture,
-                    deployed live on Vercel.
-                </p>
+.skill-top strong {
+    color: var(--muted);
+}
 
-                <a class="details-btn"
-                   href="https://syeda-educ-center.vercel.app"
-                   target="_blank"
-                   rel="noopener">
-                    Live website
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                </a>
+.progress {
+    height: 5px;
 
-            </div>
+    overflow: hidden;
 
-        </article>
+    background: #dedad2;
+    border-radius: 999px;
+}
 
-    </div>
+.progress span {
+    display: block;
+    height: 100%;
 
-</section>
+    background: var(--dark);
+    border-radius: inherit;
+}
 
 
-<!-- ================= SERVICES ================= -->
+/* TIMELINE */
 
-<section class="services section">
+.timeline-list {
+    position: relative;
+    margin-top: 60px;
+}
 
-    <div class="section-label">
-        MY SERVICES
-    </div>
+.timeline-list::before {
+    content: "";
 
-    <div class="services-grid">
+    position: absolute;
 
-        <article class="service-card">
+    left: 230px;
+    top: 0;
+    bottom: 0;
 
-            <span>01</span>
+    width: 1px;
 
-            <h3>Web Development</h3>
+    background: var(--line);
+}
 
-            <p>
-                Frontend-leaning builds with React and Flask:
-                dynamic, accessible interfaces and secure
-                application flows.
-            </p>
+.timeline-item {
+    position: relative;
 
-            <ul>
-                <li>React applications</li>
-                <li>Flask & REST APIs</li>
-                <li>Accessible UI</li>
-                <li>Responsive design</li>
-            </ul>
+    display: grid;
+    grid-template-columns: 200px 30px 1fr;
 
-        </article>
+    gap: 20px;
 
+    padding-bottom: 70px;
+}
 
-        <article class="service-card">
+.timeline-date {
+    color: var(--muted);
+    font-size: 13px;
+    text-align: right;
+}
 
-            <span>02</span>
+.timeline-dot {
+    width: 10px;
+    height: 10px;
 
-            <h3>Cybersecurity</h3>
+    margin-top: 4px;
 
-            <p>
-                Hands-on security work across internships and
-                projects, from vulnerability assessment to
-                threat reporting.
-            </p>
+    border-radius: 50%;
 
-            <ul>
-                <li>Vulnerability assessment</li>
-                <li>Penetration testing</li>
-                <li>Cryptography (AES-256)</li>
-            </ul>
+    background: var(--accent);
 
-        </article>
+    border: 3px solid var(--bg);
 
+    z-index: 2;
+}
 
-        <article class="service-card">
+.timeline-content h3 {
+    font-size: 29px;
+}
 
-            <span>03</span>
+.timeline-content h4 {
+    margin-top: 10px;
 
-            <h3>AI / ML</h3>
+    color: var(--muted);
 
-            <p>
-                Applied machine learning for security and computer
-                vision, including real-time alerting pipelines.
-            </p>
+    font-size: 14px;
+    font-weight: 500;
+}
 
-            <ul>
-                <li>Intrusion detection</li>
-                <li>Computer vision / OCR</li>
-                <li>Telegram alerting</li>
-            </ul>
+.timeline-content p {
+    max-width: 700px;
+    margin-top: 18px;
+}
 
-        </article>
 
+/* EDUCATION */
 
-        <article class="service-card">
+.education-card {
+    margin-top: 55px;
 
-            <span>04</span>
+    display: grid;
+    grid-template-columns: 200px 1fr;
 
-            <h3>Research</h3>
+    gap: 50px;
 
-            <p>
-                Published research on OpenCV-based license plate
-                recognition in the Journal of Scientific Research
-                and Technology.
-            </p>
+    padding: 45px;
 
-            <ul>
-                <li>JSRT publication, 2025</li>
-                <li>Impact Factor 5.2</li>
-                <li>Computer vision pipelines</li>
-            </ul>
+    background: var(--dark);
+    color: white;
 
-        </article>
+    border-radius: var(--radius);
+}
 
-    </div>
+.education-year {
+    color: var(--accent);
+    font-weight: 700;
+}
 
-</section>
+.education-card h2 {
+    font-size: clamp(30px, 4vw, 50px);
+}
 
+.education-card p {
+    margin-top: 20px;
+}
 
-<!-- ================= SKILLS ================= -->
+.education-card span {
+    display: block;
+    margin-top: 5px;
+    color: #777;
+}
 
-<section class="skills section" id="skills">
 
-    <div class="section-label">
-        MY TOOLSET
-    </div>
+/* CREDENTIALS */
 
-    <div class="skills-intro">
+.credential-grid {
+    margin-top: 55px;
 
-        <h2>
-            My tools & this stack.
-        </h2>
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
 
-        <p>
-            Languages, frameworks, security practice, and AI /
-            cloud tools I use to ship usable and secure software.
-        </p>
+.credential-card {
+    min-height: 220px;
+    padding: 30px;
 
-    </div>
+    border: 1px solid var(--line);
+    border-radius: 18px;
 
+    display: flex;
+    flex-direction: column;
+}
 
-    <div class="skill-category">
+.credential-card > span {
+    font-size: 12px;
+    color: var(--muted);
+}
 
-        <div class="skill-heading">
+.credential-card h3 {
+    margin-top: auto;
+    font-size: 25px;
+}
 
-            <h3>Languages</h3>
-            <span>4 technologies</span>
+.credential-btn {
+    margin-top: 20px;
+    align-self: flex-start;
 
-        </div>
+    padding: 9px 16px;
 
-        <div class="skills-list">
+    border: 0;
+    border-radius: 999px;
 
-            <div class="skill">
-                <div class="skill-top">
-                    <span>Python</span>
-                    <strong>88%</strong>
-                </div>
-                <div class="progress">
-                    <span style="width:88%"></span>
-                </div>
-            </div>
+    background: var(--dark);
+    color: white;
 
-            <div class="skill">
-                <div class="skill-top">
-                    <span>JavaScript</span>
-                    <strong>80%</strong>
-                </div>
-                <div class="progress">
-                    <span style="width:80%"></span>
-                </div>
-            </div>
+    font-size: 12px;
+}
 
-            <div class="skill">
-                <div class="skill-top">
-                    <span>SQL</span>
-                    <strong>75%</strong>
-                </div>
-                <div class="progress">
-                    <span style="width:75%"></span>
-                </div>
-            </div>
 
-            <div class="skill">
-                <div class="skill-top">
-                    <span>HTML / CSS</span>
-                    <strong>82%</strong>
-                </div>
-                <div class="progress">
-                    <span style="width:82%"></span>
-                </div>
-            </div>
+/* TRUST */
 
-        </div>
+.trust {
+    width: 100%;
 
-    </div>
+    padding-left: 5%;
+    padding-right: 5%;
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    <div class="skill-category">
+    gap: 50px;
 
-        <div class="skill-heading">
+    background: var(--accent);
+}
 
-            <h3>Frameworks & Libraries</h3>
-            <span>3 stacks</span>
+.trust-content h2 {
+    margin-top: 20px;
+}
 
-        </div>
+.trust-content h2 span {
+    display: block;
+    color: rgba(0,0,0,.55);
+}
 
-        <div class="skills-list">
+.trust-content p {
+    margin-top: 20px;
+    color: rgba(0,0,0,.65);
+}
 
-            <div class="skill">
-                <div class="skill-top">
-                    <span>React</span>
-                    <strong>80%</strong>
-                </div>
-                <div class="progress">
-                    <span style="width:80%"></span>
-                </div>
-            </div>
+.trust-stats {
+    min-width: 220px;
 
-            <div class="skill">
-                <div class="skill-top">
-                    <span>Flask</span>
-                    <strong>78%</strong>
-                </div>
-                <div class="progress">
-                    <span style="width:78%"></span>
-                </div>
-            </div>
+    display: grid;
+    grid-template-columns: auto 1fr;
 
-            <div class="skill">
-                <div class="skill-top">
-                    <span>Bootstrap / Laravel</span>
-                    <strong>70%</strong>
-                </div>
-                <div class="progress">
-                    <span style="width:70%"></span>
-                </div>
-            </div>
+    align-items: end;
 
-        </div>
+    column-gap: 10px;
+}
 
-    </div>
+.trust-stats strong {
+    font-family: var(--font-display);
+    font-size: 50px;
+}
 
+.trust-stats span {
+    color: rgba(0,0,0,.6);
+}
 
-    <div class="skill-category">
 
-        <div class="skill-heading">
+/* CONTACT */
 
-            <h3>Security</h3>
-            <span>3 practices</span>
+.contact-heading {
+    max-width: 850px;
+}
 
-        </div>
+.contact-heading h2 {
+    margin-top: 25px;
+}
 
-        <div class="skills-list">
+.contact-heading h2 span {
+    color: var(--muted);
+}
 
-            <div class="skill">
-                <div class="skill-top">
-                    <span>Vulnerability Assessment</span>
-                    <strong>80%</strong>
-                </div>
-                <div class="progress">
-                    <span style="width:80%"></span>
-                </div>
-            </div>
+.contact-heading p {
+    max-width: 700px;
+    margin-top: 25px;
+    font-size: 18px;
+}
 
-            <div class="skill">
-                <div class="skill-top">
-                    <span>Penetration Testing</span>
-                    <strong>76%</strong>
-                </div>
-                <div class="progress">
-                    <span style="width:76%"></span>
-                </div>
-            </div>
+.contact-grid {
+    margin-top: 70px;
 
-            <div class="skill">
-                <div class="skill-top">
-                    <span>Cryptography (AES-256)</span>
-                    <strong>78%</strong>
-                </div>
-                <div class="progress">
-                    <span style="width:78%"></span>
-                </div>
-            </div>
+    display: grid;
+    grid-template-columns: 1.25fr .75fr;
 
-        </div>
+    gap: 50px;
+}
 
-    </div>
+.contact-form-card {
+    padding: 40px;
 
+    background: white;
 
-    <div class="skill-category">
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
 
-        <div class="skill-heading">
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
 
-            <h3>AI / ML & Cloud</h3>
-            <span>3 capabilities</span>
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
 
-        </div>
+    margin-bottom: 22px;
+}
 
-        <div class="skills-list">
+.form-group label {
+    font-size: 12px;
+    font-weight: 700;
 
-            <div class="skill">
-                <div class="skill-top">
-                    <span>Machine Learning</span>
-                    <strong>78%</strong>
-                </div>
-                <div class="progress">
-                    <span style="width:78%"></span>
-                </div>
-            </div>
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
 
-            <div class="skill">
-                <div class="skill-top">
-                    <span>Computer Vision (OpenCV)</span>
-                    <strong>76%</strong>
-                </div>
-                <div class="progress">
-                    <span style="width:76%"></span>
-                </div>
-            </div>
+.form-group input,
+.form-group textarea {
+    width: 100%;
 
-            <div class="skill">
-                <div class="skill-top">
-                    <span>AWS Solutions Architecture</span>
-                    <strong>65%</strong>
-                </div>
-                <div class="progress">
-                    <span style="width:65%"></span>
-                </div>
-            </div>
+    padding: 15px 17px;
 
-        </div>
+    border: 1px solid var(--line);
+    border-radius: 12px;
 
-    </div>
+    background: var(--bg);
 
-</section>
+    outline: none;
 
+    transition: .25s ease;
+}
 
-<!-- ================= TIMELINE ================= -->
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--dark);
 
-<section class="timeline section" id="timeline">
+    box-shadow: 0 0 0 3px rgba(200,255,0,.2);
+}
 
-    <div class="section-label">
-        CAREER TIMELINE
-    </div>
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
 
-    <div class="timeline-list">
+.send-btn {
+    width: 100%;
 
+    padding: 17px 25px;
 
-        <article class="timeline-item">
+    border: 0;
+    border-radius: 999px;
 
-            <div class="timeline-date">
-                07/2025 - 06/2026
-            </div>
+    background: var(--dark);
+    color: white;
 
-            <div class="timeline-dot"></div>
+    font-weight: 700;
 
-            <div class="timeline-content">
+    transition: .25s ease;
+}
 
-                <h3>Web Developer</h3>
+.send-btn:hover {
+    transform: translateY(-2px);
+}
 
-                <h4>
-                    Excellence College of Health & Safety Engineering
-                    · Hyderabad, Telangana
-                </h4>
+.send-btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
 
-                <p>
-                    Developing secure web applications using React
-                    and Flask.
-                </p>
+#sendLoading {
+    display: none;
+}
 
-            </div>
+#formStatus {
+    display: none;
 
-        </article>
+    margin-top: 18px;
+    padding: 13px 16px;
 
+    border-radius: 12px;
 
-        <article class="timeline-item">
+    font-size: 14px;
+    font-weight: 600;
+}
 
-            <div class="timeline-date">
-                07/2025
-            </div>
+#formStatus.success {
+    display: block;
 
-            <div class="timeline-dot"></div>
+    background: rgba(200,255,0,.25);
+    color: #465900;
+}
 
-            <div class="timeline-content">
+#formStatus.error {
+    display: block;
 
-                <h3>Software Engineering Certificate Trainee</h3>
+    background: #ffe7e7;
+    color: #a50000;
+}
 
-                <h4>
-                    Saylor Academy · Virtual, Remote
-                </h4>
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 
-                <p>
-                    Completed a 36-hour self-paced Software Engineering
-                    (CS302) course. Gained knowledge in SDLC, system
-                    architecture, debugging and testing. Scored 75.81%
-                    and earned Certificate of Achievement
-                    (ID: 250671527SN).
-                </p>
+.contact-detail {
+    padding: 25px;
 
-            </div>
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
 
-        </article>
+    background: white;
 
+    border: 1px solid var(--line);
+    border-radius: 18px;
+}
 
-        <article class="timeline-item">
+.contact-detail > span {
+    width: 42px;
+    height: 42px;
 
-            <div class="timeline-date">
-                06/2025
-            </div>
+    flex-shrink: 0;
 
-            <div class="timeline-dot"></div>
+    display: grid;
+    place-items: center;
 
-            <div class="timeline-content">
+    border-radius: 50%;
 
-                <h3>Cybersecurity Consultant Intern</h3>
+    background: var(--dark);
+    color: var(--accent);
+}
 
-                <h4>
-                    Deloitte (Forage Virtual Internship)
-                    · Virtual, Remote
-                </h4>
+.contact-detail div {
+    display: flex;
+    flex-direction: column;
+}
 
-                <p>
-                    Conducted risk assessments and developed
-                    client-facing cyber reports. Simulated threat
-                    modeling and third-party risk management.
-                </p>
+.contact-detail small {
+    color: var(--muted);
+}
 
-            </div>
+.contact-detail a,
+.contact-detail div > span {
+    font-weight: 600;
+    word-break: break-word;
+}
 
-        </article>
+.contact-detail a:hover {
+    text-decoration: underline;
+}
 
 
-        <article class="timeline-item">
+/* MODAL */
 
-            <div class="timeline-date">
-                03/2025 - 04/2025
-            </div>
+.modal {
+    position: fixed;
+    inset: 0;
 
-            <div class="timeline-dot"></div>
+    z-index: 5000;
 
-            <div class="timeline-content">
+    display: none;
 
-                <h3>Cybersecurity Trainee</h3>
+    align-items: center;
+    justify-content: center;
 
-                <h4>
-                    CodTech IT Solutions · Virtual, Remote
-                </h4>
+    padding: 25px;
+}
 
-                <p>
-                    Participated in national-level hackathons and
-                    security challenges. Worked on real-time project
-                    modules including web vulnerability scanners.
-                </p>
+.modal.active {
+    display: flex;
+}
 
-            </div>
+.modal-overlay {
+    position: absolute;
+    inset: 0;
 
-        </article>
+    background: rgba(0,0,0,.72);
+    backdrop-filter: blur(7px);
+}
 
+.modal-box {
+    position: relative;
+    z-index: 2;
 
-        <article class="timeline-item">
+    width: min(600px, 100%);
 
-            <div class="timeline-date">
-                01/2025 - 03/2025
-            </div>
+    padding: 45px;
 
-            <div class="timeline-dot"></div>
+    border-radius: 24px;
 
-            <div class="timeline-content">
+    background: var(--bg);
 
-                <h3>Cyber Security Intern</h3>
+    animation: modalIn .3s ease;
+}
 
-                <h4>
-                    ADVI Group of Companies · Hyderabad, Telangana
-                </h4>
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(.97);
+    }
 
-                <p>
-                    Developed an Autonomous Network Attack Detection
-                    System using Python. Integrated Telegram Bot
-                    alerts and performed log analysis and anomaly
-                    detection in real-time systems.
-                </p>
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
 
-            </div>
+.modal-close {
+    position: absolute;
 
-        </article>
+    top: 18px;
+    right: 18px;
 
+    width: 38px;
+    height: 38px;
 
-        <article class="timeline-item">
+    border: 1px solid var(--line);
+    border-radius: 50%;
 
-            <div class="timeline-date">
-                05/2024 - 06/2024
-            </div>
+    background: transparent;
+}
 
-            <div class="timeline-dot"></div>
+.modal-label {
+    font-size: 11px;
+    letter-spacing: .15em;
+    font-weight: 700;
+    color: var(--muted);
+}
 
-            <div class="timeline-content">
+.modal-box h2 {
+    margin-top: 18px;
+    font-size: 45px;
+}
 
-                <h3>Cybersecurity Analyst Intern</h3>
+.modal-box p {
+    margin-top: 20px;
+    font-size: 17px;
+}
 
-                <h4>
-                    Tata Group (Forage Virtual Internship)
-                    · Virtual, Remote
-                </h4>
 
-                <p>
-                    Completed a structured simulation involving
-                    cybersecurity investigations. Assessed
-                    vulnerabilities and recommended secure
-                    architecture practices.
-                </p>
+/* FOOTER */
 
-            </div>
+footer {
+    padding: 80px 5vw 30px;
 
-        </article>
+    background: var(--dark);
+    color: white;
+}
 
-    </div>
+.footer-title {
+    font-family: var(--font-display);
 
-</section>
+    font-size: clamp(45px, 8vw, 110px);
 
+    line-height: .9;
 
-<!-- ================= EDUCATION ================= -->
+    letter-spacing: -.06em;
+}
 
-<section class="education section">
+.footer-title span {
+    display: block;
+    color: #555;
+}
 
-    <div class="section-label">
-        FOUNDATION
-    </div>
+.footer-links {
+    display: flex;
+    gap: 25px;
+    margin-top: 70px;
+}
 
-    <div class="education-card">
+.footer-links a {
+    color: #aaa;
+}
 
-        <div class="education-year">
-            2021 - 2025
-        </div>
+.footer-links a:hover {
+    color: var(--accent);
+}
 
-        <div>
+footer p {
+    margin-top: 70px;
+    color: #555;
+    font-size: 13px;
+}
 
-            <h2>
-                Bachelor of Engineering (B.E)
-                - Computer Science Engineering
-            </h2>
 
-            <p>
-                Khaja Bandanawaz College of Engineering,
-                Khaja Bandanawaz University
-            </p>
+/* RESPONSIVE */
 
-            <span>
-                Kalaburagi, Karnataka
-            </span>
+@media (max-width: 1050px) {
 
-        </div>
+    .hero {
+        grid-template-columns: 1fr;
+    }
 
-    </div>
+    .hero-visual {
+        justify-content: flex-start;
+    }
 
-</section>
+    .focus-grid,
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
+    .focus-card:nth-child(2) {
+        border-right: 0;
+    }
 
-<!-- ================= CREDENTIALS ================= -->
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
 
-<section class="credentials section">
+    .credential-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-    <div class="section-label">
-        CREDENTIALS
-    </div>
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
 
-    <div class="credential-grid">
+}
 
-        <article class="credential-card">
 
-            <span>01</span>
+@media (max-width: 760px) {
 
-            <h3>Published Research</h3>
+    .section {
+        padding: 80px 0;
+    }
 
-            <button class="credential-btn"
-                    data-title="Published Research"
-                    data-description="License plate recognition using OpenCV, published in the Journal of Scientific Research and Technology, 2025. Impact Factor 5.2.">
-                Info
-            </button>
+    .navbar {
+        padding: 0 5%;
+    }
 
-        </article>
+    .menu-btn {
+        display: grid;
+        place-items: center;
+    }
 
+    .navbar nav {
+        position: absolute;
 
-        <article class="credential-card">
+        top: 78px;
+        left: 0;
+        right: 0;
 
-            <span>02</span>
+        display: none;
 
-            <h3>AWS Cloud Computing</h3>
+        flex-direction: column;
 
-            <button class="credential-btn"
-                    data-title="AWS Cloud Computing"
-                    data-description="Solutions Architecture pathway issued by AWS via Forage, covering cloud design patterns used in production systems.">
-                Info
-            </button>
+        padding: 20px 5% 25px;
 
-        </article>
+        background: var(--bg);
 
+        border-bottom: 1px solid var(--line);
+    }
 
-        <article class="credential-card">
+    .navbar nav.active {
+        display: flex;
+    }
 
-            <span>03</span>
+    .navbar nav a {
+        padding: 12px 0;
+    }
 
-            <h3>Cybersecurity Analyst</h3>
+    .hero h1 {
+        font-size: clamp(50px, 15vw, 80px);
+    }
 
-            <button class="credential-btn"
-                    data-title="Cybersecurity Analyst"
-                    data-description="Tata Group Forage program covering investigations, vulnerability assessment, and secure architecture recommendations.">
-                Info
-            </button>
+    .hero-stats {
+        gap: 25px;
+        flex-wrap: wrap;
+    }
 
-        </article>
+    .hero-stats strong {
+        font-size: 32px;
+    }
 
+    .hero-buttons {
+        flex-wrap: wrap;
+    }
 
-        <article class="credential-card">
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
 
-            <span>04</span>
+    .focus-grid,
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
 
-            <h3>Software Engineering</h3>
+    .focus-card {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,.16);
+    }
 
-            <button class="credential-btn"
-                    data-title="Software Engineering"
-                    data-description="Saylor Academy CS302 certificate covering SDLC, system architecture, debugging, and testing. Certificate ID 250671527SN.">
-                Info
-            </button>
+    .focus-card:last-child {
+        border-bottom: 0;
+    }
 
-        </article>
+    .section-title-row,
+    .skills-intro {
+        flex-direction: column;
+    }
 
+    .skills-list {
+        grid-template-columns: 1fr;
+    }
 
-        <article class="credential-card">
+    .timeline-list::before {
+        left: 6px;
+    }
 
-            <span>05</span>
+    .timeline-item {
+        grid-template-columns: 20px 1fr;
+        gap: 15px;
+    }
 
-            <h3>Deloitte Internship</h3>
+    .timeline-date {
+        grid-column: 2;
+        text-align: left;
+        order: -1;
+    }
 
-            <button class="credential-btn"
-                    data-title="Deloitte Internship"
-                    data-description="Virtual internship with Deloitte via Forage, focused on risk assessment, threat modeling, and client-facing reports.">
-                Info
-            </button>
+    .timeline-dot {
+        grid-column: 1;
+        grid-row: 2;
+    }
 
-        </article>
+    .timeline-content {
+        grid-column: 2;
+    }
 
+    .education-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 30px;
+    }
 
-        <article class="credential-card">
+    .credential-grid {
+        grid-template-columns: 1fr;
+    }
 
-            <span>06</span>
+    .trust {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-            <h3>Attack Detection System</h3>
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
 
-            <button class="credential-btn"
-                    data-title="Attack Detection System"
-                    data-description="ADVI internship project: an AI-based network attack detection system with Telegram alerting and real-time analysis.">
-                Info
-            </button>
+    .contact-form-card {
+        padding: 25px;
+    }
 
-        </article>
+    .modal-box {
+        padding: 30px;
+    }
 
-    </div>
+    .modal-box h2 {
+        font-size: 36px;
+    }
 
-</section>
+}
 
 
-<!-- ================= TRUST ================= -->
+@media (max-width: 450px) {
 
-<section class="trust section">
+    .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
 
-    <div class="trust-content">
+    .hero-stats strong {
+        font-size: 27px;
+    }
 
-        <span class="section-label">
-            TRUSTED THROUGH 4 INTERNSHIPS
-        </span>
+    .hero-stats span {
+        font-size: 11px;
+    }
 
-        <h2>
-            A developer you can trust.
-            <span>High standards.</span>
-        </h2>
+    .portrait-card {
+        width: 100%;
+    }
 
-        <p>
-            Security-first delivery.
-        </p>
+    .project-content {
+        padding: 23px;
+    }
 
-    </div>
-
-    <div class="trust-stats">
-
-        <strong>6</strong>
-        <span>projects</span>
-
-        <strong>1</strong>
-        <span>published paper</span>
-
-    </div>
-
-</section>
-
-
-<!-- ================= CONTACT ================= -->
-
-<section class="contact section" id="contact">
-
-    <div class="contact-heading">
-
-        <span class="section-label">
-            CONTACT
-        </span>
-
-        <h2>
-            Let's build something
-            <span>worth defending.</span>
-        </h2>
-
-        <p>
-            Open to security-focused roles, AI/ML projects and
-            full-stack work. Send me a message directly using
-            the form below.
-        </p>
-
-    </div>
-
-
-    <div class="contact-grid">
-
-
-        <!-- LIVE CONTACT FORM -->
-
-        <div class="contact-form-card">
-
-            <form id="contactForm"
-                  action="https://formsubmit.co/syedanajaf832@gmail.com"
-                  method="POST">
-
-                <!-- FormSubmit settings -->
-
-                <input type="hidden"
-                       name="_subject"
-                       value="New Portfolio Contact - Syeda Ameena Najaf">
-
-                <input type="hidden"
-                       name="_captcha"
-                       value="false">
-
-                <input type="hidden"
-                       name="_template"
-                       value="table">
-
-                <input type="hidden"
-                       name="_next"
-                       value="https://syeda-ameena-najaf-portfolio-gamma.vercel.app/#contact">
-
-
-                <div class="form-row">
-
-                    <div class="form-group">
-
-                        <label for="name">
-                            Name
-                        </label>
-
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            placeholder="Your name"
-                            autocomplete="name"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="email">
-                            Email
-                        </label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="your@email.com"
-                            autocomplete="email"
-                            required
-                        >
-
-                    </div>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="subject">
-                        Subject
-                    </label>
-
-                    <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        placeholder="What would you like to discuss?"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="message">
-                        Message
-                    </label>
-
-                    <textarea
-                        id="message"
-                        name="message"
-                        rows="7"
-                        placeholder="Write your message..."
-                        required
-                    ></textarea>
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="send-btn"
-                    id="sendMessageBtn"
-                >
-
-                    <span id="sendText">
-                        Send Message
-                        <i class="fas fa-arrow-right"></i>
-                    </span>
-
-                    <span id="sendLoading">
-                        Sending...
-                        <i class="fas fa-spinner fa-spin"></i>
-                    </span>
-
-                </button>
-
-
-                <div id="formStatus"></div>
-
-            </form>
-
-        </div>
-
-
-        <!-- CONTACT DETAILS -->
-
-        <div class="contact-details">
-
-            <div class="contact-detail">
-
-                <span>
-                    <i class="fas fa-envelope"></i>
-                </span>
-
-                <div>
-
-                    <small>Email</small>
-
-                    <a href="mailto:syedanajaf832@gmail.com">
-                        syedanajaf832@gmail.com
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="contact-detail">
-
-                <span>
-                    <i class="fas fa-phone"></i>
-                </span>
-
-                <div>
-
-                    <small>Phone</small>
-
-                    <a href="tel:09538090817">
-                        09538090817
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="contact-detail">
-
-                <span>
-                    <i class="fab fa-linkedin-in"></i>
-                </span>
-
-                <div>
-
-                    <small>LinkedIn</small>
-
-                    <a
-                        href="https://linkedin.com/in/syedanajaf"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        linkedin.com/in/syedanajaf
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="contact-detail">
-
-                <span>
-                    <i class="fas fa-location-dot"></i>
-                </span>
-
-                <div>
-
-                    <small>Location</small>
-
-                    <span>
-                        Santosh Nagar, Mehdipatnam,
-                        Hyderabad, Telangana 500006
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-</main>
-
-
-<!-- ================= MODAL ================= -->
-
-<div class="modal" id="detailsModal">
-
-    <div class="modal-overlay" id="modalOverlay"></div>
-
-    <div class="modal-box">
-
-        <button class="modal-close" id="modalClose">
-            <i class="fas fa-xmark"></i>
-        </button>
-
-        <span class="modal-label">
-            DETAILS
-        </span>
-
-        <h2 id="modalTitle">
-            Project
-        </h2>
-
-        <p id="modalDescription">
-            Project description.
-        </p>
-
-    </div>
-
-</div>
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-    <div class="footer-title">
-        LET'S BUILD SOMETHING
-        <span>WORTH DEFENDING.</span>
-    </div>
-
-    <div class="footer-links">
-
-        <a href="#works">Work</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-
-    </div>
-
-    <p>
-        © 2026 Syeda Ameena Najaf
-    </p>
-
-</footer>
-
-
-<script src="script.js"></script>
-
-</body>
-</html>
+}
