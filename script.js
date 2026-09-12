@@ -1,1437 +1,1304 @@
-:root {
-    --bg: #f4f1ea;
-    --surface: #ffffff;
-    --dark: #101010;
-    --text: #111111;
-    --muted: #6f6b64;
-    --line: #d9d4ca;
-    --accent: #c8ff00;
-    --white: #ffffff;
+"use strict";
 
-    --radius: 22px;
-    --max-width: 1240px;
 
-    --font-main: "DM Sans", sans-serif;
-    --font-display: "Space Grotesk", sans-serif;
-}
+/* =========================================================
+   DOM READY
+========================================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-html {
-    scroll-behavior: smooth;
-}
+  initPreloader();
+  initNavigation();
+  initScrollProgress();
+  initRevealAnimations();
+  initSkillBars();
+  initCursor();
+  initMagneticButtons();
+  initButtonRipple();
+  initProjectModal();
+  initCertificateViewer();
+  initBackToTop();
 
-body {
-    font-family: var(--font-main);
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+});
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
 
-button,
-input,
-textarea {
-    font: inherit;
-}
+/* =========================================================
+   PRELOADER
+========================================================= */
 
-button {
-    cursor: pointer;
-}
+function initPreloader() {
 
-.section {
-    width: min(var(--max-width), 90%);
-    margin: auto;
-    padding: 120px 0;
-}
+  const preloader = document.getElementById("preloader");
 
-.section-label {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .18em;
-    color: var(--muted);
-}
+  if (!preloader) {
+    return;
+  }
 
-h1,
-h2,
-h3 {
-    font-family: var(--font-display);
-    line-height: 1.05;
-}
+  window.addEventListener("load", () => {
 
-p {
-    color: var(--muted);
+    setTimeout(() => {
+      preloader.classList.add("is-hidden");
+    }, 500);
+
+  });
+
 }
 
 
-/* PRELOADER */
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-#preloader {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: var(--dark);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: .5s ease;
-}
+function initNavigation() {
 
-#preloader.hide {
-    opacity: 0;
-    visibility: hidden;
-}
+  const header = document.getElementById("siteHeader");
 
-.loader {
-    display: flex;
-    gap: 8px;
-}
+  const menuToggle = document.getElementById("menuToggle");
+  const menuClose = document.getElementById("menuClose");
+  const mobileMenu = document.getElementById("mobileMenu");
 
-.loader span {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--accent);
-    animation: pulse 1s infinite alternate;
-}
+  const navLinks = Array.from(
+    document.querySelectorAll(".nav-link")
+  );
 
-.loader span:nth-child(2) {
-    animation-delay: .15s;
-}
+  const mobileLinks = Array.from(
+    document.querySelectorAll(".mobile-links a")
+  );
 
-.loader span:nth-child(3) {
-    animation-delay: .3s;
-}
 
-@keyframes pulse {
-    from {
-        transform: translateY(0);
-        opacity: .4;
+  function closeMenu() {
+
+    mobileMenu?.classList.remove("open");
+
+    document.body.style.overflow = "";
+
+  }
+
+
+  menuToggle?.addEventListener("click", () => {
+
+    mobileMenu?.classList.add("open");
+
+    document.body.style.overflow = "hidden";
+
+  });
+
+
+  menuClose?.addEventListener("click", closeMenu);
+
+
+  mobileLinks.forEach(link => {
+
+    link.addEventListener("click", closeMenu);
+
+  });
+
+
+  window.addEventListener("scroll", () => {
+
+    if (!header) {
+      return;
     }
 
-    to {
-        transform: translateY(-12px);
-        opacity: 1;
+    header.classList.toggle(
+      "scrolled",
+      window.scrollY > 40
+    );
+
+  });
+
+
+  const sections = Array.from(
+    document.querySelectorAll("main section[id]")
+  );
+
+
+  const observer = new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        const id = entry.target.id;
+
+        navLinks.forEach(link => {
+
+          link.classList.toggle(
+            "active",
+            link.getAttribute("href") === `#${id}`
+          );
+
+        });
+
+      });
+
+    },
+    {
+      threshold: 0.2,
+      rootMargin: "-15% 0px -60% 0px"
     }
-}
-
-
-/* NAVBAR */
-
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
-    min-height: 78px;
-
-    padding: 0 5vw;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    background: rgba(244, 241, 234, .93);
-    backdrop-filter: blur(16px);
-
-    border-bottom: 1px solid rgba(0,0,0,.08);
-}
-
-.logo {
-    width: 44px;
-    height: 44px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 50%;
-
-    background: var(--dark);
-    color: var(--accent);
-
-    font-family: var(--font-display);
-    font-weight: 700;
-}
-
-.navbar nav {
-    display: flex;
-    gap: 30px;
-}
-
-.navbar nav a {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--muted);
-}
-
-.navbar nav a:hover,
-.navbar nav a.active {
-    color: var(--text);
-}
-
-.menu-btn {
-    display: none;
-
-    width: 42px;
-    height: 42px;
-
-    border: 1px solid var(--line);
-    border-radius: 50%;
-
-    background: transparent;
-}
-
-
-/* HERO */
-
-.hero {
-    min-height: calc(100vh - 78px);
-
-    display: grid;
-    grid-template-columns: 1.15fr .85fr;
-
-    align-items: center;
-    gap: 80px;
-}
-
-.eyebrow {
-    margin-bottom: 30px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.hero h1 {
-    font-size: clamp(55px, 8vw, 105px);
-    letter-spacing: -.065em;
-}
-
-.hero h1 span {
-    display: block;
-    color: var(--muted);
-}
-
-.hero-description {
-    max-width: 680px;
-    margin-top: 35px;
-    font-size: 18px;
-}
-
-.hero-stats {
-    display: flex;
-    gap: 50px;
-    margin-top: 45px;
-}
-
-.hero-stats div {
-    display: flex;
-    flex-direction: column;
-}
-
-.hero-stats strong {
-    font-family: var(--font-display);
-    font-size: 40px;
-}
-
-.hero-stats span {
-    color: var(--muted);
-    font-size: 13px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 15px;
-    margin-top: 40px;
-}
-
-.btn {
-    padding: 15px 24px;
-    border-radius: 999px;
-
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-
-    font-weight: 700;
-
-    transition: .25s ease;
-}
-
-.btn.primary {
-    background: var(--dark);
-    color: white;
-}
-
-.btn.primary:hover {
-    transform: translateY(-3px);
-}
-
-.btn.secondary {
-    border: 1px solid var(--line);
-}
-
-.btn.secondary:hover {
-    background: white;
-}
-
-
-/* HERO VISUAL */
-
-.hero-visual {
-    display: flex;
-    justify-content: center;
-}
-
-.portrait-card {
-    position: relative;
-
-    width: min(400px, 100%);
-    aspect-ratio: .82;
-
-    background: var(--dark);
-
-    border-radius: 220px 220px 25px 25px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    overflow: hidden;
-}
-
-.portrait-placeholder {
-    width: 70%;
-    height: 70%;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,.2);
-
-    color: var(--accent);
-
-    font-family: var(--font-display);
-    font-size: 80px;
-    font-weight: 700;
-}
-
-.floating-card {
-    position: absolute;
-
-    right: 18px;
-    bottom: 25px;
-
-    padding: 14px 18px;
-
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    background: var(--accent);
-    color: var(--dark);
-
-    border-radius: 15px;
-
-    box-shadow: 0 15px 40px rgba(0,0,0,.25);
-}
-
-.floating-card div {
-    display: flex;
-    flex-direction: column;
-}
-
-.floating-card small {
-    opacity: .65;
-}
-
-
-/* ABOUT */
-
-.about-grid {
-    margin-top: 55px;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-}
-
-.about h2 {
-    font-size: clamp(40px, 5vw, 70px);
-}
-
-.about-text {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    font-size: 18px;
-}
-
-
-/* FOCUS */
-
-.focus {
-    width: 100%;
-    padding-left: 5%;
-    padding-right: 5%;
-
-    background: var(--dark);
-    color: white;
-}
-
-.section-heading {
-    max-width: 900px;
-}
-
-.section-heading > span {
-    color: var(--accent);
-    font-size: 12px;
-    letter-spacing: .18em;
-    font-weight: 700;
-}
-
-.section-heading h2 {
-    margin-top: 20px;
-}
-
-.focus-grid {
-    max-width: var(--max-width);
-    margin: 70px auto 0;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-    border-top: 1px solid rgba(255,255,255,.16);
-}
-
-.focus-card {
-    min-height: 310px;
-    padding: 35px 25px;
-
-    border-right: 1px solid rgba(255,255,255,.16);
-}
-
-.focus-card:last-child {
-    border-right: 0;
-}
-
-.focus-card .number {
-    color: var(--accent);
-    font-size: 12px;
-}
-
-.focus-card i {
-    display: block;
-    margin-top: 80px;
-
-    font-size: 30px;
-    color: var(--accent);
-}
-
-.focus-card h3 {
-    margin-top: 25px;
-    font-size: 25px;
-}
-
-.focus-card p {
-    margin-top: 15px;
-    color: #aaa;
-}
+  );
 
 
-/* WORK */
+  sections.forEach(section => {
+    observer.observe(section);
+  });
 
-.section-title-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-
-    margin-top: 30px;
-    margin-bottom: 60px;
-}
-
-.section-title-row p {
-    max-width: 420px;
-}
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
-}
-
-.project-card {
-    background: white;
-
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-
-    overflow: hidden;
-
-    transition: .3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 25px 60px rgba(0,0,0,.08);
-}
-
-.project-image {
-    height: 270px;
-
-    position: relative;
-
-    display: grid;
-    place-items: center;
-
-    background:
-        radial-gradient(circle at 50% 30%, #3b3b3b, #101010 65%);
-}
-
-.project-image i {
-    color: var(--accent);
-    font-size: 75px;
-}
-
-.project-image span {
-    position: absolute;
-    top: 22px;
-    right: 25px;
-
-    color: rgba(255,255,255,.45);
-}
-
-.project-content {
-    padding: 30px;
-}
-
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 18px;
-}
-
-.project-tags span {
-    padding: 6px 10px;
-
-    background: #f1eee7;
-    border-radius: 999px;
-
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.project-content h3 {
-    font-size: 28px;
-}
-
-.project-content p {
-    margin-top: 15px;
-}
-
-.details-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-
-    margin-top: 25px;
-
-    border: 0;
-    background: transparent;
-
-    font-weight: 700;
-}
-
-.details-btn:hover {
-    gap: 15px;
-}
-
-
-/* SERVICES */
-
-.services {
-    border-top: 1px solid var(--line);
-}
-
-.services-grid {
-    margin-top: 55px;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-
-    background: var(--line);
 }
 
-.service-card {
-    min-height: 370px;
-    padding: 35px;
 
-    background: var(--bg);
-}
-
-.service-card > span {
-    color: var(--muted);
-    font-size: 12px;
-}
-
-.service-card h3 {
-    margin-top: 70px;
-    font-size: 27px;
-}
-
-.service-card p {
-    margin-top: 18px;
-}
-
-.service-card ul {
-    margin-top: 25px;
-    list-style: none;
-}
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
 
-.service-card li {
-    padding: 7px 0;
-    color: var(--muted);
-}
+function initScrollProgress() {
 
-.service-card li::before {
-    content: "→";
-    margin-right: 8px;
-}
+  const progress =
+    document.getElementById("scrollProgress");
 
+  if (!progress) {
+    return;
+  }
 
-/* SKILLS */
 
-.skills-intro {
-    margin-top: 45px;
+  function update() {
 
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-}
+    const scrollTop = window.scrollY;
 
-.skills-intro h2 {
-    max-width: 600px;
-}
+    const documentHeight =
+      document.documentElement.scrollHeight -
+      window.innerHeight;
 
-.skills-intro p {
-    max-width: 400px;
-}
+    const percentage =
+      documentHeight > 0
+        ? (scrollTop / documentHeight) * 100
+        : 0;
 
-.skill-category {
-    margin-top: 70px;
-}
+    progress.style.width =
+      `${Math.min(100, Math.max(0, percentage))}%`;
 
-.skill-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  }
 
-    padding-bottom: 18px;
 
-    border-bottom: 1px solid var(--line);
-}
+  window.addEventListener(
+    "scroll",
+    update,
+    { passive: true }
+  );
 
-.skill-heading h3 {
-    font-size: 26px;
-}
+  update();
 
-.skill-heading span {
-    color: var(--muted);
-    font-size: 13px;
 }
 
-.skills-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
 
-    gap: 30px 60px;
+/* =========================================================
+   REVEAL ANIMATIONS
+========================================================= */
 
-    margin-top: 30px;
-}
-
-.skill-top {
-    display: flex;
-    justify-content: space-between;
+function initRevealAnimations() {
 
-    margin-bottom: 10px;
+  const elements =
+    document.querySelectorAll(".reveal");
 
-    font-size: 14px;
-    font-weight: 600;
-}
+  if (!elements.length) {
+    return;
+  }
 
-.skill-top strong {
-    color: var(--muted);
-}
 
-.progress {
-    height: 5px;
+  const observer = new IntersectionObserver(
+    entries => {
 
-    overflow: hidden;
+      entries.forEach(entry => {
 
-    background: #dedad2;
-    border-radius: 999px;
-}
+        if (entry.isIntersecting) {
 
-.progress span {
-    display: block;
-    height: 100%;
+          entry.target.classList.add("is-visible");
 
-    background: var(--dark);
-    border-radius: inherit;
-}
+          observer.unobserve(entry.target);
 
+        }
 
-/* TIMELINE */
+      });
 
-.timeline-list {
-    position: relative;
-    margin-top: 60px;
-}
+    },
+    {
+      threshold: 0.08
+    }
+  );
 
-.timeline-list::before {
-    content: "";
 
-    position: absolute;
+  elements.forEach(element => {
 
-    left: 230px;
-    top: 0;
-    bottom: 0;
+    observer.observe(element);
 
-    width: 1px;
+  });
 
-    background: var(--line);
 }
-
-.timeline-item {
-    position: relative;
 
-    display: grid;
-    grid-template-columns: 200px 30px 1fr;
 
-    gap: 20px;
+/* =========================================================
+   SKILL BARS
+========================================================= */
 
-    padding-bottom: 70px;
-}
-
-.timeline-date {
-    color: var(--muted);
-    font-size: 13px;
-    text-align: right;
-}
+function initSkillBars() {
 
-.timeline-dot {
-    width: 10px;
-    height: 10px;
+  const tracks =
+    document.querySelectorAll(".skill-track i");
 
-    margin-top: 4px;
+  if (!tracks.length) {
+    return;
+  }
 
-    border-radius: 50%;
 
-    background: var(--accent);
+  const observer = new IntersectionObserver(
+    entries => {
 
-    border: 3px solid var(--bg);
+      entries.forEach(entry => {
 
-    z-index: 2;
-}
+        if (!entry.isIntersecting) {
+          return;
+        }
 
-.timeline-content h3 {
-    font-size: 29px;
-}
+        const bar = entry.target;
 
-.timeline-content h4 {
-    margin-top: 10px;
+        const width =
+          bar.dataset.width || "0%";
 
-    color: var(--muted);
+        setTimeout(() => {
 
-    font-size: 14px;
-    font-weight: 500;
-}
+          bar.style.width = width;
 
-.timeline-content p {
-    max-width: 700px;
-    margin-top: 18px;
-}
+        }, 150);
 
+        observer.unobserve(bar);
 
-/* EDUCATION */
+      });
 
-.education-card {
-    margin-top: 55px;
+    },
+    {
+      threshold: 0.5
+    }
+  );
 
-    display: grid;
-    grid-template-columns: 200px 1fr;
 
-    gap: 50px;
+  tracks.forEach(track => {
 
-    padding: 45px;
+    observer.observe(track);
 
-    background: var(--dark);
-    color: white;
+  });
 
-    border-radius: var(--radius);
 }
 
-.education-year {
-    color: var(--accent);
-    font-weight: 700;
-}
 
-.education-card h2 {
-    font-size: clamp(30px, 4vw, 50px);
-}
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
 
-.education-card p {
-    margin-top: 20px;
-}
+function initCursor() {
 
-.education-card span {
-    display: block;
-    margin-top: 5px;
-    color: #777;
-}
+  const dot =
+    document.getElementById("cursorDot");
 
+  const ring =
+    document.getElementById("cursorRing");
 
-/* CREDENTIALS */
+  if (!dot || !ring) {
+    return;
+  }
 
-.credential-grid {
-    margin-top: 55px;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-}
+  if (
+    window.matchMedia("(pointer: coarse)").matches
+  ) {
+    return;
+  }
 
-.credential-card {
-    min-height: 220px;
-    padding: 30px;
 
-    border: 1px solid var(--line);
-    border-radius: 18px;
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
 
-    display: flex;
-    flex-direction: column;
-}
+  let ringX = mouseX;
+  let ringY = mouseY;
 
-.credential-card > span {
-    font-size: 12px;
-    color: var(--muted);
-}
 
-.credential-card h3 {
-    margin-top: auto;
-    font-size: 25px;
-}
+  document.body.classList.add("has-cursor");
 
-.credential-btn {
-    margin-top: 20px;
-    align-self: flex-start;
 
-    padding: 9px 16px;
+  document.addEventListener("mousemove", event => {
 
-    border: 0;
-    border-radius: 999px;
+    mouseX = event.clientX;
+    mouseY = event.clientY;
 
-    background: var(--dark);
-    color: white;
+    dot.style.left = `${mouseX}px`;
+    dot.style.top = `${mouseY}px`;
 
-    font-size: 12px;
-}
+  });
 
 
-/* TRUST */
+  function animateRing() {
 
-.trust {
-    width: 100%;
+    ringX += (mouseX - ringX) * 0.14;
+    ringY += (mouseY - ringY) * 0.14;
 
-    padding-left: 5%;
-    padding-right: 5%;
+    ring.style.left = `${ringX}px`;
+    ring.style.top = `${ringY}px`;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    requestAnimationFrame(animateRing);
 
-    gap: 50px;
+  }
 
-    background: var(--accent);
-}
 
-.trust-content h2 {
-    margin-top: 20px;
-}
+  animateRing();
 
-.trust-content h2 span {
-    display: block;
-    color: rgba(0,0,0,.55);
-}
 
-.trust-content p {
-    margin-top: 20px;
-    color: rgba(0,0,0,.65);
-}
+  const interactiveSelector =
+    "a, button, input, textarea, .certificate-card";
 
-.trust-stats {
-    min-width: 220px;
 
-    display: grid;
-    grid-template-columns: auto 1fr;
+  document
+    .querySelectorAll(interactiveSelector)
+    .forEach(element => {
 
-    align-items: end;
+      element.addEventListener(
+        "mouseenter",
+        () => {
+          ring.classList.add("is-active");
+        }
+      );
 
-    column-gap: 10px;
-}
 
-.trust-stats strong {
-    font-family: var(--font-display);
-    font-size: 50px;
-}
+      element.addEventListener(
+        "mouseleave",
+        () => {
+          ring.classList.remove("is-active");
+        }
+      );
 
-.trust-stats span {
-    color: rgba(0,0,0,.6);
-}
+    });
 
 
-/* CONTACT */
+  document.addEventListener("mousedown", () => {
+    ring.classList.add("is-down");
+  });
 
-.contact-heading {
-    max-width: 850px;
-}
 
-.contact-heading h2 {
-    margin-top: 25px;
-}
+  document.addEventListener("mouseup", () => {
+    ring.classList.remove("is-down");
+  });
 
-.contact-heading h2 span {
-    color: var(--muted);
 }
 
-.contact-heading p {
-    max-width: 700px;
-    margin-top: 25px;
-    font-size: 18px;
-}
 
-.contact-grid {
-    margin-top: 70px;
+/* =========================================================
+   MAGNETIC BUTTONS
+========================================================= */
 
-    display: grid;
-    grid-template-columns: 1.25fr .75fr;
+function initMagneticButtons() {
 
-    gap: 50px;
-}
+  if (
+    window.matchMedia("(pointer: coarse)").matches
+  ) {
+    return;
+  }
 
-.contact-form-card {
-    padding: 40px;
 
-    background: white;
+  const magnets =
+    document.querySelectorAll(".magnetic");
 
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-}
 
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
+  magnets.forEach(magnet => {
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
+    magnet.addEventListener("mousemove", event => {
 
-    margin-bottom: 22px;
-}
+      const rect =
+        magnet.getBoundingClientRect();
 
-.form-group label {
-    font-size: 12px;
-    font-weight: 700;
+      const x =
+        event.clientX -
+        rect.left -
+        rect.width / 2;
 
-    text-transform: uppercase;
-    letter-spacing: .08em;
-}
+      const y =
+        event.clientY -
+        rect.top -
+        rect.height / 2;
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
 
-    padding: 15px 17px;
+      magnet.style.transform =
+        `translate(${x * 0.2}px, ${y * 0.25}px)`;
 
-    border: 1px solid var(--line);
-    border-radius: 12px;
+    });
 
-    background: var(--bg);
 
-    outline: none;
+    magnet.addEventListener("mouseleave", () => {
 
-    transition: .25s ease;
-}
+      magnet.style.transform = "";
 
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: var(--dark);
+    });
 
-    box-shadow: 0 0 0 3px rgba(200,255,0,.2);
-}
+  });
 
-.form-group textarea {
-    resize: vertical;
-    min-height: 150px;
 }
 
-.send-btn {
-    width: 100%;
 
-    padding: 17px 25px;
+/* =========================================================
+   BUTTON RIPPLE
+========================================================= */
 
-    border: 0;
-    border-radius: 999px;
-
-    background: var(--dark);
-    color: white;
-
-    font-weight: 700;
-
-    transition: .25s ease;
-}
-
-.send-btn:hover {
-    transform: translateY(-2px);
-}
-
-.send-btn:disabled {
-    opacity: .6;
-    cursor: not-allowed;
-}
+function initButtonRipple() {
 
-#sendLoading {
-    display: none;
-}
+  const buttons =
+    document.querySelectorAll(".button");
 
-#formStatus {
-    display: none;
 
-    margin-top: 18px;
-    padding: 13px 16px;
+  buttons.forEach(button => {
 
-    border-radius: 12px;
+    button.addEventListener("click", () => {
 
-    font-size: 14px;
-    font-weight: 600;
-}
+      button.classList.remove("is-rippling");
 
-#formStatus.success {
-    display: block;
+      void button.offsetWidth;
 
-    background: rgba(200,255,0,.25);
-    color: #465900;
-}
+      button.classList.add("is-rippling");
 
-#formStatus.error {
-    display: block;
+    });
 
-    background: #ffe7e7;
-    color: #a50000;
-}
+  });
 
-.contact-details {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
 }
 
-.contact-detail {
-    padding: 25px;
-
-    display: flex;
-    align-items: flex-start;
-    gap: 18px;
-
-    background: white;
-
-    border: 1px solid var(--line);
-    border-radius: 18px;
-}
 
-.contact-detail > span {
-    width: 42px;
-    height: 42px;
+/* =========================================================
+   PROJECT MODAL
+========================================================= */
 
-    flex-shrink: 0;
+function initProjectModal() {
 
-    display: grid;
-    place-items: center;
+  const modal =
+    document.getElementById("projectModal");
 
-    border-radius: 50%;
+  const overlay =
+    document.getElementById("modalOverlay");
 
-    background: var(--dark);
-    color: var(--accent);
-}
+  const closeButton =
+    document.getElementById("modalClose");
 
-.contact-detail div {
-    display: flex;
-    flex-direction: column;
-}
+  const title =
+    document.getElementById("modalTitle");
 
-.contact-detail small {
-    color: var(--muted);
-}
+  const description =
+    document.getElementById("modalDescription");
 
-.contact-detail a,
-.contact-detail div > span {
-    font-weight: 600;
-    word-break: break-word;
-}
+  const label =
+    document.getElementById("modalLabel");
 
-.contact-detail a:hover {
-    text-decoration: underline;
-}
+  const tags =
+    document.getElementById("modalTags");
 
+  const year =
+    document.getElementById("modalYear");
 
-/* MODAL */
+  const link =
+    document.getElementById("modalLink");
 
-.modal {
-    position: fixed;
-    inset: 0;
 
-    z-index: 5000;
+  if (!modal) {
+    return;
+  }
 
-    display: none;
 
-    align-items: center;
-    justify-content: center;
+  const projects = {
 
-    padding: 25px;
-}
+    attack: {
+      label: "CYBERSECURITY",
+      title: "Autonomous Network Attack Detection System",
+      description:
+        "A Python-based security monitoring project designed to identify suspicious network activity and provide automated Telegram notifications.",
+      tags: [
+        "Python",
+        "Networking",
+        "Telegram Bot",
+        "Security"
+      ],
+      year: "2025",
+      link: "#"
+    },
 
-.modal.active {
-    display: flex;
-}
 
-.modal-overlay {
-    position: absolute;
-    inset: 0;
+    plate: {
+      label: "COMPUTER VISION",
+      title: "OpenCV-Based License Plate Detection",
+      description:
+        "A computer vision workflow using OpenCV and OCR techniques to detect and recognize vehicle license plates.",
+      tags: [
+        "Python",
+        "OpenCV",
+        "OCR",
+        "Automation"
+      ],
+      year: "2025",
+      link: "#"
+    },
 
-    background: rgba(0,0,0,.72);
-    backdrop-filter: blur(7px);
-}
 
-.modal-box {
-    position: relative;
-    z-index: 2;
+    student: {
+      label: "WEB APPLICATION",
+      title: "Student Enrolment System",
+      description:
+        "A structured student management solution focused on enrollment workflows and organized academic information.",
+      tags: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "SQL"
+      ],
+      year: "2025",
+      link: "#"
+    },
 
-    width: min(600px, 100%);
 
-    padding: 45px;
+    scanner: {
+      label: "APPLICATION SECURITY",
+      title: "Web Application Vulnerability Scanner",
+      description:
+        "A security-focused application designed to identify common web vulnerabilities and provide useful findings.",
+      tags: [
+        "Python",
+        "OWASP",
+        "Security",
+        "HTTP"
+      ],
+      year: "2025",
+      link: "#"
+    },
 
-    border-radius: 24px;
 
-    background: var(--bg);
+    aes: {
+      label: "CRYPTOGRAPHY",
+      title: "Advanced Encryption Tool · AES-256",
+      description:
+        "An encryption utility focused on protecting sensitive files and information using modern cryptographic practices.",
+      tags: [
+        "Python",
+        "AES-256",
+        "OpenSSL",
+        "Security"
+      ],
+      year: "2025",
+      link: "#"
+    },
 
-    animation: modalIn .3s ease;
-}
 
-@keyframes modalIn {
-    from {
-        opacity: 0;
-        transform: translateY(25px) scale(.97);
+    learning: {
+      label: "EDTECH / FULL STACK",
+      title: "SYED Educational Learning Platform",
+      description:
+        "A modern educational platform with course discovery, categories, enrollment, progress tracking, authentication, certificates and responsive learning experiences.",
+      tags: [
+        "React",
+        "JavaScript",
+        "CSS",
+        "Vercel"
+      ],
+      year: "2026",
+      link: "https://syed-educational-platform.vercel.app/"
     }
 
-    to {
-        opacity: 1;
-        transform: none;
-    }
-}
-
-.modal-close {
-    position: absolute;
-
-    top: 18px;
-    right: 18px;
-
-    width: 38px;
-    height: 38px;
-
-    border: 1px solid var(--line);
-    border-radius: 50%;
-
-    background: transparent;
-}
-
-.modal-label {
-    font-size: 11px;
-    letter-spacing: .15em;
-    font-weight: 700;
-    color: var(--muted);
-}
-
-.modal-box h2 {
-    margin-top: 18px;
-    font-size: 45px;
-}
-
-.modal-box p {
-    margin-top: 20px;
-    font-size: 17px;
-}
+  };
 
 
-/* FOOTER */
+  function openProject(projectKey) {
 
-footer {
-    padding: 80px 5vw 30px;
+    const project =
+      projects[projectKey];
 
-    background: var(--dark);
-    color: white;
-}
-
-.footer-title {
-    font-family: var(--font-display);
-
-    font-size: clamp(45px, 8vw, 110px);
-
-    line-height: .9;
-
-    letter-spacing: -.06em;
-}
-
-.footer-title span {
-    display: block;
-    color: #555;
-}
-
-.footer-links {
-    display: flex;
-    gap: 25px;
-    margin-top: 70px;
-}
-
-.footer-links a {
-    color: #aaa;
-}
-
-.footer-links a:hover {
-    color: var(--accent);
-}
-
-footer p {
-    margin-top: 70px;
-    color: #555;
-    font-size: 13px;
-}
-
-
-/* RESPONSIVE */
-
-@media (max-width: 1050px) {
-
-    .hero {
-        grid-template-columns: 1fr;
+    if (!project) {
+      return;
     }
 
-    .hero-visual {
-        justify-content: flex-start;
+
+    label.textContent =
+      project.label;
+
+    title.textContent =
+      project.title;
+
+    description.textContent =
+      project.description;
+
+    year.textContent =
+      project.year;
+
+
+    tags.innerHTML = "";
+
+
+    project.tags.forEach(tag => {
+
+      const span =
+        document.createElement("span");
+
+      span.textContent = tag;
+
+      tags.appendChild(span);
+
+    });
+
+
+    if (project.link === "#") {
+
+      link.style.display = "none";
+
+    } else {
+
+      link.style.display = "inline";
+      link.href = project.link;
+
     }
 
-    .focus-grid,
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
+
+    modal.classList.add("open");
+
+    document.body.classList.add("modal-open");
+
+  }
+
+
+  function closeProject() {
+
+    modal.classList.remove("open");
+
+    document.body.classList.remove("modal-open");
+
+  }
+
+
+  document
+    .querySelectorAll(".project-row")
+    .forEach(row => {
+
+      const button =
+        row.querySelector(".view-project");
+
+      const key =
+        row.dataset.project;
+
+
+      button?.addEventListener("click", event => {
+
+        if (
+          button.tagName.toLowerCase() === "a"
+        ) {
+          return;
+        }
+
+        event.preventDefault();
+
+        openProject(key);
+
+      });
+
+    });
+
+
+  closeButton?.addEventListener(
+    "click",
+    closeProject
+  );
+
+
+  overlay?.addEventListener(
+    "click",
+    closeProject
+  );
+
+
+  document.addEventListener("keydown", event => {
+
+    if (
+      event.key === "Escape" &&
+      modal.classList.contains("open")
+    ) {
+      closeProject();
     }
 
-    .focus-card:nth-child(2) {
-        border-right: 0;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .credential-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-
-@media (max-width: 760px) {
-
-    .section {
-        padding: 80px 0;
-    }
-
-    .navbar {
-        padding: 0 5%;
-    }
-
-    .menu-btn {
-        display: grid;
-        place-items: center;
-    }
-
-    .navbar nav {
-        position: absolute;
-
-        top: 78px;
-        left: 0;
-        right: 0;
-
-        display: none;
-
-        flex-direction: column;
-
-        padding: 20px 5% 25px;
-
-        background: var(--bg);
-
-        border-bottom: 1px solid var(--line);
-    }
-
-    .navbar nav.active {
-        display: flex;
-    }
-
-    .navbar nav a {
-        padding: 12px 0;
-    }
-
-    .hero h1 {
-        font-size: clamp(50px, 15vw, 80px);
-    }
-
-    .hero-stats {
-        gap: 25px;
-        flex-wrap: wrap;
-    }
-
-    .hero-stats strong {
-        font-size: 32px;
-    }
-
-    .hero-buttons {
-        flex-wrap: wrap;
-    }
-
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 35px;
-    }
-
-    .focus-grid,
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .focus-card {
-        border-right: 0;
-        border-bottom: 1px solid rgba(255,255,255,.16);
-    }
-
-    .focus-card:last-child {
-        border-bottom: 0;
-    }
-
-    .section-title-row,
-    .skills-intro {
-        flex-direction: column;
-    }
-
-    .skills-list {
-        grid-template-columns: 1fr;
-    }
-
-    .timeline-list::before {
-        left: 6px;
-    }
-
-    .timeline-item {
-        grid-template-columns: 20px 1fr;
-        gap: 15px;
-    }
-
-    .timeline-date {
-        grid-column: 2;
-        text-align: left;
-        order: -1;
-    }
-
-    .timeline-dot {
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    .timeline-content {
-        grid-column: 2;
-    }
-
-    .education-card {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 30px;
-    }
-
-    .credential-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .trust {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-    .contact-form-card {
-        padding: 25px;
-    }
-
-    .modal-box {
-        padding: 30px;
-    }
-
-    .modal-box h2 {
-        font-size: 36px;
-    }
+  });
 
 }
 
 
-@media (max-width: 450px) {
+/* =========================================================
+   CERTIFICATE VIEWER
+========================================================= */
 
-    .hero-stats {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+function initCertificateViewer() {
+
+  const cards = Array.from(
+    document.querySelectorAll(".certificate-card")
+  );
+
+
+  const modal =
+    document.getElementById("certificateModal");
+
+  const backdrop =
+    document.getElementById("certificateBackdrop");
+
+  const closeButton =
+    document.getElementById("viewerClose");
+
+  const previousButton =
+    document.getElementById("viewerPrev");
+
+  const nextButton =
+    document.getElementById("viewerNext");
+
+  const image =
+    document.getElementById("viewerImage");
+
+  const title =
+    document.getElementById("viewerTitle");
+
+  const category =
+    document.getElementById("viewerCategory");
+
+  const counter =
+    document.getElementById("viewerCounter");
+
+  const openImage =
+    document.getElementById("openCertificate");
+
+  const zoomIn =
+    document.getElementById("zoomIn");
+
+  const zoomOut =
+    document.getElementById("zoomOut");
+
+  const zoomReset =
+    document.getElementById("zoomReset");
+
+  const fullscreenButton =
+    document.getElementById("fullscreenButton");
+
+  const imageScroll =
+    document.getElementById("viewerImageScroll");
+
+
+  if (
+    !cards.length ||
+    !modal ||
+    !image
+  ) {
+    return;
+  }
+
+
+  let currentIndex = 0;
+
+  let zoom = 1;
+
+  const MIN_ZOOM = 0.5;
+  const MAX_ZOOM = 3;
+
+
+  /*
+    Build certificate data directly from
+    the HTML cards.
+  */
+
+  const certificates =
+    cards.map(card => ({
+
+      src:
+        card.dataset.certificate,
+
+      title:
+        card.dataset.title ||
+        "Certificate",
+
+      category:
+        card.dataset.category ||
+        "CREDENTIAL",
+
+      alt:
+        card
+          .querySelector("img")
+          ?.getAttribute("alt") ||
+        "Certificate"
+
+    }));
+
+
+  function applyZoom() {
+
+    image.style.transform =
+      `scale(${zoom})`;
+
+    if (zoom > 1) {
+
+      imageScroll.style.cursor = "grab";
+
+    } else {
+
+      imageScroll.style.cursor = "default";
+
     }
 
-    .hero-stats strong {
-        font-size: 27px;
+
+    if (zoomReset) {
+
+      zoomReset.textContent =
+        `${Math.round(zoom * 100)}%`;
+
     }
 
-    .hero-stats span {
-        font-size: 11px;
+  }
+
+
+  function render(index) {
+
+    if (!certificates.length) {
+      return;
     }
 
-    .portrait-card {
-        width: 100%;
+
+    currentIndex =
+      ((index % certificates.length) +
+        certificates.length) %
+      certificates.length;
+
+
+    const certificate =
+      certificates[currentIndex];
+
+
+    zoom = 1;
+
+    imageScroll.scrollTop = 0;
+    imageScroll.scrollLeft = 0;
+
+    applyZoom();
+
+
+    /*
+      THIS IS THE MAIN FIX.
+
+      The exact image stored in the
+      certificate card is loaded into
+      the large viewer.
+    */
+
+    image.src =
+      certificate.src;
+
+    image.alt =
+      certificate.alt;
+
+
+    title.textContent =
+      certificate.title;
+
+    category.textContent =
+      certificate.category;
+
+
+    counter.textContent =
+      `${String(currentIndex + 1).padStart(2, "0")} / ${String(certificates.length).padStart(2, "0")}`;
+
+
+    openImage.href =
+      certificate.src;
+
+
+    /*
+      Clear old broken image handlers.
+    */
+
+    image.onerror = () => {
+
+      console.error(
+        "Certificate image not found:",
+        certificate.src
+      );
+
+      image.alt =
+        "Certificate image not found. Check the file inside assets/certificates.";
+
+    };
+
+  }
+
+
+  function openViewer(index) {
+
+    render(index);
+
+    modal.classList.add("open");
+
+    modal.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    document.body.classList.add(
+      "modal-open"
+    );
+
+  }
+
+
+  function closeViewer() {
+
+    modal.classList.remove("open");
+
+    modal.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    document.body.classList.remove(
+      "modal-open"
+    );
+
+
+    if (document.fullscreenElement) {
+
+      document.exitFullscreen?.();
+
     }
 
-    .project-content {
-        padding: 23px;
+  }
+
+
+  /*
+    Clicking the certificate card opens
+    the matching certificate.
+  */
+
+  cards.forEach((card, index) => {
+
+    card.addEventListener("click", event => {
+
+      event.preventDefault();
+
+      openViewer(index);
+
+    });
+
+
+    card.addEventListener("keydown", event => {
+
+      if (
+        event.key === "Enter" ||
+        event.key === " "
+      ) {
+
+        event.preventDefault();
+
+        openViewer(index);
+
+      }
+
+    });
+
+  });
+
+
+  closeButton?.addEventListener(
+    "click",
+    closeViewer
+  );
+
+
+  backdrop?.addEventListener(
+    "click",
+    closeViewer
+  );
+
+
+  previousButton?.addEventListener(
+    "click",
+    () => {
+      render(currentIndex - 1);
     }
+  );
+
+
+  nextButton?.addEventListener(
+    "click",
+    () => {
+      render(currentIndex + 1);
+    }
+  );
+
+
+  zoomIn?.addEventListener(
+    "click",
+    () => {
+
+      zoom =
+        Math.min(
+          MAX_ZOOM,
+          zoom + 0.25
+        );
+
+      applyZoom();
+
+    }
+  );
+
+
+  zoomOut?.addEventListener(
+    "click",
+    () => {
+
+      zoom =
+        Math.max(
+          MIN_ZOOM,
+          zoom - 0.25
+        );
+
+      applyZoom();
+
+    }
+  );
+
+
+  zoomReset?.addEventListener(
+    "click",
+    () => {
+
+      zoom = 1;
+
+      imageScroll.scrollTop = 0;
+      imageScroll.scrollLeft = 0;
+
+      applyZoom();
+
+    }
+  );
+
+
+  fullscreenButton?.addEventListener(
+    "click",
+    async () => {
+
+      const viewer =
+        modal.querySelector(
+          ".certificate-viewer"
+        );
+
+
+      if (!document.fullscreenElement) {
+
+        try {
+
+          await viewer?.requestFullscreen();
+
+        } catch (error) {
+
+          console.warn(
+            "Fullscreen unavailable:",
+            error
+          );
+
+        }
+
+      } else {
+
+        await document.exitFullscreen?.();
+
+      }
+
+    }
+  );
+
+
+  /*
+    Keyboard controls
+  */
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if (
+        !modal.classList.contains("open")
+      ) {
+        return;
+      }
+
+
+      if (event.key === "Escape") {
+
+        closeViewer();
+
+      }
+
+
+      if (
+        event.key === "ArrowLeft"
+      ) {
+
+        render(currentIndex - 1);
+
+      }
+
+
+      if (
+        event.key === "ArrowRight"
+      ) {
+
+        render(currentIndex + 1);
+
+      }
+
+
+      if (
+        event.key === "+" ||
+        event.key === "="
+      ) {
+
+        zoom =
+          Math.min(
+            MAX_ZOOM,
+            zoom + 0.25
+          );
+
+        applyZoom();
+
+      }
+
+
+      if (event.key === "-") {
+
+        zoom =
+          Math.max(
+            MIN_ZOOM,
+            zoom - 0.25
+          );
+
+        applyZoom();
+
+      }
+
+    }
+  );
+
+
+  /*
+    Mouse wheel zoom over certificate
+  */
+
+  imageScroll?.addEventListener(
+    "wheel",
+    event => {
+
+      if (!modal.classList.contains("open")) {
+        return;
+      }
+
+      if (!event.ctrlKey) {
+        return;
+      }
+
+      event.preventDefault();
+
+
+      if (event.deltaY < 0) {
+
+        zoom =
+          Math.min(
+            MAX_ZOOM,
+            zoom + 0.1
+          );
+
+      } else {
+
+        zoom =
+          Math.max(
+            MIN_ZOOM,
+            zoom - 0.1
+          );
+
+      }
+
+
+      applyZoom();
+
+    },
+    { passive: false }
+  );
+
+
+  /*
+    Double-click certificate to zoom.
+  */
+
+  image.addEventListener(
+    "dblclick",
+    () => {
+
+      if (zoom === 1) {
+
+        zoom = 2;
+
+      } else {
+
+        zoom = 1;
+
+      }
+
+      applyZoom();
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+function initBackToTop() {
+
+  const button =
+    document.getElementById("backTop");
+
+
+  if (!button) {
+    return;
+  }
+
+
+  window.addEventListener(
+    "scroll",
+    () => {
+
+      button.classList.toggle(
+        "show",
+        window.scrollY > 600
+      );
+
+    },
+    { passive: true }
+  );
+
+
+  button.addEventListener(
+    "click",
+    () => {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+  );
 
 }
