@@ -1,12 +1,10 @@
 "use strict";
 
-
 /* =========================================================
    DOM READY
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-
   initPreloader();
   initNavigation();
   initScrollProgress();
@@ -18,41 +16,39 @@ document.addEventListener("DOMContentLoaded", () => {
   initProjectModal();
   initCertificateViewer();
   initBackToTop();
-
 });
-
 
 /* =========================================================
    PRELOADER
 ========================================================= */
 
 function initPreloader() {
-
   const preloader = document.getElementById("preloader");
 
-  if (!preloader) {
-    return;
+  if (!preloader) return;
+
+  function hidePreloader() {
+    preloader.classList.add("is-hidden");
   }
 
-  window.addEventListener("load", () => {
+  if (document.readyState === "complete") {
+    hidePreloader();
+  } else {
+    window.addEventListener("load", hidePreloader, {
+      once: true
+    });
+  }
 
-    setTimeout(() => {
-      preloader.classList.add("is-hidden");
-    }, 500);
-
-  });
-
+  // Safety fallback: never leave the loader stuck forever.
+  setTimeout(hidePreloader, 2000);
 }
-
 
 /* =========================================================
    NAVIGATION
 ========================================================= */
 
 function initNavigation() {
-
   const header = document.getElementById("siteHeader");
-
   const menuToggle = document.getElementById("menuToggle");
   const menuClose = document.getElementById("menuClose");
   const mobileMenu = document.getElementById("mobileMenu");
@@ -65,76 +61,58 @@ function initNavigation() {
     document.querySelectorAll(".mobile-links a")
   );
 
-
   function closeMenu() {
-
     mobileMenu?.classList.remove("open");
-
     document.body.style.overflow = "";
-
   }
 
-
   menuToggle?.addEventListener("click", () => {
-
     mobileMenu?.classList.add("open");
-
     document.body.style.overflow = "hidden";
-
   });
-
 
   menuClose?.addEventListener("click", closeMenu);
 
-
   mobileLinks.forEach(link => {
-
     link.addEventListener("click", closeMenu);
-
   });
 
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!header) return;
 
-  window.addEventListener("scroll", () => {
-
-    if (!header) {
-      return;
-    }
-
-    header.classList.toggle(
-      "scrolled",
-      window.scrollY > 40
-    );
-
-  });
-
+      header.classList.toggle(
+        "scrolled",
+        window.scrollY > 40
+      );
+    },
+    { passive: true }
+  );
 
   const sections = Array.from(
     document.querySelectorAll("main section[id]")
   );
 
+  // Navigation still works if IntersectionObserver is unavailable.
+  if (typeof IntersectionObserver === "undefined") {
+    return;
+  }
 
   const observer = new IntersectionObserver(
     entries => {
-
       entries.forEach(entry => {
-
-        if (!entry.isIntersecting) {
-          return;
-        }
+        if (!entry.isIntersecting) return;
 
         const id = entry.target.id;
 
         navLinks.forEach(link => {
-
           link.classList.toggle(
             "active",
             link.getAttribute("href") === `#${id}`
           );
-
         });
-
       });
-
     },
     {
       threshold: 0.2,
@@ -142,30 +120,21 @@ function initNavigation() {
     }
   );
 
-
   sections.forEach(section => {
     observer.observe(section);
   });
-
 }
-
 
 /* =========================================================
    SCROLL PROGRESS
 ========================================================= */
 
 function initScrollProgress() {
+  const progress = document.getElementById("scrollProgress");
 
-  const progress =
-    document.getElementById("scrollProgress");
-
-  if (!progress) {
-    return;
-  }
-
+  if (!progress) return;
 
   function update() {
-
     const scrollTop = window.scrollY;
 
     const documentHeight =
@@ -179,143 +148,106 @@ function initScrollProgress() {
 
     progress.style.width =
       `${Math.min(100, Math.max(0, percentage))}%`;
-
   }
 
-
-  window.addEventListener(
-    "scroll",
-    update,
-    { passive: true }
-  );
+  window.addEventListener("scroll", update, {
+    passive: true
+  });
 
   update();
-
 }
-
 
 /* =========================================================
    REVEAL ANIMATIONS
 ========================================================= */
 
 function initRevealAnimations() {
+  const elements = document.querySelectorAll(".reveal");
 
-  const elements =
-    document.querySelectorAll(".reveal");
+  if (!elements.length) return;
 
-  if (!elements.length) {
+  // Show all content if the browser lacks IntersectionObserver.
+  if (typeof IntersectionObserver === "undefined") {
+    elements.forEach(element => {
+      element.classList.add("visible");
+    });
     return;
   }
 
-
   const observer = new IntersectionObserver(
     entries => {
-
       entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
 
-        if (entry.isIntersecting) {
-
-          entry.target.classList.add("is-visible");
-
-          observer.unobserve(entry.target);
-
-        }
-
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
       });
-
     },
     {
       threshold: 0.08
     }
   );
 
-
   elements.forEach(element => {
-
     observer.observe(element);
-
   });
-
 }
-
 
 /* =========================================================
    SKILL BARS
 ========================================================= */
 
 function initSkillBars() {
+  const tracks = document.querySelectorAll(".skill-track i");
 
-  const tracks =
-    document.querySelectorAll(".skill-track i");
+  if (!tracks.length) return;
 
-  if (!tracks.length) {
+  // Fill skill bars immediately if IntersectionObserver is unavailable.
+  if (typeof IntersectionObserver === "undefined") {
+    tracks.forEach(track => {
+      track.style.width = track.dataset.width || "0%";
+    });
     return;
   }
 
-
   const observer = new IntersectionObserver(
     entries => {
-
       entries.forEach(entry => {
-
-        if (!entry.isIntersecting) {
-          return;
-        }
+        if (!entry.isIntersecting) return;
 
         const bar = entry.target;
-
-        const width =
-          bar.dataset.width || "0%";
+        const width = bar.dataset.width || "0%";
 
         setTimeout(() => {
-
           bar.style.width = width;
-
         }, 150);
 
         observer.unobserve(bar);
-
       });
-
     },
     {
       threshold: 0.5
     }
   );
 
-
   tracks.forEach(track => {
-
     observer.observe(track);
-
   });
-
 }
-
 
 /* =========================================================
    CUSTOM CURSOR
 ========================================================= */
 
 function initCursor() {
+  const dot = document.getElementById("cursorDot");
+  const ring = document.getElementById("cursorRing");
 
-  const dot =
-    document.getElementById("cursorDot");
+  if (!dot || !ring) return;
 
-  const ring =
-    document.getElementById("cursorRing");
-
-  if (!dot || !ring) {
+  if (window.matchMedia("(pointer: coarse)").matches) {
     return;
   }
-
-
-  if (
-    window.matchMedia("(pointer: coarse)").matches
-  ) {
-    return;
-  }
-
 
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
@@ -323,23 +255,17 @@ function initCursor() {
   let ringX = mouseX;
   let ringY = mouseY;
 
-
   document.body.classList.add("has-cursor");
 
-
   document.addEventListener("mousemove", event => {
-
     mouseX = event.clientX;
     mouseY = event.clientY;
 
     dot.style.left = `${mouseX}px`;
     dot.style.top = `${mouseY}px`;
-
   });
 
-
   function animateRing() {
-
     ringX += (mouseX - ringX) * 0.14;
     ringY += (mouseY - ringY) * 0.14;
 
@@ -347,171 +273,101 @@ function initCursor() {
     ring.style.top = `${ringY}px`;
 
     requestAnimationFrame(animateRing);
-
   }
 
-
   animateRing();
-
 
   const interactiveSelector =
     "a, button, input, textarea, .certificate-card";
 
-
   document
     .querySelectorAll(interactiveSelector)
     .forEach(element => {
+      element.addEventListener("mouseenter", () => {
+        ring.classList.add("is-active");
+      });
 
-      element.addEventListener(
-        "mouseenter",
-        () => {
-          ring.classList.add("is-active");
-        }
-      );
-
-
-      element.addEventListener(
-        "mouseleave",
-        () => {
-          ring.classList.remove("is-active");
-        }
-      );
-
+      element.addEventListener("mouseleave", () => {
+        ring.classList.remove("is-active");
+      });
     });
-
 
   document.addEventListener("mousedown", () => {
     ring.classList.add("is-down");
   });
 
-
   document.addEventListener("mouseup", () => {
     ring.classList.remove("is-down");
   });
-
 }
-
 
 /* =========================================================
    MAGNETIC BUTTONS
 ========================================================= */
 
 function initMagneticButtons() {
-
-  if (
-    window.matchMedia("(pointer: coarse)").matches
-  ) {
+  if (window.matchMedia("(pointer: coarse)").matches) {
     return;
   }
 
-
-  const magnets =
-    document.querySelectorAll(".magnetic");
-
+  const magnets = document.querySelectorAll(".magnetic");
 
   magnets.forEach(magnet => {
-
     magnet.addEventListener("mousemove", event => {
-
-      const rect =
-        magnet.getBoundingClientRect();
+      const rect = magnet.getBoundingClientRect();
 
       const x =
-        event.clientX -
-        rect.left -
-        rect.width / 2;
+        event.clientX - rect.left - rect.width / 2;
 
       const y =
-        event.clientY -
-        rect.top -
-        rect.height / 2;
-
+        event.clientY - rect.top - rect.height / 2;
 
       magnet.style.transform =
         `translate(${x * 0.2}px, ${y * 0.25}px)`;
-
     });
-
 
     magnet.addEventListener("mouseleave", () => {
-
       magnet.style.transform = "";
-
     });
-
   });
-
 }
-
 
 /* =========================================================
    BUTTON RIPPLE
 ========================================================= */
 
 function initButtonRipple() {
-
-  const buttons =
-    document.querySelectorAll(".button");
-
+  const buttons = document.querySelectorAll(".button");
 
   buttons.forEach(button => {
-
     button.addEventListener("click", () => {
-
       button.classList.remove("is-rippling");
 
       void button.offsetWidth;
 
       button.classList.add("is-rippling");
-
     });
-
   });
-
 }
-
 
 /* =========================================================
    PROJECT MODAL
 ========================================================= */
 
 function initProjectModal() {
+  const modal = document.getElementById("projectModal");
+  const overlay = document.getElementById("modalOverlay");
+  const closeButton = document.getElementById("modalClose");
+  const title = document.getElementById("modalTitle");
+  const description = document.getElementById("modalDescription");
+  const label = document.getElementById("modalLabel");
+  const tags = document.getElementById("modalTags");
+  const year = document.getElementById("modalYear");
+  const link = document.getElementById("modalLink");
 
-  const modal =
-    document.getElementById("projectModal");
-
-  const overlay =
-    document.getElementById("modalOverlay");
-
-  const closeButton =
-    document.getElementById("modalClose");
-
-  const title =
-    document.getElementById("modalTitle");
-
-  const description =
-    document.getElementById("modalDescription");
-
-  const label =
-    document.getElementById("modalLabel");
-
-  const tags =
-    document.getElementById("modalTags");
-
-  const year =
-    document.getElementById("modalYear");
-
-  const link =
-    document.getElementById("modalLink");
-
-
-  if (!modal) {
-    return;
-  }
-
+  if (!modal) return;
 
   const projects = {
-
     attack: {
       label: "CYBERSECURITY",
       title: "Autonomous Network Attack Detection System",
@@ -526,7 +382,6 @@ function initProjectModal() {
       year: "2025",
       link: "#"
     },
-
 
     plate: {
       label: "COMPUTER VISION",
@@ -543,7 +398,6 @@ function initProjectModal() {
       link: "#"
     },
 
-
     student: {
       label: "WEB APPLICATION",
       title: "Student Enrolment System",
@@ -558,7 +412,6 @@ function initProjectModal() {
       year: "2025",
       link: "#"
     },
-
 
     scanner: {
       label: "APPLICATION SECURITY",
@@ -575,7 +428,6 @@ function initProjectModal() {
       link: "#"
     },
 
-
     aes: {
       label: "CRYPTOGRAPHY",
       title: "Advanced Encryption Tool · AES-256",
@@ -591,7 +443,6 @@ function initProjectModal() {
       link: "#"
     },
 
-
     learning: {
       label: "EDTECH / FULL STACK",
       title: "SYED Educational Learning Platform",
@@ -605,320 +456,188 @@ function initProjectModal() {
       ],
       year: "2026",
       link: "https://syed-educational-platform.vercel.app/"
-    }
+    },
 
+    food: {
+      label: "FOOD TECH / FULL STACK",
+      title: "Najaf Food Center",
+      description:
+        "A food delivery web application featuring food discovery, product details, cart and checkout flows, and live tracking experiences.",
+      tags: [
+        "React",
+        "JavaScript",
+        "Redux",
+        "Food Delivery"
+      ],
+      year: "2026",
+      link: "https://najaf-delivery-site.vercel.app/"
+    }
   };
 
-
   function openProject(projectKey) {
+    const project = projects[projectKey];
 
-    const project =
-      projects[projectKey];
+    if (!project) return;
 
-    if (!project) {
-      return;
+    if (label) label.textContent = project.label;
+    if (title) title.textContent = project.title;
+    if (description) {
+      description.textContent = project.description;
+    }
+    if (year) year.textContent = project.year;
+
+    if (tags) {
+      tags.innerHTML = "";
+
+      project.tags.forEach(tag => {
+        const span = document.createElement("span");
+        span.textContent = tag;
+        tags.appendChild(span);
+      });
     }
 
-
-    label.textContent =
-      project.label;
-
-    title.textContent =
-      project.title;
-
-    description.textContent =
-      project.description;
-
-    year.textContent =
-      project.year;
-
-
-    tags.innerHTML = "";
-
-
-    project.tags.forEach(tag => {
-
-      const span =
-        document.createElement("span");
-
-      span.textContent = tag;
-
-      tags.appendChild(span);
-
-    });
-
-
-    if (project.link === "#") {
-
-      link.style.display = "none";
-
-    } else {
-
-      link.style.display = "inline";
-      link.href = project.link;
-
+    if (link) {
+      if (project.link === "#") {
+        link.style.display = "none";
+      } else {
+        link.style.display = "inline";
+        link.href = project.link;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      }
     }
-
 
     modal.classList.add("open");
-
     document.body.classList.add("modal-open");
-
   }
-
 
   function closeProject() {
-
     modal.classList.remove("open");
-
     document.body.classList.remove("modal-open");
-
   }
 
+  document.querySelectorAll(".project-row").forEach(row => {
+    const button = row.querySelector(".view-project");
+    const key = row.dataset.project;
 
-  document
-    .querySelectorAll(".project-row")
-    .forEach(row => {
+    button?.addEventListener("click", event => {
+      if (button.tagName.toLowerCase() === "a") {
+        return;
+      }
 
-      const button =
-        row.querySelector(".view-project");
-
-      const key =
-        row.dataset.project;
-
-
-      button?.addEventListener("click", event => {
-
-        if (
-          button.tagName.toLowerCase() === "a"
-        ) {
-          return;
-        }
-
-        event.preventDefault();
-
-        openProject(key);
-
-      });
-
+      event.preventDefault();
+      openProject(key);
     });
+  });
 
-
-  closeButton?.addEventListener(
-    "click",
-    closeProject
-  );
-
-
-  overlay?.addEventListener(
-    "click",
-    closeProject
-  );
-
+  closeButton?.addEventListener("click", closeProject);
+  overlay?.addEventListener("click", closeProject);
 
   document.addEventListener("keydown", event => {
-
     if (
       event.key === "Escape" &&
       modal.classList.contains("open")
     ) {
       closeProject();
     }
-
   });
-
 }
-
 
 /* =========================================================
    CERTIFICATE VIEWER
 ========================================================= */
 
 function initCertificateViewer() {
-
   const cards = Array.from(
     document.querySelectorAll(".certificate-card")
   );
 
-
-  const modal =
-    document.getElementById("certificateModal");
-
-  const backdrop =
-    document.getElementById("certificateBackdrop");
-
-  const closeButton =
-    document.getElementById("viewerClose");
-
-  const previousButton =
-    document.getElementById("viewerPrev");
-
-  const nextButton =
-    document.getElementById("viewerNext");
-
-  const image =
-    document.getElementById("viewerImage");
-
-  const title =
-    document.getElementById("viewerTitle");
-
-  const category =
-    document.getElementById("viewerCategory");
-
-  const counter =
-    document.getElementById("viewerCounter");
-
-  const openImage =
-    document.getElementById("openCertificate");
-
-  const zoomIn =
-    document.getElementById("zoomIn");
-
-  const zoomOut =
-    document.getElementById("zoomOut");
-
-  const zoomReset =
-    document.getElementById("zoomReset");
-
+  const modal = document.getElementById("certificateModal");
+  const backdrop = document.getElementById("certificateBackdrop");
+  const closeButton = document.getElementById("viewerClose");
+  const previousButton = document.getElementById("viewerPrev");
+  const nextButton = document.getElementById("viewerNext");
+  const image = document.getElementById("viewerImage");
+  const title = document.getElementById("viewerTitle");
+  const category = document.getElementById("viewerCategory");
+  const counter = document.getElementById("viewerCounter");
+  const openImage = document.getElementById("openCertificate");
+  const zoomIn = document.getElementById("zoomIn");
+  const zoomOut = document.getElementById("zoomOut");
+  const zoomReset = document.getElementById("zoomReset");
   const fullscreenButton =
     document.getElementById("fullscreenButton");
-
   const imageScroll =
     document.getElementById("viewerImageScroll");
 
-
-  if (
-    !cards.length ||
-    !modal ||
-    !image
-  ) {
+  if (!cards.length || !modal || !image) {
     return;
   }
 
-
   let currentIndex = 0;
-
   let zoom = 1;
 
   const MIN_ZOOM = 0.5;
   const MAX_ZOOM = 3;
 
-
-  /*
-    Build certificate data directly from
-    the HTML cards.
-  */
-
-  const certificates =
-    cards.map(card => ({
-
-      src:
-        card.dataset.certificate,
-
-      title:
-        card.dataset.title ||
-        "Certificate",
-
-      category:
-        card.dataset.category ||
-        "CREDENTIAL",
-
-      alt:
-        card
-          .querySelector("img")
-          ?.getAttribute("alt") ||
-        "Certificate"
-
-    }));
-
+  const certificates = cards.map(card => ({
+    src: card.dataset.certificate,
+    title: card.dataset.title || "Certificate",
+    category: card.dataset.category || "CREDENTIAL",
+    alt:
+      card.querySelector("img")?.getAttribute("alt") ||
+      "Certificate"
+  }));
 
   function applyZoom() {
+    image.style.transform = `scale(${zoom})`;
 
-    image.style.transform =
-      `scale(${zoom})`;
-
-    if (zoom > 1) {
-
-      imageScroll.style.cursor = "grab";
-
-    } else {
-
-      imageScroll.style.cursor = "default";
-
+    if (imageScroll) {
+      imageScroll.style.cursor =
+        zoom > 1 ? "grab" : "default";
     }
-
 
     if (zoomReset) {
-
       zoomReset.textContent =
         `${Math.round(zoom * 100)}%`;
-
     }
-
   }
 
-
   function render(index) {
-
-    if (!certificates.length) {
-      return;
-    }
-
+    if (!certificates.length) return;
 
     currentIndex =
       ((index % certificates.length) +
         certificates.length) %
       certificates.length;
 
-
-    const certificate =
-      certificates[currentIndex];
-
+    const certificate = certificates[currentIndex];
 
     zoom = 1;
 
-    imageScroll.scrollTop = 0;
-    imageScroll.scrollLeft = 0;
+    if (imageScroll) {
+      imageScroll.scrollTop = 0;
+      imageScroll.scrollLeft = 0;
+    }
 
     applyZoom();
 
+    image.src = certificate.src || "";
+    image.alt = certificate.alt;
 
-    /*
-      THIS IS THE MAIN FIX.
+    if (title) title.textContent = certificate.title;
+    if (category) category.textContent = certificate.category;
 
-      The exact image stored in the
-      certificate card is loaded into
-      the large viewer.
-    */
+    if (counter) {
+      counter.textContent =
+        `${String(currentIndex + 1).padStart(2, "0")} / ${String(certificates.length).padStart(2, "0")}`;
+    }
 
-    image.src =
-      certificate.src;
-
-    image.alt =
-      certificate.alt;
-
-
-    title.textContent =
-      certificate.title;
-
-    category.textContent =
-      certificate.category;
-
-
-    counter.textContent =
-      `${String(currentIndex + 1).padStart(2, "0")} / ${String(certificates.length).padStart(2, "0")}`;
-
-
-    openImage.href =
-      certificate.src;
-
-
-    /*
-      Clear old broken image handlers.
-    */
+    if (openImage) {
+      openImage.href = certificate.src || "#";
+    }
 
     image.onerror = () => {
-
       console.error(
         "Certificate image not found:",
         certificate.src
@@ -926,379 +645,164 @@ function initCertificateViewer() {
 
       image.alt =
         "Certificate image not found. Check the file inside assets/certificates.";
-
     };
-
   }
 
-
   function openViewer(index) {
-
     render(index);
 
     modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
 
-    modal.setAttribute(
-      "aria-hidden",
-      "false"
-    );
-
-    document.body.classList.add(
-      "modal-open"
-    );
-
+    document.body.classList.add("modal-open");
   }
-
 
   function closeViewer() {
-
     modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
 
-    modal.setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
-    document.body.classList.remove(
-      "modal-open"
-    );
-
+    document.body.classList.remove("modal-open");
 
     if (document.fullscreenElement) {
-
       document.exitFullscreen?.();
-
     }
-
   }
 
-
-  /*
-    Clicking the certificate card opens
-    the matching certificate.
-  */
-
   cards.forEach((card, index) => {
-
     card.addEventListener("click", event => {
-
       event.preventDefault();
-
       openViewer(index);
-
     });
-
 
     card.addEventListener("keydown", event => {
-
-      if (
-        event.key === "Enter" ||
-        event.key === " "
-      ) {
-
+      if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-
         openViewer(index);
-
       }
-
     });
-
   });
 
+  closeButton?.addEventListener("click", closeViewer);
+  backdrop?.addEventListener("click", closeViewer);
 
-  closeButton?.addEventListener(
-    "click",
-    closeViewer
-  );
+  previousButton?.addEventListener("click", () => {
+    render(currentIndex - 1);
+  });
 
+  nextButton?.addEventListener("click", () => {
+    render(currentIndex + 1);
+  });
 
-  backdrop?.addEventListener(
-    "click",
-    closeViewer
-  );
+  zoomIn?.addEventListener("click", () => {
+    zoom = Math.min(MAX_ZOOM, zoom + 0.25);
+    applyZoom();
+  });
 
+  zoomOut?.addEventListener("click", () => {
+    zoom = Math.max(MIN_ZOOM, zoom - 0.25);
+    applyZoom();
+  });
 
-  previousButton?.addEventListener(
-    "click",
-    () => {
-      render(currentIndex - 1);
-    }
-  );
+  zoomReset?.addEventListener("click", () => {
+    zoom = 1;
 
-
-  nextButton?.addEventListener(
-    "click",
-    () => {
-      render(currentIndex + 1);
-    }
-  );
-
-
-  zoomIn?.addEventListener(
-    "click",
-    () => {
-
-      zoom =
-        Math.min(
-          MAX_ZOOM,
-          zoom + 0.25
-        );
-
-      applyZoom();
-
-    }
-  );
-
-
-  zoomOut?.addEventListener(
-    "click",
-    () => {
-
-      zoom =
-        Math.max(
-          MIN_ZOOM,
-          zoom - 0.25
-        );
-
-      applyZoom();
-
-    }
-  );
-
-
-  zoomReset?.addEventListener(
-    "click",
-    () => {
-
-      zoom = 1;
-
+    if (imageScroll) {
       imageScroll.scrollTop = 0;
       imageScroll.scrollLeft = 0;
+    }
 
+    applyZoom();
+  });
+
+  fullscreenButton?.addEventListener("click", async () => {
+    const viewer = modal.querySelector(".certificate-viewer");
+
+    if (!document.fullscreenElement) {
+      try {
+        await viewer?.requestFullscreen();
+      } catch (error) {
+        console.warn("Fullscreen unavailable:", error);
+      }
+    } else {
+      await document.exitFullscreen?.();
+    }
+  });
+
+  document.addEventListener("keydown", event => {
+    if (!modal.classList.contains("open")) return;
+
+    if (event.key === "Escape") {
+      closeViewer();
+    }
+
+    if (event.key === "ArrowLeft") {
+      render(currentIndex - 1);
+    }
+
+    if (event.key === "ArrowRight") {
+      render(currentIndex + 1);
+    }
+
+    if (event.key === "+" || event.key === "=") {
+      zoom = Math.min(MAX_ZOOM, zoom + 0.25);
       applyZoom();
-
     }
-  );
 
-
-  fullscreenButton?.addEventListener(
-    "click",
-    async () => {
-
-      const viewer =
-        modal.querySelector(
-          ".certificate-viewer"
-        );
-
-
-      if (!document.fullscreenElement) {
-
-        try {
-
-          await viewer?.requestFullscreen();
-
-        } catch (error) {
-
-          console.warn(
-            "Fullscreen unavailable:",
-            error
-          );
-
-        }
-
-      } else {
-
-        await document.exitFullscreen?.();
-
-      }
-
+    if (event.key === "-") {
+      zoom = Math.max(MIN_ZOOM, zoom - 0.25);
+      applyZoom();
     }
-  );
-
-
-  /*
-    Keyboard controls
-  */
-
-  document.addEventListener(
-    "keydown",
-    event => {
-
-      if (
-        !modal.classList.contains("open")
-      ) {
-        return;
-      }
-
-
-      if (event.key === "Escape") {
-
-        closeViewer();
-
-      }
-
-
-      if (
-        event.key === "ArrowLeft"
-      ) {
-
-        render(currentIndex - 1);
-
-      }
-
-
-      if (
-        event.key === "ArrowRight"
-      ) {
-
-        render(currentIndex + 1);
-
-      }
-
-
-      if (
-        event.key === "+" ||
-        event.key === "="
-      ) {
-
-        zoom =
-          Math.min(
-            MAX_ZOOM,
-            zoom + 0.25
-          );
-
-        applyZoom();
-
-      }
-
-
-      if (event.key === "-") {
-
-        zoom =
-          Math.max(
-            MIN_ZOOM,
-            zoom - 0.25
-          );
-
-        applyZoom();
-
-      }
-
-    }
-  );
-
-
-  /*
-    Mouse wheel zoom over certificate
-  */
+  });
 
   imageScroll?.addEventListener(
     "wheel",
     event => {
-
-      if (!modal.classList.contains("open")) {
-        return;
-      }
-
-      if (!event.ctrlKey) {
-        return;
-      }
+      if (!modal.classList.contains("open")) return;
+      if (!event.ctrlKey) return;
 
       event.preventDefault();
 
-
       if (event.deltaY < 0) {
-
-        zoom =
-          Math.min(
-            MAX_ZOOM,
-            zoom + 0.1
-          );
-
+        zoom = Math.min(MAX_ZOOM, zoom + 0.1);
       } else {
-
-        zoom =
-          Math.max(
-            MIN_ZOOM,
-            zoom - 0.1
-          );
-
+        zoom = Math.max(MIN_ZOOM, zoom - 0.1);
       }
 
-
       applyZoom();
-
     },
     { passive: false }
   );
 
-
-  /*
-    Double-click certificate to zoom.
-  */
-
-  image.addEventListener(
-    "dblclick",
-    () => {
-
-      if (zoom === 1) {
-
-        zoom = 2;
-
-      } else {
-
-        zoom = 1;
-
-      }
-
-      applyZoom();
-
-    }
-  );
-
+  image.addEventListener("dblclick", () => {
+    zoom = zoom === 1 ? 2 : 1;
+    applyZoom();
+  });
 }
-
 
 /* =========================================================
    BACK TO TOP
 ========================================================= */
 
 function initBackToTop() {
+  const button = document.getElementById("backTop");
 
-  const button =
-    document.getElementById("backTop");
-
-
-  if (!button) {
-    return;
-  }
-
+  if (!button) return;
 
   window.addEventListener(
     "scroll",
     () => {
-
       button.classList.toggle(
         "show",
         window.scrollY > 600
       );
-
     },
     { passive: true }
   );
 
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
-    }
-  );
-
+  button.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
 }
