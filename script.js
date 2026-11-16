@@ -610,6 +610,22 @@ function initProjectModal() {
       ],
       year: "2026",
       link: "https://syed-educational-platform.vercel.app/"
+    },
+
+
+    amanora: {
+      label: "ISLAMIC TECH / WEB APPLICATION",
+      title: "Amanora Islamic Companion",
+      description:
+        "A mobile-friendly Islamic companion with prayer times, Qibla direction, the full Quran with audio, Hadith, live Quran radio and daily moral cartoon stories.",
+      tags: [
+        "Prayer Times",
+        "Qibla",
+        "Quran Audio",
+        "Live Radio"
+      ],
+      year: "2026",
+      link: "https://amanora-prayer.vercel.app/"
     }
 
   };
